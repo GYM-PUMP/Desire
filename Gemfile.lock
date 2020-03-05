@@ -108,8 +108,10 @@ GEM
       jquery-rails (>= 4.0.5, < 5.0.0)
       jquery-ui-rails (>= 5.0.2)
       momentjs-rails (>= 2.9.0)
+    geocoder (1.6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -291,6 +293,8 @@ DEPENDENCIES
   devise
   dotenv-rails
   fullcalendar-rails
+  geocoder
+  gmaps4rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 1.1.1)
