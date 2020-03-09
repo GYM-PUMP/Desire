@@ -13,6 +13,79 @@
   </head>
 
   <body>
-    <%= yield %>
+      <header>
+          <table>
+              <tbody>
+                  <tr>
+                      <td class="header-image">
+                      <%= image_tag 'site.png', alt:"株式会社ビッグマッスル",width:"220" ,height:"60"%>
+                      </td>
+                      <!-- ユーザーログイン時 -->
+                      <%  if !request.fullpath.include?("admins") %>
+                        <!-- URLにadminsが含まれている場合は表示しない -->
+                        <td class="td-tag"><%= link_to "HOME" ,root_path,class: "exhibition" %></td>
+                        <td class="td-tag"><%= link_to "ABOUT" ,homes_about_path,class: "exhibition" %></td>
+                        <td class="td-tag"><%= link_to "USERS" ,users_users_path,class: "exhibition" %></td>
+                        <td class="td-tag"><%= link_to "SUPPLEMENT" ,users_supplements_path,class: "exhibition" %></td>
+                        <td class="td-tag"><%= link_to "G Y M"  ,users_gyms_path,class: "exhibition" %></td>
+                        <td class="td-tag"><%= link_to "ARTICLE"  ,users_articles_path,class: "exhibition" %></td>
+                          <%  if user_signed_in? %>
+                            <td class="td-tag"><%= link_to "MY PAGE" ,user_path(user.id),class: "exhibition" %></td>
+                            <td class="td-tag"><%= link_to "LOG OUT" ,destroy_user_session_path , method: :delete ,class: "exhibition" %></td>
+                          <% else %>
+                            <td class="td-tag"><%= link_to "新規登録" ,new_user_registration_path, class: "exhibition" %></td>
+                            <td class="td-tag"><%= link_to "LOG IN" ,new_user_session_path, class: "exhibition" %></td>
+                          <% end %>
+
+                          <!-- 管理者ログイン時 -->
+                          <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
+                          <!-- URLにadminsが含まれている場合に表示 -->
+                          <td class="td-tag"><%= link_to "HOME",root_path ,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "ABOUT",homes_about_path ,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "USERS" ,admin_users_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "SUPPLEMENT",admin_supplements_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "G Y M" ,admin_gyms_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "ARTICLE" ,admin_articles_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "LOG OUT" ,destroy_admin_session, method: :delete,class: "exhibition" %></td>
+                        <% else %>
+                        　<td class="td-tag"><%= link_to "管理者用LOG IN" ,new_admin_session,class: "exhibition" %></td>
+                      <% end %>
+                  </tr>
+              </tbody>
+          </table>
+      </header>
+
+  　<%= yield %>
+
+    <footer>
+        <div class="container ft-lower">
+          <div class="low">
+                <ul>
+                  <li><%= link_to "トップページ",root_path %></li><br>
+                  <li><%= link_to "利用基準" , homes_tos_path %></li><br>
+                  <li><%= link_to "プライバシーポリシー", homes_privacy_path  %></li><br>
+                  <li><%= link_to "お問い合わせ", homes_contact_path %></li><br>
+                </ul>
+          </div>
+          <div class="low">
+                 <%= image_tag 'site.png', alt:"株式会社ビッグマッスル",width:"220" ,height:"60" %><br><br>
+              <p>株式会社ビッグマッスル<br>
+                〒111-0000　東京都大腿郡僧帽筋町広背筋原2101-29<br>
+                TEL：0300-00-0000　FAX：0300-00-0000
+              </p>
+              <p>
+                <small>
+                  Copyright © big MUSCLE INC. All Rights Reserved.
+                </small>
+              </p>
+          </div>
+        </div>
+    </footer>
   </body>
 </html>
+
+<style>
+  body{
+    background-color:#000000;
+  }
+</style>
