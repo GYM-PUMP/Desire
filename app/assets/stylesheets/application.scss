@@ -17,3 +17,122 @@
  /*bootstrapの呼び出し*/
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ /* Google fonts読み込み */
+@import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p:300,400&display=swap&subset=japanese');
+
+$error:'arial unicode ms';
+$gothic: 'arial narrow';
+
+
+// ヘッダー ---------------------------
+
+header {
+  display: flex;
+  list-style: none;
+  padding: 5px;
+  display: block;
+  padding: 0 0 5px;
+  text-decoration: none;
+  }
+
+ .header-image{
+	padding-left: 20px;
+ 	}
+
+.exhibition::after {
+  border-bottom: solid 2px #f59031;
+  bottom: 0;
+  content: "";
+  display: block;
+  transition: all .3s ease;
+  -webkit-transition: all .3s ease;
+  width: 0;
+  }
+
+.exhibition:hover {
+	text-decoration: none;
+	}
+
+.exhibition:hover::after {
+  width: 100%;
+  }
+
+.td-tag{
+	text-align:center;
+	width: 150px;
+	height: 100px;
+	}
+
+//-------------------------------------
+// リンク-------------------------------
+
+a:link {
+	color:white;
+	}
+
+a:visited {
+	color:white;
+	}
+
+a:hover {
+ 	color: #ff0000;
+ 	}
+
+a:active {
+ 	color: #ff8000;
+ 	}
+
+//---------------------------------------
+// フッター ------------------------------
+
+footer {
+    opacity: 0.7;
+    margin-top: 150px;
+    border-top: double;
+    border-color: white;
+    font-family: 'M PLUS 1p', sans-serif;
+    margin-bottom: 0;
+    color:white;
+    text-align:center;
+    vertical-align:center;
+    margin-left: auto;
+    margin-right: auto;
+   }
+
+ul {
+	padding-inline-start: 0px;
+	margin-top: 50px;
+	list-style: none;
+	}
+
+//---------------------------------------
+// devise--------------------------------
+
+.signup {
+    font-family: 'M PLUS 1p', sans-serif;
+    color:#d3e0eb;
+    .error {
+        font-family: $error;
+        color: #e53935;
+        font-size: 15px;
+        h2 {
+            font-size: 20px;
+        }
+    }
+    .title {
+        color: #424242;
+        font-size: 40px;
+    }
+    p {
+        font-family: $gothic;
+    }
+    .pass {
+        font-size: 14px;
+    }
+}
+
+.signin{
+	font-family: 'M PLUS 1p', sans-serif;
+}
