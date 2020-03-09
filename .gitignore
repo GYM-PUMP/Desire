@@ -31,3 +31,4 @@
 /config/master.key
 
 /.env
+/app/assets/videos/top.mp4
