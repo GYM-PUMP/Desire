@@ -13,23 +13,33 @@ Rails.application.routes.draw do
   }
 
 # 機能
+
+    root 'users/homes#top'
+    get "homes/about" => "users/homes#about"
+    get "homes/privacy" => "users/homes#privacy"
+    get "homes/contact" => "users/homes#contact"
+    get "homes/tos" => "users/homes#tos"
+
+
+  namespace :users do
     resources :users,only: [:show,:index,:edit,:update] do
       resource :relationships,only: [:create,:destroy]
       member do
         get 'follow'
         get 'follower'
       end
-      resources :gyms,only: [:show,:index]  do
-        resource :comments, only: [:create, :destroy]
-      end
-      resources :supplements,only: [:show,:index] do
-        resource :likes, only: [:create, :destroy]
-        resource :comments, only: [:create, :destroy]
-      end
-      resources :columns,only: [:show,:index]
     end
 
+    resources :supplements,only: [:show,:index] do
+      resource :likes, only: [:create, :destroy]
+      resource :comments, only: [:create, :destroy]
+    end
 
+    resources :gyms,only: [:show,:index]  do
+      resource :comments, only: [:create, :destroy]
+    end
+    resources :articles,only: [:show,:index]
+  end
 # ---------------------------------------------------
 
 # admin #
@@ -41,13 +51,15 @@ Rails.application.routes.draw do
     registrations: 'devise/admins/registrations'
   }
 
-  namespace :admin do
+# 機能
+
+  namespace :admins do
     resources :users, only: [:show, :index, :edit, :update, :destroy]
     resources :genres, only: [:show, :index, :edit, :update, :destroy]
     resources :supplements, only: [:show, :index, :edit, :update, :destroy] do
       resource :comments, only: [:destroy]
     end
-    resources :columns, only: [:show, :index, :edit, :update, :destroy]
+    resources :articles, only: [:show, :index, :edit, :update, :destroy]
     resources :gyms, only: [:show, :index, :edit, :update, :destroy] do
       resource :comments, only: [:destroy]
     end
