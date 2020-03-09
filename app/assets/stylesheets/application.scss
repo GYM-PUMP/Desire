@@ -14,16 +14,20 @@
  *= require_self
  */
 
+ /*font-awesomeの呼び出し*/
+ @import 'font-awesome-sprockets';
+ @import 'font-awesome';
+
  /*bootstrapの呼び出し*/
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
  /* Google fonts読み込み */
-@import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
-@import url('https://fonts.googleapis.com/css?family=M+PLUS+1p:300,400&display=swap&subset=japanese');
+ @import url('https://fonts.googleapis.com/earlyaccess/notosansjapanese.css');
+ @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p:300,400&display=swap&subset=japanese');
 
-$error:'arial unicode ms';
-$gothic: 'arial narrow';
+ $error:'arial unicode ms';
+ $gothic: 'arial narrow';
 
 
 // ヘッダー ---------------------------
@@ -37,9 +41,9 @@ header {
   text-decoration: none;
   }
 
- .header-image{
-	padding-left: 20px;
- 	}
+ .header-image {
+	 padding-left: 20px;
+ 	 }
 
 .exhibition::after {
   border-bottom: solid 2px #f59031;
@@ -50,10 +54,6 @@ header {
   -webkit-transition: all .3s ease;
   width: 0;
   }
-
-.exhibition:hover {
-	text-decoration: none;
-	}
 
 .exhibition:hover::after {
   width: 100%;
@@ -70,6 +70,7 @@ header {
 
 a:link {
 	color:white;
+  text-decoration: none;
 	}
 
 a:visited {
@@ -106,6 +107,20 @@ ul {
 	margin-top: 50px;
 	list-style: none;
 	}
+
+.icon {
+  text-align:center;
+  vertical-align:center;
+}
+
+.icon {
+  text-align: center;
+  font-size: 30px;
+  span{
+    margin: 20px;
+  }
+}
+
 
 //---------------------------------------
 // devise--------------------------------

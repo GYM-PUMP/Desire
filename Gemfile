@@ -75,3 +75,4 @@ gem 'dotenv-rails'
 gem 'pry-rails'
 gem "gmaps4rails"
 gem "geocoder"
+gem 'font-awesome-sass', '~> 5.4.1'

@@ -18,17 +18,19 @@
               <tbody>
                   <tr>
                       <td class="header-image">
-                      <%= image_tag 'site.png', alt:"株式会社ビッグマッスル",width:"220" ,height:"60"%>
+                        <%= link_to root_path do %>　<!-- target:"_blank" 新しいタブで遷移　-->
+                          <%= image_tag 'site.png',　width:"220" ,height:"60" %>
+                        <% end %>
                       </td>
-                      <!-- ユーザーログイン時 -->
+                        <!-- ユーザーログイン時 -->
                       <%  if !request.fullpath.include?("admins") %>
-                        <!-- URLにadminsが含まれている場合は表示しない -->
-                        <td class="td-tag"><%= link_to "HOME" ,root_path,class: "exhibition" %></td>
-                        <td class="td-tag"><%= link_to "ABOUT" ,homes_about_path,class: "exhibition" %></td>
-                        <td class="td-tag"><%= link_to "USERS" ,users_users_path,class: "exhibition" %></td>
-                        <td class="td-tag"><%= link_to "SUPPLEMENT" ,users_supplements_path,class: "exhibition" %></td>
-                        <td class="td-tag"><%= link_to "G Y M"  ,users_gyms_path,class: "exhibition" %></td>
-                        <td class="td-tag"><%= link_to "ARTICLE"  ,users_articles_path,class: "exhibition" %></td>
+                          <!-- URLにadminsが含まれている場合は表示しない -->
+                          <td class="td-tag"><%= link_to "HOME" ,root_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "ABOUT" ,homes_about_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "USERS" ,users_users_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "SUPPLEMENT" ,users_supplements_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "G Y M"  ,users_gyms_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "ARTICLE"  ,users_articles_path,class: "exhibition" %></td>
                           <%  if user_signed_in? %>
                             <td class="td-tag"><%= link_to "MY PAGE" ,user_path(user.id),class: "exhibition" %></td>
                             <td class="td-tag"><%= link_to "LOG OUT" ,destroy_user_session_path , method: :delete ,class: "exhibition" %></td>
@@ -58,7 +60,7 @@
   　<%= yield %>
 
     <footer>
-        <div class="container ft-lower">
+        <div class="container">
           <div class="low">
                 <ul>
                   <li><%= link_to "トップページ",root_path %></li><br>
@@ -68,7 +70,16 @@
                 </ul>
           </div>
           <div class="low">
-                 <%= image_tag 'site.png', alt:"株式会社ビッグマッスル",width:"220" ,height:"60" %><br><br>
+            <div class="fotter-icons">
+              <span><i class="fab fa-instagram"></i></span>
+              <span><i class="fab fa-twitter"></i></span>
+              <span><i class="fab fa-facebook-f"></i></span>
+            </div>
+          </div>
+          <div class="low">
+              <%= link_to root_path do %>
+                <%= image_tag 'site.png',width:"220" ,height:"60" %><br><br>
+              <% end %>
               <p>株式会社ビッグマッスル<br>
                 〒111-0000　東京都大腿郡僧帽筋町広背筋原2101-29<br>
                 TEL：0300-00-0000　FAX：0300-00-0000
