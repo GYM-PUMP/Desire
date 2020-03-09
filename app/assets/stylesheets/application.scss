@@ -39,6 +39,8 @@ header {
   display: block;
   padding: 0 0 5px;
   text-decoration: none;
+  position: fixed;
+  z-index: 1;
   }
 
  .header-image {
@@ -120,7 +122,11 @@ ul {
     margin: 20px;
   }
 }
+// TOPページ --------------------------------
 
+.head video{
+
+  }
 
 //---------------------------------------
 // devise--------------------------------
