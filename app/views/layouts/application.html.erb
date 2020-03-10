@@ -48,9 +48,9 @@
                           <td class="td-tag"><%= link_to "SUPPLEMENT",admin_supplements_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "G Y M" ,admin_gyms_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "ARTICLE" ,admin_articles_path,class: "exhibition" %></td>
-                          <td class="td-tag"><%= link_to "LOG OUT" ,destroy_admin_session, method: :delete,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "LOG OUT" ,destroy_admin_session_path, method: :delete,class: "exhibition" %></td>
                         <% else %>
-                        　<td class="td-tag"><%= link_to "管理者用LOG IN" ,new_admin_session,class: "exhibition" %></td>
+                        　<td class="td-tag"><%= link_to "管理者用LOG IN" ,new_admin_session_path,class: "exhibition" %></td>
                       <% end %>
                   </tr>
               </tbody>
