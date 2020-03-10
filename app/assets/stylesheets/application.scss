@@ -30,6 +30,35 @@
  $gothic: 'arial narrow';
 
 
+// 全体ー -------------------------------
+
+body{
+    background-color:#000000;
+  }
+
+#page_back {
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    }
+
+#page_back a {
+    background-color: #999;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px 20px;
+    }
+
+#page_back a:hover {
+    background-color: #666;
+    text-decoration: none;
+    }
+
+
+
+
+//---------------------------------------
 // ヘッダー ---------------------------
 
 header {
@@ -67,26 +96,6 @@ header {
 	height: 100px;
 	}
 
-//-------------------------------------
-// リンク-------------------------------
-
-a:link {
-	color:white;
-  text-decoration: none;
-	}
-
-a:visited {
-	color:white;
-	}
-
-a:hover {
- 	color: #ff0000;
- 	}
-
-a:active {
- 	color: #ff8000;
- 	}
-
 //---------------------------------------
 // フッター ------------------------------
 
@@ -122,11 +131,81 @@ ul {
     margin: 20px;
   }
 }
+
+//-------------------------------------
+// 共通タイトルindex ページ --------------
+
+  .elementor-heading-title {
+    font-family: "Raleway", Sans-serif;
+    font-size: 31px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 150px;
+    text-align: center;
+    color: white;
+    }
+
+//-------------------------------------
+// リンク-------------------------------
+
+a:link {
+  color:white;
+  text-decoration: none;
+  }
+
+a:visited {
+  color:white;
+  }
+
+a:hover {
+  color: #ff0000;
+  }
+
+a:active {
+  color: #ff8000;
+  }
+
+//---------------------------------------
 // TOPページ --------------------------------
 
-.head video{
 
+
+
+
+//---------------------------------------
+// TOS ページ ----------------------------
+
+.establishment{
+  text-align:right;
+  padding-bottom: 40px;
+  color:#d3e0eb;
   }
+
+.tos-body{
+  line-height: 2.2em;
+  color:#d3e0eb;
+  }
+
+
+
+
+
+
+//---------------------------------------
+// Privacy ページ ------------------------
+
+.privacy-body{
+  text-align:center;
+  color:#d3e0eb;
+  line-height: 2.2em;
+  }
+
+.privacy-item{
+  text-align:left;
+}
+
+
 
 //---------------------------------------
 // devise--------------------------------
