@@ -18,14 +18,14 @@
               <tbody>
                   <tr>
                       <td class="header-image">
-                        <%= link_to root_path do %>　<!-- target:"_blank" 新しいタブで遷移　-->
+                        <%= link_to root_path do %>　<!-- target:"_blank" target="_blank" 新しいタブで遷移　-->
                           <%= image_tag 'site.png',　width:"220" ,height:"60" %>
                         <% end %>
                       </td>
                         <!-- ユーザーログイン時 -->
                       <%  if !request.fullpath.include?("admins") %>
                           <!-- URLにadminsが含まれている場合は表示しない -->
-                          <td class="td-tag"><%= link_to "HOME" ,root_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "HOME" ,root_path,data: {"turbolinks" => false},class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "ABOUT" ,homes_about_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "USERS" ,users_users_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "SUPPLEMENT" ,users_supplements_path,class: "exhibition" %></td>
@@ -42,7 +42,7 @@
                           <!-- 管理者ログイン時 -->
                           <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
                           <!-- URLにadminsが含まれている場合に表示 -->
-                          <td class="td-tag"><%= link_to "HOME",root_path ,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "HOME",root_path ,data: {"turbolinks" => false},class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "ABOUT",homes_about_path ,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "USERS" ,admin_users_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "SUPPLEMENT",admin_supplements_path,class: "exhibition" %></td>
@@ -63,17 +63,17 @@
         <div class="container">
           <div class="low">
                 <ul>
-                  <li><%= link_to "トップページ",root_path %></li><br>
-                  <li><%= link_to "利用基準" , homes_tos_path %></li><br>
+                  <li><%= link_to "トップページ",root_path,data: {"turbolinks" => false} %></li><br>
+                  <li><%= link_to "利用規約" , homes_tos_path %></li><br>
                   <li><%= link_to "プライバシーポリシー", homes_privacy_path  %></li><br>
                   <li><%= link_to "お問い合わせ", homes_contact_path %></li><br>
                 </ul>
           </div>
           <div class="low">
             <div class="fotter-icons">
-              <span><i class="fab fa-instagram"></i></span>
-              <span><i class="fab fa-twitter"></i></span>
-              <span><i class="fab fa-facebook-f"></i></span>
+              <span><a class="fab fa-instagram" href="https://www.instagram.com/?hl=ja"></a></span>
+              <span><a class="fab fa-twitter" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw%7Ctwcamp%5Eembeddedtimeline%7Ctwterm%5Ecollection%3A539487832448843776&ref_url=https%3A%2F%2Fpublish.twitter.com%2F%23"></a></span>
+              <span><a class="fab fa-facebook-f" href="https://ja-jp.facebook.com/"></a></span>
             </div>
           </div>
           <div class="low">
