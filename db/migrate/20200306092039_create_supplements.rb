@@ -6,7 +6,7 @@ class CreateSupplements < ActiveRecord::Migration[5.2]
 	  t.text :description
 	  t.integer :price
 	  t.string :maker
-	  t.string :image_id
+	  t.string :supple_image_id
 	  t.timestamps
     end
   end

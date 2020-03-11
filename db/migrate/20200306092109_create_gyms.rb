@@ -3,7 +3,7 @@ class CreateGyms < ActiveRecord::Migration[5.2]
     create_table :gyms do |t|
       t.string :gym_name
 	  t.text :description
-	  t.string :image_id
+	  t.string :gym_image_id
 	  t.integer :postal_code
 	  t.string :address
 	  t.float  :latitude

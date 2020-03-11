@@ -14,4 +14,6 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
   belongs_to :gym
+
+  attachment :image
 end

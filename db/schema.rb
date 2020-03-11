@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_095210) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.string "image_id"
+    t.string "article_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_095210) do
   create_table "gyms", force: :cascade do |t|
     t.string "gym_name"
     t.text "description"
-    t.string "image_id"
+    t.string "gym_image_id"
     t.integer "postal_code"
     t.string "address"
     t.float "latitude"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_095210) do
     t.text "description"
     t.integer "price"
     t.string "maker"
-    t.string "image_id"
+    t.string "supple_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

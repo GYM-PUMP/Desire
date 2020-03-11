@@ -1,2 +1,31 @@
-<h1>Admins::Articles#new</h1>
-<p>Find me in app/views/admins/articles/new.html.erb</p>
+<%= javascript_include_tag "admins/genre.js" %>
+
+<div class = "container">
+	<div class = "row">
+		<div class="col-xs-12">
+			<h3 class="elementor-heading-title">ARTICLE CREATE:</h3>
+		</div>
+	<%= form_for(@article, url:admins_articles_path(@article),method: :post) do |f| %>
+
+			<div class="col-xs-4" style="margin-top: 100px;">
+				<%= f.attachment_field :article_image, id:"post_img" %>
+			</div>
+
+			<div class="col-xs-8">
+				<div class="row admin-item">
+					<%= f.label :title, "タイトル", class:"col-xs-2" %>
+					<%= f.text_field :title, class:"col-xs-4" %>
+				</div>
+
+				<div class="row admin-item">
+					<%= f.label :body, "内容", class:"col-xs-2" %>
+					<%= f.text_area :body, class:"col-xs-4" %>
+				</div>
+			</div>
+	</div>
+		<div class="row admin-item-show-btn">
+			<%= f.submit "新規登録", class:"col-xs-2 col-xs-offset-8 btn btn-primary" %>
+		</div>
+	<% end %>
+</div>
+
