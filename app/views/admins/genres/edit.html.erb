@@ -1,2 +1,19 @@
-<h1>Admin::Genres#edit</h1>
-<p>Find me in app/views/admin/genres/edit.html.erb</p>
+<!-- .jsファイル呼び出し -->
+<%= javascript_include_tag "admins/genre.js" %>
+
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">GENRE EDIT:</h2>
+			<div class="genre-body">
+				<%= attachment_image_tag @genre, :genre_image, src: "", id:"item_image", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+				<%= form_for(@genre, url: admins_genre_path(@genre.id)) do |f| %>
+					<span>GENRE IMAGE</span>
+					<%= f.attachment_field :genre_image, id:"post_img" %>
+			    	<%= f.text_field :genre_name %>
+					<%= f.submit "UPDATE", class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
