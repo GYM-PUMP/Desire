@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :users, only: [:show, :index, :edit, :update, :destroy]
-    resources :genres, only: [:show, :index, :edit, :update, :destroy]
+    resources :genres, only: [:create, :index, :edit, :update, :destroy]
     resources :supplements, only: [:show, :index, :edit, :update, :destroy] do
       resource :comments, only: [:destroy]
     end
