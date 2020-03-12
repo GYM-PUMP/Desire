@@ -1,2 +1,29 @@
-<h1>Admins::Articles#edit</h1>
-<p>Find me in app/views/admins/articles/edit.html.erb</p>
+<%= javascript_include_tag "admins/genre.js" %>
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">ARTICLE EDIT:</h2>
+		</div>
+	</div>
+	<%= form_for(@article, url:admins_article_path(@article),method: :patch) do |f| %>
+		<div class="row">
+			<div class="col-xs-3 col-xs-offset-1">
+				 <%= attachment_image_tag @article, :article_image, src: "", id:"item_image", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+			 	<%= f.attachment_field :article_image %>
+			</div>
+			<div class="col-xs-8">
+				<div class="row admin-item">
+					<%= f.label :title, "タイトル", class:"col-xs-2" %>
+					<%= f.text_field :title, class:"col-xs-4" %>
+				</div>
+				<div class="row admin-item">
+					<%= f.label :body, "内容", class:"col-xs-2" %>
+					<%= f.text_area :body, class:"col-xs-4" %>
+				</div>
+			</div>
+		</div>
+		<div class="row admin-item-show-btn">
+			<%= f.submit "変更を保存", class:"col-xs-2 col-xs-offset-8 btn btn-primary"  %>
+		</div>
+	<% end %>
+</div>

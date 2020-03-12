@@ -30,30 +30,30 @@
  $gothic: 'arial narrow';
 
 
-// 全体ー -------------------------------
+// 全体　--------------------------------
 
 body{
-    background-color:#000000;
+  background-color:#000000;
   }
 
 #page_back {
-    position: fixed;
-    bottom: 30px;
-    right: 20px;
-    }
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  }
 
 #page_back a {
-    background-color: #999;
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    padding: 20px 20px;
-    }
+  background-color: #999;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  padding: 20px 20px;
+  }
 
 #page_back a:hover {
-    background-color: #666;
-    text-decoration: none;
-    }
+  background-color: #666;
+  text-decoration: none;
+  }
 
 
 
@@ -100,18 +100,18 @@ header {
 // フッター ------------------------------
 
 footer {
-    opacity: 0.7;
-    margin-top: 150px;
-    border-top: double;
-    border-color: white;
-    font-family: 'M PLUS 1p', sans-serif;
-    margin-bottom: 0;
-    color:white;
-    text-align:center;
-    vertical-align:center;
-    margin-left: auto;
-    margin-right: auto;
-   }
+  opacity: 0.7;
+  margin-top: 150px;
+  border-top: double;
+  border-color: white;
+  font-family: 'M PLUS 1p', sans-serif;
+  margin-bottom: 0;
+  color:white;
+  text-align:center;
+  vertical-align:center;
+  margin-left: auto;
+  margin-right: auto;
+ }
 
 ul {
 	padding-inline-start: 0px;
@@ -135,16 +135,16 @@ ul {
 //-------------------------------------
 // 共通タイトルindex ページ --------------
 
-  .elementor-heading-title {
-    font-family: "Raleway", Sans-serif;
-    font-size: 31px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 150px;
-    text-align: center;
-    color: white;
-    }
+.elementor-heading-title {
+  font-family: "Raleway", Sans-serif;
+  font-size: 31px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 150px;
+  text-align: center;
+  color: white;
+  }
 
 //-------------------------------------
 // リンク-------------------------------
@@ -188,6 +188,63 @@ a:active {
 
 
 //---------------------------------------
+// article ページ ----------------------------
+
+
+.hoge {
+    position: relative;
+    width: 200px;
+    }
+
+.hoge a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-indent:-999px;
+    z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+    }
+
+.hoge:hover {
+  filter:alpha(opacity=70);/* IE 6,7*/
+  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
+  -moz-opacity:0.7;/* FF , Netscape */
+  -khtml-opacity: 0.7;/* Safari 1.x */
+  opacity:0.7;
+  zoom:1;/*IE*/
+  }
+
+.thumbnail{
+  margin: 10px;
+  background-color: black;
+  }
+
+.caption{
+  background: #eee;
+  //overflow: hidden;
+  //width: 100%;
+  //color: white;
+  }
+
+//.text-over {
+    //overflow: hidden;
+    //text-overflow: ellipsis;
+    //white-space: nowrap;
+  //}
+
+.modal_back{
+  background-color: black;
+  color:white;
+  }
+
+button{
+  margin: 10px;
+  background-color: black;
+  }
+
+
+//---------------------------------------
 // TOS ページ ----------------------------
 
 .establishment{
@@ -202,10 +259,6 @@ a:active {
   }
 
 
-
-
-
-
 //---------------------------------------
 // Privacy ページ ------------------------
 
@@ -217,7 +270,7 @@ a:active {
 
 .privacy-item{
   text-align:left;
-}
+  }
 
 
 
