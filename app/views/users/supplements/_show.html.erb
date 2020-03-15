@@ -1,0 +1,53 @@
+<!-- モーダル・ダイアログ -->
+<div class="modal fade" id="sampleModal-<%= supplement.id %>" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content modal_back">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+				<h4 class="modal-title">SUPPLEMENT SHOW</h4>
+			</div>
+			<div class="modal-body">
+				 <%= attachment_image_tag supplement, :supple_image,:fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg"%>
+				<div class="row admin-item">
+					<h3>NAME:</h3>
+					<h4 class="col-xs-12"><%= supplement.item_name %></h4>
+				</div>
+				<div class="row admin-item">
+					<h3>DESCRIPTION:</h3>
+					<h4 class="col-xs-12"><%= supplement.description %></h4>
+				</div>
+				<div class="row admin-item">
+					<h3>PRICE:</h3>
+					<h4 class="col-xs-12">￥<%= supplement.price %></h4>
+				</div>
+				<div class="row admin-item">
+					<h3>MAKER:</h3>
+					<h4 class="col-xs-12"><%= supplement.maker %></h4>
+				</div>
+				<div class="row admin-item">
+					<h3>GENRE:</h3>
+					<h4 class="col-xs-12"><%= supplement.genre.genre_name %></h4>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+			</div>
+
+			<div id="comments_count_show">
+			コメント数：<%= supplement.comments.count %>
+			</div>
+
+			<div id="s-comments">
+					<% supplement.comments.each do |comment| %>
+						<%= render partial: 'comments/supple_comment' , locals: {comment: comment} %>
+					<% end %>　<!-- 　eachメソッドでrenderの中身を１つ１つ取り出す。 -->
+				 </div>
+
+				 <div id="form_supple_comment">
+				<%= render partial: 'comments/form_spple_comment', locals: { supplement: supplement, comment: supplement.comments.new(supplement_id: supplement.id) } %>							　　　<!-- Supplementモデルに紐づくCommentをnewする。.buildでも可 -->
+			</div>
+
+		</div>
+	</div>
+</div>
+

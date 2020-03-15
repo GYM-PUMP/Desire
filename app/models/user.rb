@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
   has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
 
-  belongs_to :gym
+  belongs_to :gym, optional: true
 
   attachment :image
 end

@@ -60,7 +60,7 @@ Rails.application.routes.draw do
       resource :comments, only: [:destroy]
     end
     resources :articles, only: [:new, :create, :show, :index, :edit, :update, :destroy]
-    resources :gyms, only: [:show, :index, :edit, :update, :destroy] do
+    resources :gyms, only: [:index,:new,:create,:show,  :edit, :update, :destroy] do
       resource :comments, only: [:destroy]
     end
   end
