@@ -1,0 +1,21 @@
+<table id= 'supple_comment_<%= comment.id %>' class="table">
+	<!-- <table id= 'supple_comment_　→ 名札の役割。名前は何でも可。｜　<%#= comment.id %>'　→　commentカラムのid | class="table">　→　レイアウト -->
+		<!-- 上記の設定により１つのテーブルとしてまとめられる。 -->
+	<tr>
+		<td class="col-xs-2 active">コメ主</td>
+		<td class="col-xs-6"><%= attachment_image_tag(comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg") %><%= comment.user.name %></td>
+	</tr>
+	<tr>
+		<td class="active">投稿日時</td>
+		<td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+	</tr>
+	<tr>
+		<td class="active">コメ文</td>
+		<td><%= comment.body %></td>
+	</tr>
+	<tr>
+		<td><% if comment.user == current_user %>
+			<%= link_to "Destroy",users_supplement_comments_path(comment.id), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{comment.id}" %>
+			<% end %></td>
+	</tr>
+</table>

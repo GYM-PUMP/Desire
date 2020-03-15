@@ -1,0 +1,4 @@
+
+$('#sampleModal-<%= @supplement.id %> #supple_comment_<%= @supplement_comment.id %>').remove();
+
+$('#sampleModal-<%= @supplement.id %> #comments_count_show').html('コメント数：<%= @supplement.comments.count %>')

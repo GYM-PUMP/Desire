@@ -56,11 +56,11 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :users, only: [:show, :index, :edit, :update, :destroy]
     resources :genres, only: [:create, :index, :edit, :update, :destroy]
-    resources :supplements, only: [:show, :index, :edit, :update, :destroy] do
+    resources :supplements, only: [:new,:show, :index, :edit, :update, :destroy, :create] do
       resource :comments, only: [:destroy]
     end
     resources :articles, only: [:new, :create, :show, :index, :edit, :update, :destroy]
-    resources :gyms, only: [:show, :index, :edit, :update, :destroy] do
+    resources :gyms, only: [:index,:new,:create,:show,  :edit, :update, :destroy] do
       resource :comments, only: [:destroy]
     end
   end

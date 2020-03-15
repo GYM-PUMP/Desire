@@ -14,7 +14,7 @@
 					</tr>
 					<% @genres.each do |genre| %>
 						<tr>
-							<td><%= attachment_image_tag genre, :genre_image, src: "", id:"item_image", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+							<td><%= attachment_image_tag genre, :genre_image, src: "", id:"item_image", size: "210x60", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
 								<%= genre.genre_name %>
 							</td>
 							<td><%= link_to "EDIT", edit_admins_genre_path(genre.id), class: "btn-sm btn-primary" %></td>

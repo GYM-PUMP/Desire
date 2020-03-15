@@ -1,2 +1,33 @@
-<h1>Admin::Supplements#index</h1>
-<p>Find me in app/views/admin/supplements/index.html.erb</p>
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">SPULEMENT:</h2>
+		</div>
+	</div>
+		<div class="row">
+			<% @supplements.each do |supplement| %>
+	   			<div class="col-xs-2">
+	   				<%#= link_to admins_supplement_path(supplement) do %>
+						<div class="hoge">
+							<button type="button" data-toggle="modal" data-target="#sampleModal-<%= supplement.id %> ">
+								<div class="thumbnail">
+									<%= attachment_image_tag supplement, :supple_image, :fill, 200, 200, format: 'jpeg' %>
+									<div class="caption">
+										<p class="text-over"><%= supplement.item_name %></p>
+										<p class="text-over"><%= supplement.description %></p>
+										<p class="text-over">￥<%= supplement.price %></p>
+										<p class="text-over"><%= supplement.maker %></p>
+										<p class="text-over"><%= supplement.genre.genre_name %></p>
+									</div>
+								</div>
+							</button>
+						</div>
+						<%= render 'show', {supplement: supplement} %>
+					<%# end %>
+			        <%= link_to "EDIT", edit_admins_supplement_path(supplement.id), class: "btn-sm btn-primary" %>
+			        <%= link_to "DELETE",admins_supplement_path(supplement.id), method: :delete, class: "btn-sm btn-danger", data: { confirm: '本当に消しますか？' } %>
+	  			</div>
+  			<% end %>
+		</div>
+	<%= link_to "NEW SUPPLEMENT", new_admins_supplement_path,class: "col-xs-4 col-xs-offset-4 btn btn-primary" %>
+</div>

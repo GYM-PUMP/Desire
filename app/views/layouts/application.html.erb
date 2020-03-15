@@ -32,7 +32,7 @@
                           <td class="td-tag"><%= link_to "G Y M"  ,users_gyms_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "ARTICLE"  ,users_articles_path,class: "exhibition" %></td>
                           <%  if user_signed_in? %>
-                            <td class="td-tag"><%= link_to "MY PAGE" ,user_path(user.id),class: "exhibition" %></td>
+                            <td class="td-tag"><%= link_to "MY PAGE" ,users_user_path(current_user),class: "exhibition" %></td>
                             <td class="td-tag"><%= link_to "LOG OUT" ,destroy_user_session_path , method: :delete ,class: "exhibition" %></td>
                           <% else %>
                             <td class="td-tag"><%= link_to "新規登録" ,new_user_registration_path, class: "exhibition" %></td>
