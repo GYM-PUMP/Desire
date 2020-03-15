@@ -76,3 +76,8 @@ gem 'pry-rails'
 gem "gmaps4rails"
 gem "geocoder"
 gem 'font-awesome-sass', '~> 5.4.1'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
