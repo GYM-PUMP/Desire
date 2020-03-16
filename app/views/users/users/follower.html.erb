@@ -17,26 +17,28 @@
 				<tbody>
 					<% @users.follower_user.where.not(id: current_user.id).each do |user| %>
 						<% if current_user.id != user.id %>
-						<tr>
-							<td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-							<td><%= user.name%></td>
-							<td>FOLLOW <%= link_to "#{user.follower.count}",follow_users_user_path(user.id) %></td>
-							<td>FOLLOWER <%= link_to "#{user.followed.count}",follower_users_user_path(user.id) %></td>
-					      <% if current_user.following?(user) %>
-							<td>
-								<%= link_to 'UN FOLLOW', users_user_relationships_path(user.id), method: :DELETE, class: "btn-sm btn-danger" %>
-							</td>
-					      <% else %>
-							<td>
-								<%= link_to 'FOLLOW', users_user_relationships_path(user.id), method: :POST, class: "btn-sm btn-success" %>
-							</td>
-					      <% end %>
-							<td>
-								<%= link_to "PROFILE", users_user_path(user), class: "user_#{user.id}" %>
-							</td>
+							<% if user.user_status == true %>
+								<tr>
+									<td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+									<td><%= user.name%></td>
+									<td>FOLLOW <%= link_to "#{user.follower.map(&:followed).select{ |f| f.user_status == true }.count}",follow_users_user_path(user.id) %></td>
+									<td>FOLLOWER <%= link_to "#{user.followed.map(&:follower).select{ |f| f.user_status == true }.count}",follower_users_user_path(user.id) %></td>
+							      <% if current_user.following?(user) %>
+									<td>
+										<%= link_to 'UN FOLLOW', users_user_relationships_path(user.id), method: :DELETE, class: "btn-sm btn-danger" %>
+									</td>
+							      <% else %>
+									<td>
+										<%= link_to 'FOLLOW', users_user_relationships_path(user.id), method: :POST, class: "btn-sm btn-success" %>
+									</td>
+							      <% end %>
+									<td>
+										<%= link_to "PROFILE", users_user_path(user), class: "user_#{user.id}" %>
+									</td>
+							<% end %>
 					    <% end %>
 					<% end %>
-					</tr>
+								</tr>
 				</tbody>
 			</table>
 		</div>
