@@ -1,8 +1,25 @@
 <%= form_with(model:[:users, supplement, comment], remote: true) do |f| %>　<!--”remote: true”を記述する場所に注意-->
     <div class="row">
         <div class="col-sm-12">
-            <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+        	<%= f.label :body, '口コミ内容 ', class:'col-md-3 col-form-label' %>
+            <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "コメントをここに!!まずは投稿してみましょう！" %>
         </div>
+        <div class="form-group row" id="star-<%= supplement.id %>">
+		    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+		    <%= f.hidden_field :rate, id: :review_star %>
+		</div>
     </div>
-    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    <%= f.submit "評価レビュー", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
 <% end %>
+
+     <!-- 評価javascript -->
+  <script>
+  $('#star-<%= supplement.id %>').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'comment[rate]',
+    half: true,
+  });
+  </script>

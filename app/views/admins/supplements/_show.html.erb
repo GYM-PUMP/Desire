@@ -30,9 +30,21 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<%= link_to "編集する", edit_admins_supplement_path(supplement),class: "btn btn-primary" %>
-				<%= link_to "一覧へ戻る", admins_supplements_path(supplement),class: "btn btn-primary" %>
 				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+			</div>
+
+			<div id="comments_count_show">
+				コメント数：<%= supplement.comments.count %>
+			</div>
+
+			<div id="rate_show">
+				評価：<%= supplement.comments.select("rate").average(:rate) %>
+			</div>
+
+			<div id="s-comments">
+				<% supplement.comments.each do |comment| %>
+					<%= render partial: 'comments/supple_comment' , locals: {comment: comment} %>
+				<% end %>　<!-- 　eachメソッドでrenderの中身を１つ１つ取り出す。 -->
 			</div>
 		</div>
 	</div>

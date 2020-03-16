@@ -14,8 +14,26 @@
 		<td><%= comment.body %></td>
 	</tr>
 	<tr>
+		<td id="star-rate-<%= comment.id %>"></td>
+		<td><h4 class="mb-3">評価：<%= comment.rate %>点</h4></td>
+	</tr>
+	<tr>
 		<td><% if comment.user == current_user %>
 			<%= link_to "Destroy",users_supplement_comments_path(comment.id), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_book_#{comment.id}" %>
 			<% end %></td>
 	</tr>
 </table>
+
+<!-- 評価javascript -->
+<script>
+$('#star-rate-<%= comment.id %>').raty({
+	size: 36,
+	starOff:  '<%= asset_path('star-off.png') %>',
+	starOn : '<%= asset_path('star-on.png') %>',
+	starHalf: '<%= asset_path('star-half.png') %>',
+	half: true,
+	readOnly: true,
+	score: <%= comment.rate %>,
+　});
+</script>
+<!--/星評価-->

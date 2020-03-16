@@ -14,16 +14,17 @@
 								<div class="thumbnail">
 									<%= attachment_image_tag supplement, :supple_image, :fill, 200, 200, format: 'jpeg' %>
 									<div class="caption">
-										<p class="text-over"><%= supplement.item_name %></p>
-										<p class="text-over"><%= supplement.description %></p>
-										<p class="text-over">￥<%= supplement.price %></p>
-										<p class="text-over"><%= supplement.maker %></p>
-										<p class="text-over"><%= supplement.genre.genre_name %></p>
+										<p class="text-over"><%= supplement.item_name.truncate(10) %></p>
+										<p class="text-over"><%= supplement.description.truncate(10) %></p>
+										<p class="text-over">￥<%= supplement.price.truncate(10) %></p>
+										<p class="text-over"><%= supplement.maker.truncate(10) %></p>
+										<p class="text-over"><%= supplement.genre.genre_name.truncate(10) %></p>
 									</div>
 								</div>
 							</button>
 						</div>
 						<%= render 'show', { supplement: supplement } %>
+								<!-- Supplement.allで取り出した１つをrenderでshowに引き渡す -->
 					<%# end %>
 	  			</div>
 	  			<%# end %>

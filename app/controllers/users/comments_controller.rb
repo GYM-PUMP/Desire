@@ -20,11 +20,8 @@ class Users::CommentsController < ApplicationController
 		end
 	  	@supplement_comment.destroy
 	  	@delete_supplement_comment_id = params[:supplement_id]
-	  	# @comment = BookComment.find(params[:book_id])で取ってきたcommentをdeleteしたためなんのcommentをdeleteしたか@delete_comment_id = params[:book_id]で定義している。
-	  	# redirect_to book_path(@book), notice: "successfully delete book!"
 	  	render 'comments/destroy.js.erb'
 	end
-	# resourceバージョン
 
 private
 
