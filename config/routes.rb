@@ -27,6 +27,8 @@ Rails.application.routes.draw do
       member do
         get 'follow'
         get 'follower'
+        get 'withdraw'
+        patch 'status_change' => 'users#status_change'
       end
     end
 

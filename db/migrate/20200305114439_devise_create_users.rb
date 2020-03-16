@@ -35,7 +35,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.timestamps null: false
       t.string :name
-      t.string :name_kana
       t.string :postal_code
       t.text :address
       t.integer :height
@@ -44,7 +43,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.integer :weight
       t.integer :gym_id
       t.string :image_id
-      t.boolean :customer_status
+      t.boolean :user_status, default: true, null: false
     end
 
     add_index :users, :email,                unique: true
