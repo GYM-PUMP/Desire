@@ -1,2 +1,70 @@
-<h1>User::Users#show</h1>
-<p>Find me in app/views/user/users/show.html.erb</p>
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<% if @user == current_user %>
+				<h2 class="elementor-heading-title">MY PAGE:</h2>
+			<% else %>
+			<h2 class="elementor-heading-title">USER SHOW:</h2>
+			<% end %>
+		</div>
+	</div>
+			 <%= attachment_image_tag @user, :image,:fill, 60, 60, format: 'jpeg', class: "col-xs-2 col-xs-offset-1 pull-left profile-img", fallback: "no_image.jpg" %>
+
+			<div class="col-xs-6">
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.name %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.postal_code %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.postal_code %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.address %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.height %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.age %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.gender %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.weight %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.gym_id %></h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.customer_status %></h4>
+				</div>
+			</div>
+		<div class="row admin-item-show-btn">
+		  <% if @user == current_user %>
+			<%= link_to "EDIT", edit_users_user_path(@user),class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
+		  <% end %>
+			<%= link_to "USERS", users_users_path,class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
+		</div>
+</div>

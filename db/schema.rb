@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead
+s# This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_095210) do
+ActiveRecord::Schema.define(version: 2020_03_16_073954) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_095210) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "gym_id"
     t.integer "supplement_id"
     t.text "body"
     t.float "rate"
@@ -69,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_095210) do
   end
 
   create_table "relationships", force: :cascade do |t|
-    t.integer "follwer_id"
+    t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
