@@ -33,11 +33,34 @@ class Users::UsersController < ApplicationController
       @users = User.find(params[:id])
   end
 
+  def withdraw
+		set_user
+		if @user != current_user
+			redirect_to root_path
+		end
+  end
+
+  def status_change
+		user = User.find(params[:id])
+		sign_out(user)
+		user.update(change_params)
+		redirect_to root_path
+  end
+
+  def set_user
+        @user = User.find_by(id: params[:id])
+	end
+
 
 private
+
   def user_params
-  	  params.require(:user).permit(:name, :name_kana, :postal_code, :address, :height, :age, :gender, :weight, :gym_id, :customer_status)
+  	  params.require(:user).permit(:name, :postal_code, :address, :height, :age, :gender, :weight, :gym_id, :user_status)
   end
+
+  def change_params
+		params.permit(:user_status)
+	end
 
 
   #url直接防止　メソッドを自己定義してbefore_actionで発動。

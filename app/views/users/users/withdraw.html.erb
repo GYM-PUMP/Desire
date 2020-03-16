@@ -1,0 +1,23 @@
+<div class ="container">
+		<div class = "row">
+			<div class="col-xs-8 col-xs-offset-2">
+				<h2 class="elementor-heading-title">WITHDRAW:</h2>
+				<h2 style="margin-bottom:40px;">really？</h2>
+				<p style="font-size:20px;">
+					あなたの身体は登録以前より変化がありましたか？<br>
+					変化が無いままやめようとしているのであればそれはお勧めしない。<br>
+					今一度考え直して欲しい。あなたは何のために身体づくりをしているのか、、、<br>
+					身体を変えるという事はあなたの心をも変えてくれて、今後の人生が大きく変わってきます。<br>
+					幸せならこのまま退会しても大丈夫でしょう。<br>
+					しかしそうでないなら今からでも遅くは無い。身体を一緒に動かそうではないか！！！！！<br>
+					さあ、おかえりなさい。
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<%= link_to "MUST MUSCLE", users_user_path(@user), class:"col-xs-2 col-xs-offset-4 btn btn-primary" %>
+
+			<%= button_to "Good-by", status_change_users_user_path(@user), {method: :patch, params: {user_status: "false"}, class:"col-xs-2 btn btn-danger"} %>
+		</div>
+	</div>
+</div>
