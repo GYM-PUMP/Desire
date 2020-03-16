@@ -1,0 +1,42 @@
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">USERS:</h2>
+				<%= form_with(model: [:users, @user]) do |f| %>
+				<!-- エラーメッセージ表示-->
+					<% if @user.errors.any? %>
+						<h3><%= @user.errors.count %>error occurrence</h3><!--エラーメッセ-->
+						<ul>
+							<% @user.errors.full_messages.each do |message| %>
+						<li><%= message %></li>
+					<% end %>
+					</ul>
+				<% end %>
+					<!-- エラーメッセージ表示-->
+
+					<div class="field">
+						<%= f.label :image %>
+						<%= f.attachment_field :image, class: "user_image" %>
+					</div>
+
+					<div class="field">
+						<%= f.label :name %>
+						<%= f.text_field :name, class: "name" %>
+					</div>
+
+					<div class="field">
+						<%= f.label :introduction %>
+						<%= f.text_area :introduction, class: "introduction" %>
+					</div>
+					<div class="field">
+						<%= f.label :city %><br />
+						<%= f.text_field :city %><!--users.coffeeで設定しているidと紐付ける必要がある。-->
+					</div>
+
+					<div class="actions">
+						<%= f.submit %>
+					</div>
+				<% end %>
+		</div>
+	</div>
+</div>
