@@ -4,4 +4,24 @@
 			<h3 class="elementor-heading-title">ARTICLE:</h3>
 		</div>
 	</div>
+	<div class="row">
+		<% @articles.each do |article| %>
+   			<div class="col-xs-2">
+   				<%#= link_to admins_article_path(article) do %>
+					<div class="hoge">
+						<button type="button" data-toggle="modal" data-target="#sampleModal-<%= article.id %> ">
+							<div class="thumbnail">
+								<%= attachment_image_tag article, :article_image, :fill, 200, 200, format: 'jpeg' %>
+								<div class="caption">
+									<p class="text-over"><%= article.title.truncate(10) %></p>
+									<p class="text-over">投稿日時 / <%= article.created_at.strftime("%Y/%m/%d") %></p>
+								</div>
+							</div>
+						</button>
+					</div>
+					<%= render 'show', {article: article} %>
+				<%# end %>
+  			</div>
+		<% end %>
+	</div>
 </div>
