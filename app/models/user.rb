@@ -17,7 +17,14 @@ class User < ApplicationRecord
 
   attachment :image, destroy: false
 
-    # ユーザーをフォローする
+#google API ------------------
+
+  geocoded_by :address
+  after_validation :geocode
+
+#------------------------------
+
+# ユーザーをフォローする-----------------------
   def follow(user_id)
     follower.create(followed_id: user_id)
   end
@@ -31,5 +38,7 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
+#-------------------------------------------
+
 
 end

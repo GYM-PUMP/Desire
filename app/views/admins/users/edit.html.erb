@@ -58,8 +58,8 @@
 			</div>
 		<div class="row admin-item-show-btn">
 		  <% if @user == current_user %>
-			<%= link_to "EDIT", edit_admins_user_path(@user),class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
+			<%= link_to "EDIT", edit_users_user_path(@user),class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
 		  <% end %>
-			<%= link_to "USERS", admins_users_path,class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
+			<%= link_to "USERS", users_users_path,class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
 		</div>
 </div>

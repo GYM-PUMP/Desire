@@ -1,20 +1,20 @@
-<!-- モーダル・ダイアログ  -->
-<div class="modal fade" id="sampleModal-<%= article.id %>" tabindex="-1">
+<!-- モーダル・ダイアログ -->
+<div class="modal fade" id="sampleModal-<%= gym.id %>" tabindex="-1">
 	<div class="modal-dialog">
 		<div class="modal-content modal_back">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-				<h4 class="modal-title">ARTICLE SHOW</h4>
+				<h4 class="modal-title">GYM SHOW</h4>
 			</div>
 			<div class="modal-body">
-				 <%= attachment_image_tag article, :article_image,:fill, 300, 400, format: 'jpeg', fallback: "no_image.jpg"%>
+				 <%= attachment_image_tag gym, :gym_image,:fill, 400, 400, format: 'jpeg', fallback: "no_image.jpg"%>
 				<div class="row admin-item">
-					<h3>TITLE:</h3>
-					<h4 class="col-xs-12"><%= article.title %></h4>
+					<h3>GYM:</h3>
+					<h4 class="col-xs-12"><%= gym.gym_name %></h4>
 				</div>
 				<h3>ーーーーーーーーーーーーーーーーーーーーー</h3>
 				<div class="row admin-item">
-					<h4 class="col-xs-12"><%= article.body %></h4>
+					<h4 class="col-xs-12"><%= gym.description %></h4>
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -23,3 +23,4 @@
 		</div>
 	</div>
 </div>
+
