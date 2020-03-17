@@ -171,11 +171,60 @@ a:active {
 //---------------------------------------
 // TOPページ --------------------------------
 
+@import url('https://fonts.googleapis.com/css?family=Courgette');
+
+/* Positioning */
+
+
+.toppage, .mymymy {
+  position: absolute;
+}
+
+.toppage {
+  font: 50px/1.2 'Courgette', cursive;
+  color: #fff;
+  text-align: center;
+  margin-top: 80px;
+  margin-left: 5%;
+  z-index: 2;
+}
+.mymymy {
+  width: 280px;
+  height: 300px;
+  mix-blend-mode: multiply;
+}
+
+/* Circles */
+.circle-1 {
+  background: #f66;
+  border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+  animation: border-animation 6s infinite linear;
+}
+.circle-2 {
+  background: #f92;
+  border-radius: 80% 30% 50% 50%/50%;
+  animation: border-animation 4s infinite linear;
+}
+.circle-3 {
+  background: #fc2;
+  border-radius: 40% 40% 50% 40%/30% 50% 50% 50%;
+  animation: border-animation 3s infinite linear;
+}
+
+/* Animation */
+@keyframes border-animation {
+  to { transform: rotate(360deg); }
+}
+
+.box-top{
+    width: 400px;
+    margin: 50px auto 0;
+    height: 400px;
+    }
 
 
 
-
-//---------------------------------------
+//-----------------------------------------
 // genre ページ ----------------------------
 
 
@@ -190,6 +239,11 @@ a:active {
 
 
 //---------------------------------------
+// MY PAGE ------------------------------
+
+
+
+//-------------------------------------------
 // article ページ ----------------------------
 
 
