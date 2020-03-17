@@ -1,4 +1,4 @@
-<div class ="container">
+<div class ="container mymy">
 	<div class = "row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<% if @user == current_user %>
@@ -12,47 +12,42 @@
 
 			<div class="col-xs-6">
 				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-3">USER NAME</h4>
 					<h4 class="col-xs-6"><%= @user.name %></h4>
 				</div>
 
 				<div class="row admin-item">
 					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.postal_code %></h4>
+					<h4 class="col-xs-6">〒 <%= @user.postal_code %></h4>
 				</div>
 
 				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.postal_code %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-3">ADDRESS</h4>
 					<h4 class="col-xs-6"><%= @user.address %></h4>
 				</div>
 
 				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.height %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-3">AGE</h4>
 					<h4 class="col-xs-6"><%= @user.age %></h4>
 				</div>
 
 				<div class="row admin-item">
 					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.height %>cm</h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @user.weight %>kg</h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3">GENDER</h4>
 					<h4 class="col-xs-6"><%= @user.gender %></h4>
 				</div>
 
 				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.weight %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-3">GYM</h4>
 					<h4 class="col-xs-6"><%= @user.gym_id %></h4>
 				</div>
 			</div>
@@ -62,4 +57,15 @@
 		  <% end %>
 			<%= link_to "USERS", users_users_path,class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
 		</div>
+		<h2>gmap</h2>
+			<div id="map" style="width: 400px; height: 400px;"></div>
+			<script>
+			  handler = Gmaps.build("Google");
+			  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+			    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+			    handler.bounds.extendWith(markers);
+			    handler.fitMapToBounds();
+			    handler.getMap().setZoom(19);
+			  });
+			</script>
 </div>
