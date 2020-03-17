@@ -28,6 +28,9 @@
 					<h3>GENRE:</h3>
 					<h4 class="col-xs-12"><%= supplement.genre.genre_name %></h4>
 				</div>
+				<div class="row admin-item likes_buttons_<%= supplement.id %>">
+					<%= render partial: 'users/likes/like', locals: { supplement: supplement} %>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
