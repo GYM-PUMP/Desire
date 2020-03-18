@@ -1,17 +1,44 @@
 <div class = "container top">
 	<div class = "row center head">
 		<div class="col-xs-12">
-			<%#= video_tag("top.mp4", :autoplay => true, :loop => true,size: '640x360') %>
 			<video src="<%= asset_path 'top.mp4' %>"width="100%" height="100%"autoplay muted loop playsinline></video>
 		</div>
 	</div>
-	<div class = "box-top">
-		<h2 class="toppage">
-			MAKE<br>UP<br>BODY:
-		</h2>
-		<div class="circle-1 mymymy"></div>
-		<div class="circle-2 mymymy"></div>
-		<div class="circle-3 mymymy"></div>
+		<div class = "box-top">
+			<h2 class="toppage">
+				MAKE<br>UP<br>BODY:
+			</h2>
+			<div class="circle-1 mymymy"></div>
+			<div class="circle-2 mymymy"></div>
+			<div class="circle-3 mymymy"></div>
+		</div>
+	<div class = "row">
+		<div class="col-xs-8">
+			<h3 class="elementor-heading-title">popularity:</h3>
+		</div>
+		<div class="col-xs-2 col-xs-offset-2">
+			<h3 class="elementor-heading-title">ranking:</h3>
+		</div>
+		<div class="row">
+		<div class="col-xs-8">
+			<% @articles.each do |article| %>
+	   			<div class="col-xs-2">
+	   				<%#= link_to admins_article_path(article) do %>
+						<div class="hoge">
+							<button type="button" data-toggle="modal" data-target="#sampleModal-<%= article.id %> ">
+								<div class="thumbnail">
+									<%= attachment_image_tag article, :article_image, :fill, 200, 200, format: 'jpeg' %>
+									<div class="caption">
+										<p class="text-over"><%= article.title.truncate(10) %></p>
+										<p class="text-over">投稿日時 / <%= article.created_at.strftime("%Y/%m/%d") %></p>
+									</div>
+								</div>
+							</button>
+						</div>
+						<%= render 'users/articles/show', {article: article} %>
+					<%# end %>
+	  			</div>
+			<% end %>
+		</div>
 	</div>
-	<div class = "row center head">
 </div>
