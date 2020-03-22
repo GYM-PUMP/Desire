@@ -5,12 +5,13 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <link href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" rel="stylesheet">
     <script src="//maps.google.com/maps/api/js?key=AIzaSyDI65Gdy9B7n2N0gSrvDzUe_vbKVMlEsz8"></script>
     <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
     <script src="//cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" type="text/javascript"></script>
+    
   </head>
 
   <body>
@@ -19,8 +20,8 @@
               <tbody>
                   <tr>
                       <td class="header-image">
-                        <%= link_to root_path do %>　<!-- target:"_blank" target="_blank" 新しいタブで遷移　-->
-                          <%= image_tag 'site1.png',　width:"220" ,height:"60" %>
+                        <%= link_to root_path do %> <!-- target:"_blank" target="_blank" 新しいタブで遷移 -->
+                          <%= image_tag 'site1.png', width:"220" ,height:"60" %>
                         <% end %>
                       </td>
                         <!-- ユーザーログイン時 -->
@@ -51,14 +52,14 @@
                           <td class="td-tag"><%= link_to "ARTICLE" ,admin_articles_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "LOG OUT" ,destroy_admin_session_path, method: :delete,class: "exhibition" %></td>
                         <% else %>
-                        　<td class="td-tag"><%= link_to "管理者用LOG IN" ,new_admin_session_path,class: "exhibition" %></td>
+                         <td class="td-tag"><%= link_to "管理者用LOG IN" ,new_admin_session_path,class: "exhibition" %></td>
                       <% end %>
                   </tr>
               </tbody>
           </table>
       </header>
 
-  　<%= yield %>
+    <%= yield %>
 
     <footer>
         <div class="container">
@@ -82,8 +83,8 @@
                 <%= image_tag 'site1.png',width:"220" ,height:"60" %><br><br>
               <% end %>
               <p>株式会社ビッグマッスル<br>
-                〒111-0000　東京都大腿郡僧帽筋町広背筋原2101-29<br>
-                TEL：0300-00-0000　FAX：0300-00-0000
+                〒111-0000  東京都大腿郡僧帽筋町広背筋原2101-29<br>
+                TEL：0300-00-0000  FAX：0300-00-0000
               </p>
               <p>
                 <small>

@@ -16,7 +16,7 @@ class Admins::SupplementsController < ApplicationController
     @supplement = Supplement.new(supplement_params)
     @genres = Genre.all
     if @supplement.save
-      redirect_to admins_supplements_path(@supplement)
+      redirect_to admins_supplement_path(@supplement)
     else
       render 'new'
     end

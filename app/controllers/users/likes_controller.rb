@@ -3,7 +3,7 @@ class Users::LikesController < ApplicationController
         @supplement = Supplement.find(params[:supplement_id])
         like = current_user.likes.new(supplement_id: @supplement.id)
         like.save
-        # redirect_back(fallback_location: root_path)非同期の場合は不要
+        # redirect_back(fallback_location: root_path) #非同期の場合は不要
     end
 
     def destroy

@@ -1,6 +1,5 @@
 <table id= 'supple_comment_<%= comment.id %>' class="table">
-	<!-- <table id= 'supple_comment_　→ 名札の役割。名前は何でも可。｜　<%#= comment.id %>'　→　commentカラムのid | class="table">　→　レイアウト -->
-		<!-- 上記の設定により１つのテーブルとしてまとめられる。 -->
+
 	<tr>
 		<td class="col-xs-2 active">コメ主</td>
 		<td class="col-xs-6"><%= attachment_image_tag(comment.user, :image, :fill, 50, 50, fallback: "no_image.jpg") %><%= comment.user.name %></td>
@@ -34,6 +33,6 @@ $('#star-rate-<%= comment.id %>').raty({
 	half: true,
 	readOnly: true,
 	score: <%= comment.rate %>,
-　});
+  });
 </script>
 <!--/星評価-->

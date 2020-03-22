@@ -13,12 +13,20 @@
 			</div>
 			<div class="col-xs-8">
 				<div class="row admin-item">
-					<%= f.label :title, "タイトル", class:"col-xs-2" %>
-					<%= f.text_field :title, class:"col-xs-4" %>
+					<%= f.label :gym_name, "施設名", class:"col-xs-2" %>
+					<%= f.text_field :gym_name, class:"col-xs-4" %>
 				</div>
 				<div class="row admin-item">
-					<%= f.label :body, "内容", class:"col-xs-2" %>
-					<%= f.text_area :body, class:"col-xs-4" %>
+					<%= f.label :description, "内容", class:"col-xs-2" %>
+					<%= f.text_area :description, class:"col-xs-4" %>
+				</div>
+				<div class="row admin-item">
+					<%= f.label :postal_code, "郵便番号", class:"col-xs-2" %>
+					<%= f.text_area :postal_code, class:"col-xs-4" %>
+				</div>
+				<div class="row admin-item">
+					<%= f.label :address, "住所", class:"col-xs-2" %>
+					<%= f.text_area :address, class:"col-xs-4" %>
 				</div>
 			</div>
 		</div>
