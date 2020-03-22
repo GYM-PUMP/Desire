@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_112248) do
+ActiveRecord::Schema.define(version: 2020_03_22_084233) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -123,10 +123,10 @@ ActiveRecord::Schema.define(version: 2020_03_21_112248) do
     t.string "name"
     t.string "postal_code"
     t.text "address"
-    t.integer "height"
-    t.integer "age"
-    t.boolean "gender"
-    t.integer "weight"
+    t.integer "height", default: 0, null: false
+    t.integer "age", default: 0, null: false
+    t.boolean "gender", default: true
+    t.integer "weight", default: 0, null: false
     t.integer "gym_id"
     t.string "image_id"
     t.boolean "user_status", default: true, null: false
