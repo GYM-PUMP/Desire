@@ -1,5 +1,5 @@
 $(function(){
-  // $( document ).on('turbolinks:load', function() {　← turbolinksの影響で反映されないので削除
+  // $( document ).on('turbolinks:load', function() { ← turbolinksの影響で反映されないので削除
     function readURL(input) {
       // console.log(input);コンソールで動作確認
       if (input.files && input.files[0]) {

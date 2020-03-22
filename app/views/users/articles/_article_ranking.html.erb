@@ -1,11 +1,5 @@
-<div class = "container">
-	<div class = "row">
-		<div class="col-xs-12">
-			<h3 class="elementor-heading-title">ARTICLE:</h3>
-		</div>
-	</div>
-	<div class="row">
-		<% @articles.each do |article| %>
+<div class="row">
+		<% popular_articles.each do |article| %>
    			<div class="col-xs-2">
    				<%#= link_to admins_article_path(article) do %>
 					<div class="hoge">
@@ -20,9 +14,8 @@
 							</div>
 						</button>
 					</div>
-					<%= render 'show', {article: article} %>
+					<%= render partial: 'users/articles/show', locals: {article: article} %>
 				<%# end %>
   			</div>
 		<% end %>
 	</div>
-</div>
