@@ -3,7 +3,7 @@
 		<div class="col-xs-8 col-xs-offset-2">
 			<h2 class="elementor-heading-title">USERS:</h2>
 			<%= link_to "退会する", withdraw_users_user_path(@user), class:"col-xs-2 btn btn-danger" %>
-				<%= form_with(model: [:users, @user]) do |f| %>
+				<%= form_with(model: [:users, @user], data: {remote: false}) do |f| %><!-- デフォルトで非同期で通信しようとするため 非同期しない場合は　data: {remote: false}と記述要-->
 				<!-- エラーメッセージ表示-->
 					<% if @user.errors.any? %>
 						<h3><%= @user.errors.count %>error occurrence</h3><!--エラーメッセ-->
@@ -13,7 +13,7 @@
 					<% end %>
 					</ul>
 				<% end %>
-					<!-- エラーメッセージ表示-->
+				<!-- エラーメッセージ表示-->
 
 					<div class="field">
 						<%= f.label :image %>
@@ -34,8 +34,10 @@
 						<%= f.text_field :address, class: "address" %>
 					</div>
 					<div class="field">
-						<%= f.label :gender %>
-						<%= f.text_field :gender, class: "gender" %>
+						<%= f.radio_button :gender, :true, id:"genre-edit-availability" %>
+					    <%= f.label :gender, "男性", for:"genre-edit-availability" %>
+					    <%= f.radio_button :gender, :false, id:"genre-edit-invalid" %>
+					    <%= f.label :gender, "女性", for:"genre-edit-invalid" %>
 					</div>
 					<div class="field">
 						<%= f.label :age %>
@@ -52,6 +54,10 @@
 					<div class="field">
 						<%= f.label :gym_id %><br />
 						<%= f.text_field :gym_id %>
+					</div>
+					<div class="field">
+						<%= f.label :movement, "1週間あたりの運動量", class:"col-xs-2" %>
+					<%= f.select :movement, User::MOVEMENT_FACTOR, {}  %>
 					</div>
 
 					<div class="actions">

@@ -9,7 +9,7 @@ class Users::UsersController < ApplicationController
   end
 
   def index
-  	  @users = User.all
+  	  @users = User.where(user_status: true)
       @user = current_user
   end
 
@@ -60,7 +60,7 @@ class Users::UsersController < ApplicationController
 private
 
   def user_params
-  	  params.require(:user).permit(:name, :postal_code, :address, :height, :age, :gender, :weight, :gym_id, :user_status)
+  	  params.require(:user).permit(:name, :postal_code, :address, :height, :age, :gender, :weight, :gym_id, :user_status, :movement)
   end
 
   def change_params
@@ -68,7 +68,7 @@ private
 	end
 
 
-  #url直接防止　メソッドを自己定義してbefore_actionで発動。
+  #url直接防止メソッドを自己定義してbefore_actionで発動。
    def baria_user
   	   unless params[:id].to_i == current_user.id
   		      redirect_to user_path(current_user)

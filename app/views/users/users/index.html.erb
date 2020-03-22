@@ -15,16 +15,15 @@
 
 				<tbody>
 					<% @users.each do |user| %>
-					　 <% if current_user.id != user.id %>
+					   <% if current_user.id != user.id %>
 						  <% if user.user_status == true %>
 							<tr>
 								<td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-								<td><%= user.name%></td>
+								<td><%= user.name  %></td>
 								<td>
-									FOLLOW <%= link_to "#{user.follower.map(&:followed).select{ |f| f.user_status == true }.count}",follow_users_user_path(user.id) %><!-- mapでユーザーをフォローしているユーザーを取り出しselectでmapで取り出したデータの中からさらにuser_statusがtrueのものだけ取ってくる様に指定-->
-								</td>
-								<td>
-									FOLLOWER <%= link_to "#{user.followed.map(&:follower).select{ |f| f.user_status == true }.count}",follower_users_user_path(user.id) %>
+									<a type="button" data-toggle="modal" data-target="#sampleModal-<%= user.id %>" style="cursor: pointer;">
+                          				<%= image_tag 'follows.png' , height: "80px", width: "80px" %>
+                        			</a>
 								</td>
 								<td><% if current_user.id != user.id %>
 										<% if current_user.following?(user) %>
@@ -35,6 +34,40 @@
 									<% end %>
 								</td>
 								<td><%= link_to "PROFILE", users_user_path(user), class: "user_#{user.id}" %></td>
+								<td>
+									<!-- モーダル・ダイアログ -->
+			                        <div class="modal fade" id="sampleModal-<%= user.id %>" tabindex="-1">
+			                            <div class="modal-dialog">
+			                                <div class="modal-content">
+			                                    <div class="modal-header">
+			                                        <div class ="following-user">
+			                                            <div class="row">
+			                                                <div class="col-xs-2"></div>
+			                                                <div class="col-xs-3">
+			                                                    <%= link_to follow_users_user_path(user.id) do %>
+			                                                    	<span><%= user.follower.map(&:followed).count %></span>
+			                                                    	<%= image_tag 'follower.png' , height: "100px", width: "auto" %>
+			                                                    <% end %>
+			                                                </div>
+			                                                <div class="col-xs-2">
+			                                                </div>
+			                                                <div class="col-xs-3" >
+			                                                	<%= link_to follower_users_user_path(user.id) do %>
+			                                                		<span><%= user.followed.map(&:follower).count %></span>
+			                                                   		<%= image_tag 'followed.png' , height: "100px", width: "auto" %>
+			                                                    <% end %>
+			                                                </div>
+			                                                <div class="col-xs-2">
+			                                                </div>
+			                                            </div>
+			                                        </div>
+			                                        <div class ="followed-user">
+			                                        </div>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+								</td>
 							</tr>
 						  <% end %>
 					   <% end %>
