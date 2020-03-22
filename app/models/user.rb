@@ -1,4 +1,13 @@
 class User < ApplicationRecord
+  MOVEMENT_FACTOR = {
+    # 英語にした方がいい
+    "普段運動しない": 1.2,
+    "週に１回〜２回軽く運動する": 1.375,
+    "週に２回〜３回筋トレする": 1.55,
+    "週に４回〜６回激しい筋トレする": 1.725,
+    "筋トレ上級者": 1.9
+  }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -39,6 +48,30 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 #-------------------------------------------
+# 体組成計算 ---------------------------------
 
+  def basal_metabolism
+    if gender
+      return (13.397*weight)+(4.799*height)+(5.677*age)+88.362
+    else
+      return (9.247*weight)+(3.098*height)+(4.33*age)+447.593
+    end
+  end
+
+  def protain_factor
+    as = [
+      {"move" => 1.2, "protein" => 1.2},
+      {"move" => 1.375, "protein" => 1.5},
+      {"move" => 1.55, "protein" => 1.9},
+      {"move" => 1.725, "protein" => 2.2},
+      {"move" => 1.9, "protein" => 2.5}
+    ]
+
+    as.find { |a| a["move"] == movement }["protein"]
+  end
+
+  def total_ingestion_cal
+    return { "basal_metabolism" => basal_metabolism * movement, "protein" => weight * protain_factor }
+  end
 
 end

@@ -1,17 +1,19 @@
 <div class = "container top">
 	<div class = "row center head">
 		<div class="col-xs-12">
-			<%#= video_tag("top.mp4", :autoplay => true, :loop => true,size: '640x360') %>
 			<video src="<%= asset_path 'top.mp4' %>"width="100%" height="100%"autoplay muted loop playsinline></video>
 		</div>
 	</div>
-	<div class = "box-top">
-		<h2 class="toppage">
-			MAKE<br>UP<br>BODY:
-		</h2>
-		<div class="circle-1 mymymy"></div>
-		<div class="circle-2 mymymy"></div>
-		<div class="circle-3 mymymy"></div>
+	<div class = "row">
+		<div class="col-xs-12 ranking">
+			<%= image_tag 'ranking1.png', width:"420" ,height:"200" %>
+		</div>
 	</div>
-	<div class = "row center head">
+	<%= render 'users/articles/article_ranking', {popular_articles: @popular_articles} %>
+
+<!--ローディング画面 -->
+<div id="js-loader" class="loader">
+    <div class="loader-animation">
+    	<%= image_tag 'log.png' %>
+    </div>
 </div>

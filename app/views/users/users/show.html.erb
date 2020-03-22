@@ -1,4 +1,4 @@
-<div class ="container mymy">
+<div class ="container">
 	<div class = "row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<% if @user == current_user %>
@@ -43,7 +43,48 @@
 
 				<div class="row admin-item">
 					<h4 class="col-xs-3">GENDER</h4>
-					<h4 class="col-xs-6"><%= @user.gender %></h4>
+					<h4 class="col-xs-6">
+					<% if @user.gender == true %>
+					　男性
+					<% else %>
+					　女性
+					<% end %>
+					</h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3">基礎代謝</h4>
+					<h4 class="col-xs-6"><%= @user.basal_metabolism.round(0) %>Kcal</h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3">総摂取カロリー</h4>
+					<% a = @user.total_ingestion_cal %>
+					<h4 class="col-xs-6"><%= a["basal_metabolism"].round(0) %>Kcal</h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3">タンパク質摂取量</h4>
+					<h4 class="col-xs-6">
+						<%= a["protein"].round(0) %>g<br>
+						<%= (a["protein"] * 4).round(0) %>Kcal
+					</h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3">脂質摂取量</h4>
+					<h4 class="col-xs-6">
+						<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g<br>
+						<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
+					</h4>
+				</div>
+
+				<div class="row admin-item">
+					<h4 class="col-xs-3">炭水化物摂取量</h4>
+					<h4 class="col-xs-6">
+						<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g<br>
+						<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
+					</h4>
 				</div>
 
 				<div class="row admin-item">
@@ -57,7 +98,7 @@
 		  <% end %>
 			<%= link_to "USERS", users_users_path,class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
 		</div>
-		<h2>gmap</h2>
+		<h2>お近くのトレーニングGYM</h2>
 			<div id="map" style="width: 400px; height: 400px;"></div>
 			<script>
 			  handler = Gmaps.build("Google");

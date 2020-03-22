@@ -10,11 +10,14 @@
 				 <%= attachment_image_tag article, :article_image,:fill, 300, 400, format: 'jpeg', fallback: "no_image.jpg"%>
 				<div class="row admin-item">
 					<h3>TITLE:</h3>
-					<h4 class="col-xs-12"><%= article.title %></h4>
+					<h4 class="col-xs-12"><strong><%= article.title %></strong></h4>
 				</div>
-				<h3>ーーーーーーーーーーーーーーーーーーーーー</h3>
+				<h3></h3>
 				<div class="row admin-item">
 					<h4 class="col-xs-12"><%= article.body %></h4>
+				</div>
+				<div class="row admin-item">
+					<h4 class="col-xs-12"><strong>閲覧数:</strong><span class="impression_count"><%= article.impressions_count %></span></h4>
 				</div>
 			</div>
 			<div class="modal-footer">
