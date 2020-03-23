@@ -32,6 +32,10 @@
 					<%= f.label :genre_id, "ジャンル", class:"col-xs-2" %>
 					<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, class:"col-xs-4" %>
 				</div>
+				<div class="row admin-item">
+					<%= f.label :sales_target_url, "販売先URL", class:"col-xs-2" %>
+					<%= f.text_area :sales_target_url, class:"col-xs-4" %>
+				</div>
 			</div>
 		</div>
 		<div class="row admin-item-show-btn">

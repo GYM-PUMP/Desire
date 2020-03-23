@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get "homes/about" => "users/homes#about"
     get "homes/privacy" => "users/homes#privacy"
     get "homes/contact" => "users/homes#contact"
+    post "homes/contact" => "users/homes#create"
     get "homes/tos" => "users/homes#tos"
 
 

@@ -44,7 +44,7 @@ class Admins::SupplementsController < ApplicationController
   private
 
   def supplement_params
-      params.require(:supplement).permit(:genre_id,:item_name,:description,:price,:maker,:supple_image)
+      params.require(:supplement).permit(:genre_id,:item_name,:description,:price,:maker,:supple_image, :sales_target_url)
   end
 
 end

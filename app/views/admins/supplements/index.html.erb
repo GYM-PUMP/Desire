@@ -6,6 +6,7 @@
 	</div>
 		<div class="row">
 			<% @supplements.each do |supplement| %>
+			<%# if supplement.genre_name == PROTEIN  %>
 	   			<div class="col-xs-2">
 	   				<%#= link_to admins_supplement_path(supplement) do %>
 						<div class="hoge">
@@ -27,6 +28,7 @@
 			        <%= link_to "EDIT", edit_admins_supplement_path(supplement.id), class: "btn-sm btn-primary" %>
 			        <%= link_to "DELETE",admins_supplement_path(supplement.id), method: :delete, class: "btn-sm btn-danger", data: { confirm: '本当に消しますか？' } %>
 	  			</div>
+	  		<%# end %>
   			<% end %>
 		</div>
 	<%= link_to "NEW SUPPLEMENT", new_admins_supplement_path,class: "col-xs-4 col-xs-offset-4 btn btn-primary" %>

@@ -4,7 +4,7 @@
 				<h2 class="elementor-heading-title">SUPPLEMENT SHOW:</h2>
 			</div>
 		</div>
-			 <%= attachment_image_tag @supplement, :supple_image,:fill, 60, 60, format: 'jpeg', class: "col-xs-2 col-xs-offset-1 pull-left profile-img", fallback: "no_image.jpg" %>
+			 <%= attachment_image_tag @supplement, :supple_image,:fill, 200, 200, format: 'jpeg', class: "col-xs-2 col-xs-offset-1 pull-left profile-img", fallback: "no_image.jpg" %>
 
 			<div class="col-xs-6">
 				<div class="row admin-item">
@@ -27,7 +27,9 @@
 					<h4 class="col-xs-3"></h4>
 					<h4 class="col-xs-6"><%= @supplement.genre.genre_name %></h4>
 				</div>
-
+				<div class="row admin-item">
+					<h4 class="col-xs-3"></h4>
+					<h4 class="col-xs-6"><%= @supplement.sales_target_url %></h4>
 				</div>
 			</div>
 		</div>
