@@ -18,7 +18,7 @@
 				</div>
 				<div class="row admin-item">
 					<h3>PRICE:</h3>
-					<h4 class="col-xs-12">￥<%= supplement.price %></h4>
+					<h4 class="col-xs-12">￥<%= supplement.price %>（税込）<small>※送料別</small></h4>
 				</div>
 				<div class="row admin-item">
 					<h3>MAKER:</h3>
@@ -27,6 +27,12 @@
 				<div class="row admin-item">
 					<h3>GENRE:</h3>
 					<h4 class="col-xs-12"><%= supplement.genre.genre_name %></h4>
+				</div>
+				<div class="row admin-item">
+					<h3>URL:</h3>
+					<% if supplement.sales_target_url != nil %>
+					<h4 class="col-xs-12"><a href="<%= supplement.sales_target_url %>" target="_blank">販売先リンク<br><small>※金額等変更されている場合がございます。詳細はこちらで確認お願い申し上げます。</small></a></h4>
+					<% end %>
 				</div>
 				<div class="row admin-item likes_buttons_<%= supplement.id %>">
 					<%= render partial: 'users/likes/like', locals: { supplement: supplement} %>
