@@ -9,27 +9,34 @@ class Users::HomesController < ApplicationController
   def privacy
   end
 
-  def contact
-    @user = User.new
-  end
-
   def tos
   end
 
+  def contact
+    @contact = Contact.new
+  end
 
   def create
-    if @user.save(user_params) #ユーザーのインスタンスが新しく生成されて保存されたら
-      ContactMailer.send_user(@user).deliver #確認メールを送信
-      redirect_to @user
+    @contact = Contact.new(contact_params)
+    if @contact.save #ユーザーのインスタンスが新しく生成されて保存されたら
+      ContactMailer.send_user(@contact).deliver #確認メールを送信
+      flash[:success] = 'お問い合わせを受け付けました'
+      redirect_to root_path
     else
+      @popular_articles = Article.order('impressions_count DESC').take(6)
       render 'top'
     end
   end
 
+
 private
 
-  def user_params
-      params.require(:user).permit(:name, :postal_code, :address, :height, :age, :gender, :weight, :gym_id, :user_status, :movement, :message)
+  def contact_params
+    params.require(:contact).permit(:message).merge(user_id: current_user.id)
   end
 
 end
+
+
+
+  private

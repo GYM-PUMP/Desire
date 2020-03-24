@@ -72,10 +72,10 @@
 				<div class="privacy-item">
 					<p>
 						利用者からお預かりした個人情報の訂正・削除をご希望される場合は、下記の窓口または当ページ下部の<br>
-						<%= link_to "お問い合わせフォーム", homes_contact_path %>よりお知らせ下さい。
+						お問い合わせフォームよりお知らせ下さい。
 					</p>
 					<ul>
-						<li>● 問い合わせ窓口: info@bigmuscle.jp</li>
+						<li>●<%= link_to "問い合わせ窓口: info@bigmuscle.jp", users_user_contact_path(current_user) %></li>
 					</ul>
 				</div>
 				<br>

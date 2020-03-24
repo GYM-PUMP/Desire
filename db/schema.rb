@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_121836) do
+ActiveRecord::Schema.define(version: 2020_03_23_100331) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 2020_03_22_121836) do
     t.integer "supplement_id"
     t.text "body"
     t.float "rate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -134,7 +141,6 @@ ActiveRecord::Schema.define(version: 2020_03_22_121836) do
     t.float "latitude"
     t.float "longitude"
     t.float "movement", default: 1.2, null: false
-    t.text "message"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

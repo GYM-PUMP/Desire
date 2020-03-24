@@ -6,20 +6,20 @@
 	</div>
 	<div class="row">
 		<div class="form">
-    		<%= form_for(@user, url: homes_contact_path, method: :post) do |f| %>
-              <div class="toiawase">
-                <%= f.text_field :name, class: 'feedback-input', placeholder: 'Name' %>
-              </div>
-              <div class="toiawase">
-                <%= f.email_field :email, class: 'feedback-input', placeholder: 'Email' %>
-              </div>
-              <div class="toiawase">
-                <%= f.text_area :message, class: 'feedback-input', placeholder: 'message' %>
-              </div>
-              <div class="submit">
-                <%= f.submit '送信', class: 'success col-xs-offset-4 col-xs-4' %>
-              </div>
-      		<% end %>
+    		<%= form_for(@contact, url: users_user_contact_path(current_user), method: :post) do |f| %>
+            <div class="toiawase">
+              <%= current_user.name %>
+            </div>
+            <div class="toiawase">
+              <%= current_user.email %>
+            </div>
+            <div class="toiawase">
+              <%= f.text_area :message, class: 'feedback-input', placeholder: 'message' %>
+            </div>
+            <div class="submit">
+              <%= f.submit '送信', class: 'success col-xs-offset-4 col-xs-4' %>
+            </div>
+      	<% end %>
   		</div>
   	</div>
       	<div class="row">

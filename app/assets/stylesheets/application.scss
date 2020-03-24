@@ -168,59 +168,23 @@ a:active {
 //---------------------------------------
 // TOPページ --------------------------------
 
-/*
-@import url('https://fonts.googleapis.com/css?family=Courgette');
-
-
-
-.toppage, .mymymy {
-  position: absolute;
-}
-
-.toppage {
-  font: 50px/1.2 'Courgette', cursive;
-  color: #fff;
+.top-word{
   text-align: center;
-  margin-top: 80px;
-  margin-left: 5%;
-  z-index: 2;
-}
-.mymymy {
-  width: 280px;
-  height: 300px;
-  mix-blend-mode: multiply;
+  color: white;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  font-size: 30px;
+   border: 4px double #FF8C00;
 }
 
-.circle-1 {
-  background: #f66;
-  border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
-  animation: border-animation 6s infinite linear;
-}
-.circle-2 {
-  background: #f92;
-  border-radius: 80% 30% 50% 50%/50%;
-  animation: border-animation 4s infinite linear;
-}
-.circle-3 {
-  background: #fc2;
-  border-radius: 40% 40% 50% 40%/30% 50% 50% 50%;
-  animation: border-animation 3s infinite linear;
+.youtube{
+  text-align: center;
 }
 
-@keyframes border-animation {
-  to { transform: rotate(360deg); }
+.you{
+
 }
-
-
-.box-top{
-    width: 400px;
-    margin: 50px auto 0;
-    height: 400px;
-    }
-*/
-
 .ranking{
-  margin:100px auto;
+  margin:100px auto 50px;
   text-align: center;
 }
 
