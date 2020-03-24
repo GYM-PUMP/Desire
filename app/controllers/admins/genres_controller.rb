@@ -29,9 +29,6 @@ class Admins::GenresController < ApplicationController
 	end
 	end
 
-	def show
-	end
-
 	def destroy
 		genres = Genre.find(params[:id])
 	    genres.destroy

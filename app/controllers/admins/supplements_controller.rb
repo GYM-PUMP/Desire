@@ -3,10 +3,6 @@ class Admins::SupplementsController < ApplicationController
     @supplements = Supplement.all
   end
 
-  def show
-    @supplement = Supplement.find(params[:id])
-  end
-
   def new
     @supplement = Supplement.new
     @genres = Genre.all

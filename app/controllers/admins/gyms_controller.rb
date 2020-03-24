@@ -3,10 +3,6 @@ class Admins::GymsController < ApplicationController
     @gyms = Gym.all
   end
 
-  def show
-    @gym = Gym.find(params[:id])
-  end
-
   def new
     @gym = Gym.new
   end
