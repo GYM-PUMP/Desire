@@ -7,6 +7,14 @@
           <div class ="error center">
             <%= render "devise/shared/error_messages", resource: resource %>
           </div>
+
+          <div class="field">
+            <%= f.radio_button :gender, :true, id:"genre-edit-availability" %>
+            <%= f.label :gender, "男性", for:"genre-edit-availability" %>
+            <%= f.radio_button :gender, :false, id:"genre-edit-invalid" %>
+            <%= f.label :gender, "女性", for:"genre-edit-invalid" %>
+          </div>
+
           <div class="field">
             <%= f.label :氏名 %><br />
             <%= f.text_field :name, autofocus: true, autocomplete: "name" %>

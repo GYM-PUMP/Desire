@@ -8,7 +8,11 @@
 			<% end %>
 		</div>
 	</div>
-			 <%= attachment_image_tag @user, :image,:fill, 60, 60, format: 'jpeg', class: "col-xs-2 col-xs-offset-1 pull-left profile-img", fallback: "no_image.jpg" %>
+		<% if @user.gender == true %>
+			 <%= attachment_image_tag @user, :image,:fill, 100, 100, class: "col-xs-2 col-xs-offset-1 pull-left profile-img", fallback: "man-no-image.png" %>
+		<% else %>
+			 <%= attachment_image_tag @user, :image,:fill, 100, 100, class: "col-xs-2 col-xs-offset-1 pull-left profile-img", fallback: "woman-no-image.png" %>
+		<% end %>
 
 			<div class="col-xs-6">
 				<div class="row admin-item">

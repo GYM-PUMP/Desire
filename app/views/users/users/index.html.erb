@@ -18,7 +18,11 @@
 					   <% if current_user.id != user.id %>
 						  <% if user.user_status == true %>
 							<tr>
-								<td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+								<% if user.gender == true %>
+									<td><%= attachment_image_tag user, :image, :fill, 50, 50, fallback: "man-no-image.png" %></td>
+								<% else %>
+									<td><%= attachment_image_tag user, :image, :fill, 50, 50, fallback: "woman-no-image.png" %></td>
+								<% end %>
 								<td><%= user.name  %></td>
 								<td>
 									<a type="button" data-toggle="modal" data-target="#sampleModal-<%= user.id %>" style="cursor: pointer;">
