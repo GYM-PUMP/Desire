@@ -1,28 +1,74 @@
 <div class = "container top">
 	<div class = "row center head">
-		<div class="col-xs-12">
-			<video src="<%= asset_path 'top.mp4' %>"width="100%" height="100%"autoplay muted loop playsinline></video>
-		</div>
+		<video src="<%= asset_path 'make_up_body.mp4' %>"width="100%" height="100%"autoplay muted loop playsinline></video>
 	</div>
 	<div class = "row ranking">
-			<%= image_tag 'ranking1.png', width:"420" ,height:"200" %>
+			<%= image_tag 'ranking.top.png', width:"420" ,height:"200" %>
 	</div>
 	<div class = "row top-word">
 		<div class="col-xs-12">
-			メンがヘラってきたそこの<strong class="you">あなた！！</strong>これを読んで心から元気になろう！！！
+			<span class="point">メ</span>ンがヘラってきたそこの<strong class="you">あなた！！</strong>これを読んで心から元気になろう！！！
 		</div>
 	</div>
 
 	<%= render 'users/articles/article_ranking', {popular_articles: @popular_articles} %>
 
-	<div class = "row top-word">
+	<div class = "row top-about">
+			<%= image_tag 'ABOUT.png', width:"200" ,height:"150" %>
+			<p class="muscle-body">MUSCLE BODY<br><br>
+				みんなの筋肉で日本を支えて行こう！健康こそあなたの一番の財産です。<br><br>
+				<span class="share">
+					<%= link_to "新しい情報をみんなでSHAREハピしよお" ,homes_about_path,class: "power" %>
+				</span>
+			</p>
+	</div>
+
+	<div class = "row top-word2">
 		<div class="col-xs-12">
-			毎週おすすめのトレーニングメニューや筋トレGoodsなどおすすめモノを紹介！
+			<span class="point">毎</span>週おすすめのトレーニングメニューや筋トレGoodsなどおすすめモノを紹介！
 		</div>
 	</div>
 	<div class = "row youtube">
-		<iframe width="80%" height="600px" src="https://www.youtube.com/embed/u-wS8jABqQI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		<iframe width="90%" height="600px" src="https://www.youtube.com/embed/u-wS8jABqQI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
 		</iframe>
+	</div>
+</div>
+<div class = "container image-app">
+	<div class = "row">
+		<div class="col-xs-6 canva">
+			<%= image_tag 'Canva.jpg', width:"100%" ,height:"100%" %>
+		</div>
+		<div class="col-xs-6 word-space">
+			<h2 class="impact">ANYTHING  4 BEGINNERS.</h2>
+			<h2 class="heading-title">Let's get started from here.</h2>
+			<div class="text-editor">
+				<p>筋トレ初心者<br>知りたい情報、知ってやるべき事全てここに用意しました。やる事が分かったら後は実践そして継続
+				</p>
+			</div>
+			<%= link_to "LEARN MORE" ,homes_about_path,class: "button-text" %>
+		</div>
+	</div>
+	<div class = "row">
+		<div class="col-xs-6 word-space">
+			<h2 class="impact">ANYTHING  4 BEGINNERS.</h2>
+			<h2 class="heading-title">Let's get started from here.</h2>
+			<div class="text-editor">
+				<p>筋トレ初心者<br>知りたい情報、知ってやるべき事全てここに用意しました。やる事が分かったら後は実践そして継続
+				</p>
+			</div>
+			<%= link_to "LEARN MORE" ,homes_about_path,class: "button-text" %>
+		</div>
+		<div class="col-xs-6 canva">
+			<%= image_tag 'Person.jpg', width:"100%" ,height:"100%" %>
+		</div>
+	</div>
+	<div class = "row fight">
+		<h2 class="lets-go-text">Let`s Get Started On Your Adventure!</h1>
+		<p class="text-foryou">
+			このサイトではトレーニングに欠かせない情報や筋トレ方法、サプリメントのことから<br>
+			ダイエット方法についても全てシェアしております。これからトレーニングを始めたいと言う方にも分かりやすく様々な<br>
+			情報を共有していますのでこのBIC Muscle: make up bodyをお楽しみにください。
+		</p>
 	</div>
 </div>
 
