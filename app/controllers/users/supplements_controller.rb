@@ -1,4 +1,7 @@
 class Users::SupplementsController < ApplicationController
+
+	before_action :authenticate_user!
+
   def index
     @supplements = Supplement.all
     @genres = Genre.all

@@ -1,4 +1,6 @@
 class Admins::GymsController < ApplicationController
+  before_action :authenticate_admin!
+  
   def index
     @gyms = Gym.all
   end

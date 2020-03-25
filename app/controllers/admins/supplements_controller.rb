@@ -1,4 +1,5 @@
 class Admins::SupplementsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @supplements = Supplement.all
   end

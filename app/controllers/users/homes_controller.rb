@@ -1,4 +1,7 @@
 class Users::HomesController < ApplicationController
+
+  before_action :authenticate_user!, except: [:top,:about,:privacy,:tos]
+
   def top
     @popular_articles = Article.order('impressions_count DESC').take(6)
   end
