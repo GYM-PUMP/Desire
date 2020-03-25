@@ -21,6 +21,7 @@
 		<% end %>
 		<!-- エラーメッセージ表示-->
 
+		<div class = "row edit-body">
 			<div class="field">
 				<%= f.label :image %>
 				<%= f.attachment_field :image, class: "image" %>
@@ -62,10 +63,10 @@
 					<%= f.select :movement, User::MOVEMENT_FACTOR, {}  %>
 				</span>
 			</div>
-
 			<div>
 				<%= f.submit "UPDATE", :class=>"actions"%>
 			</div>
 		<% end %>
-	<%= link_to "Good by", withdraw_users_user_path(@user), class: "actions2" %>
+				<%= link_to "Good by", withdraw_users_user_path(@user), class: "actions2" %>
+  		</div>
 </div>
