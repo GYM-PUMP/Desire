@@ -46,10 +46,10 @@
                           <!-- URLにadminsが含まれている場合に表示 -->
                           <td class="td-tag"><%= link_to "HOME",root_path ,data: {"turbolinks" => false},class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "ABOUT",homes_about_path ,class: "exhibition" %></td>
-                          <td class="td-tag"><%= link_to "USERS" ,admin_users_path,class: "exhibition" %></td>
-                          <td class="td-tag"><%= link_to "SUPPLEMENT",admin_supplements_path,class: "exhibition" %></td>
-                          <td class="td-tag"><%= link_to "G Y M" ,admin_gyms_path,class: "exhibition" %></td>
-                          <td class="td-tag"><%= link_to "ARTICLE" ,admin_articles_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "USERS" ,admins_users_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "SUPPLEMENT",admins_supplements_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "G Y M" ,admins_gyms_path,class: "exhibition" %></td>
+                          <td class="td-tag"><%= link_to "ARTICLE" ,admins_articles_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "LOG OUT" ,destroy_admin_session_path, method: :delete,class: "exhibition" %></td>
                         <% else %>
                          <td class="td-tag"><%= link_to "管理者用LOG IN" ,new_admin_session_path,class: "exhibition" %></td>
@@ -69,7 +69,7 @@
                   <li><%= link_to "利用規約" , homes_tos_path %></li><br>
                   <li><%= link_to "プライバシーポリシー", homes_privacy_path  %></li><br>
                   <%  if user_signed_in? %>
-                    <li><%= link_to "お問い合わせ", users_user_contact_path(current_user) %></li><br>
+                    <li><%= link_to "ご意見・ご要望", users_user_contact_path(current_user) %></li><br>
                   <% end %>
                 </ul>
           </div>

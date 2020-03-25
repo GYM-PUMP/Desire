@@ -1,81 +1,88 @@
 <div class ="container">
 	<div class = "row">
-		<div class="col-xs-8 col-xs-offset-2">
-		  <h2 class="elementor-heading-title">FOLLOWER USERS:</h2>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>image</th>
-						<th>name</th>
-						<th colspan="3"></th>
-						<th></th>
-						<th colspan="3"></th>
-						<th></th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<% @users.follower_user.where.not(id: current_user.id).each do |user| %>
-						<% if current_user.id != user.id %>
-							<% if user.user_status == true %>
-								<tr>
-									<td><%= attachment_image_tag(user, :image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-									<td><%= user.name%></td>
-									<td>
-										<a type="button" data-toggle="modal" data-target="#sampleModal-<%= user.id %>" style="cursor: pointer;">
-                          					<%= image_tag 'follows.png' , height: "80px", width: "80px" %>
-                        				</a>
-                        			</td>
-							      <% if current_user.following?(user) %>
-									<td>
-										<%= link_to 'UN FOLLOW', users_user_relationships_path(user.id), method: :DELETE, class: "btn-sm btn-danger" %>
-									</td>
-							      <% else %>
-									<td>
-										<%= link_to 'FOLLOW', users_user_relationships_path(user.id), method: :POST, class: "btn-sm btn-success" %>
-									</td>
-							      <% end %>
-									<td>
-										<%= link_to "PROFILE", users_user_path(user), class: "user_#{user.id}" %>
-									</td>
-								</tr>
-								<!-- モーダル・ダイアログ -->
-			                        <div class="modal fade" id="sampleModal-<%= user.id %>" tabindex="-1">
-			                            <div class="modal-dialog">
-			                                <div class="modal-content">
-			                                    <div class="modal-header">
-			                                        <div class ="following-user">
-			                                            <div class="row">
-			                                                <div class="col-xs-2"></div>
-			                                                <div class="col-xs-3">
-			                                                    <%= link_to follow_users_user_path(user.id) do %>
-			                                                    	<span><%= user.follower.map(&:followed).count %></span>
-			                                                    	<%= image_tag 'follower.png' , height: "100px", width: "auto" %>
-			                                                    <% end %>
-			                                                </div>
-			                                                <div class="col-xs-2">
-			                                                </div>
-			                                                <div class="col-xs-3" >
-			                                                	<%= link_to follower_users_user_path(user.id) do %>
-			                                                		<span><%= user.followed.map(&:follower).count %></span>
-			                                                   		<%= image_tag 'followed.png' , height: "100px", width: "auto" %>
-			                                                    <% end %>
-			                                                </div>
-			                                                <div class="col-xs-2">
-			                                                </div>
-			                                            </div>
-			                                        </div>
-			                                        <div class ="followed-user">
-			                                        </div>
-			                                    </div>
-			                                </div>
-			                            </div>
-			                        </div>
-							<% end %>
-					    <% end %>
-					<% end %>
-				</tbody>
-			</table>
+		<div class="col-xs-12 title-text">
+			<p class="subtitle">
+				  <span class="sub-menu">
+				  	FOLLOWER USERS:
+				  </span>
+			  	&mdash; It must be hard being so popular &mdash;
+			</p>
 		</div>
 	</div>
+	<table class="table">
+		<thead>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+		<% @users.follower_user.where.not(id: current_user.id).each do |user| %>
+			<% if current_user.id != user.id %>
+				<% if user.user_status == true %>
+				    <% if user.gender == true %>
+						<tr class="mentr">
+							<td><%= attachment_image_tag user, :image, class: "user-image", fallback: "man-no-image.png" %></td>
+					<% else %>
+						<tr class="womentr">
+							<td><%= attachment_image_tag user, :image, class: "user-image", fallback: "woman-no-image.png" %></td>
+					<% end %>
+							<td class="user-profile"><%= user.name %></td>
+							<td>
+								<a type="button" data-toggle="modal" data-target="#sampleModal-<%= user.id %>" style="cursor: pointer;">
+	                  				<%= image_tag 'follows.png' , height: "80px", width: "80px" %>
+	                			</a>
+							</td>
+							<td><% if current_user.id != user.id %>
+									<% if current_user.following?(user) %>
+										<%= link_to 'UN FOLLOW', users_user_relationships_path(user.id), method: :DELETE, class: "follow-btn" %>
+									<% else %>
+									 	<%= link_to 'FOLLOW', users_user_relationships_path(user.id), method: :POST, class: "unfollow-btn" %>
+									<% end %>
+								<% end %>
+							</td>
+							<td><%= link_to "PROFILE", users_user_path(user), class: "user-profile" %></td>
+						</tr>
+						<!-- モーダル・ダイアログ -->
+	                        <div class="modal fade" id="sampleModal-<%= user.id %>" tabindex="-1">
+	                            <div class="modal-dialog">
+	                                <div class="modal-content">
+	                                    <div class="modal-header">
+	                                        <div class ="following-user">
+	                                            <div class="row">
+	                                                <div class="col-xs-2"></div>
+	                                                <div class="col-xs-3">
+	                                                    <%= link_to follow_users_user_path(user.id) do %>
+	                                                    	<span><%= user.follower.map(&:followed).count %></span>
+	                                                    	<%= image_tag 'follower.png' , height: "100px", width: "auto" %>
+	                                                    <% end %>
+	                                                </div>
+	                                                <div class="col-xs-2">
+	                                                </div>
+	                                                <div class="col-xs-3" >
+	                                                	<%= link_to follower_users_user_path(user.id) do %>
+	                                                		<span><%= user.followed.map(&:follower).count %></span>
+	                                                   		<%= image_tag 'followed.png' , height: "100px", width: "auto" %>
+	                                                    <% end %>
+	                                                </div>
+	                                                <div class="col-xs-2">
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                        <div class ="followed-user">
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+					<% end %>
+			    <% end %>
+			<% end %>
+		</tbody>
+	</table>
 </div>

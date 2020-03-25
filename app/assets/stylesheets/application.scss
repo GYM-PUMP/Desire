@@ -55,6 +55,42 @@ body{
   text-decoration: none;
   }
 
+td{
+  vertical-align: middle !important;
+  }
+
+input[type="text"] {
+  width: 300px;
+  height: 40px;
+  left: 100px;
+  color: black;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+input[type="password"] {
+  width: 300px;
+  height: 40px;
+  left: 100px;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.field{
+  color: white;
+  font-family:'Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  margin: 20px auto;
+  }
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+  width: 200px;
+  background: linear-gradient(transparent 80%, #FFD700 80%);
+  }
+
+
 //---------------------------------------
 // ヘッダー ---------------------------
 
@@ -94,12 +130,12 @@ header {
   font-size: 30px;
 	}
 
+
 //---------------------------------------
 // フッター ------------------------------
 
 footer {
   opacity: 0.7;
-  margin-top: 50px;
   border-top: double;
   border-color: white;
   font-family: 'M PLUS 1p', sans-serif;
@@ -131,20 +167,52 @@ ul {
   }
 
 //-------------------------------------
-// 共通タイトルindex ページ --------------
+// 共通タイトル -------------------------
 
-.elementor-heading-title {
-  font-family: "Raleway", Sans-serif;
-  font-size: 31px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-top: 150px;
-  text-align: center;
-  color: white;
-  background: #f92;
-  border-radius: 80% 30% 50% 50%/50%;
-  }
+.subtitle {
+      letter-spacing: .5em;
+      display: inline-block;
+      border: 4px double rgba(255,255,255,.25);
+      border-width: 4px 0;
+      padding: 1.5em 0em;
+      margin-top: 50px;
+      margin-bottom: 90px;
+      width: 40em;
+      border-color: #f60;
+      }
+
+  .sub-menu {
+    font: 700 4em/1 "Oswald", sans-serif;
+    letter-spacing: 0;
+    padding: .25em 0 .325em;
+    display: block;
+    margin: 0 auto;
+    text-shadow: 0 0 80px rgba(255,255,255,.5);
+    background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-backface-visibility: hidden;
+    }
+
+  .elementor-heading-title {
+    font-family: "Raleway", Sans-serif;
+    font-size: 31px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 150px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(transparent 70%, #f92 70%);
+    border-radius: 80% 30% 50% 50%/50%;
+    }
+
+    .vol{
+      color: black;
+    }
 
 //-------------------------------------
 // リンク-------------------------------
@@ -215,8 +283,8 @@ a:active {
   }
 
 .muscle-body{
-  position: absolute;/*絶対配置*/
-  color: white;/*文字は白に*/
+  position: absolute;
+  color: white;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 15px;
   text-align: center;
@@ -278,7 +346,7 @@ a:active {
   padding: 0.5em 1em;
   text-decoration: none;
   background: #f7f7f7;
-  border-left: solid 6px #ff7c5c;/*左線*/
+  border-left: solid 6px #ff7c5c;
   color: #ff7c5c;/*文字色*/
   font-weight: bold;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
@@ -303,7 +371,6 @@ a:active {
       font-family:'Comic Sans MS','Hiragino Kaku Gothic Std',sans-serif;
       }
   }
-
 
 
 /* ローディングの背景部分のCSS ---------------*/
@@ -378,12 +445,310 @@ a:active {
 
 
 //---------------------------------------
-// MY PAGE ------------------------------
+// USER PAGE ------------------------------
+
+.men-container{
+  width: 100%;
+  background-color: #3cf;
+  }
+
+.women-container{
+  width: 100%;
+  background-color: #FF69B4;
+  }
+
+.unfollow-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #ff8181;
+  color: #FFF;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #00BFFF;
+  transition: .4s;
+  vertical-align: middle !important;
+  }
+
+.unfollow-btn:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+  }
+
+.follow-btn{
+  display: inline-block;
+  text-decoration: none;
+  background: #00BFFF;
+  color: #FFF;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #bd6565;
+  transition: .4s;
+  }
+
+.follow-btn:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+  }
+
+.user-image{
+  width: 150px;
+  height: 150px;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  }
+
+.user-profile{
+  color: white;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  text-align: center;
+  margin:50px auto 50px;
+  font-size: 30px;
+  }
+
+.actions{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #000000;
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #5e7fca;
+  margin-top: 30px;
+  }
+
+.actions:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+  }
+
+.actions2{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #000000;
+  background-image: linear-gradient(#FF4500 0%, #E9967A 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #FFFF00;
+  margin-top: 10px;
+  }
+
+.actions2:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+  }
+
+.profile-img{
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  object-fit:cover;
+  }
+
+.image-point{
+  margin-top: 150px;
+  }
+
+.image-pos{
+  text-align: center;
+  padding: 0;
+  }
+
+.user-body{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif !important;
+  height: 500px;
+  left: 5%;
+  padding: 0;
+  color: white;
+  width: 300px;
+  }
+
+.col-name{
+  font-size: 30px;
+  background: linear-gradient(transparent 60%, #f92 85%);
+  border-radius: 61% 0% 90% 10%/90%;
+  }
+
+.col-col{
+  font-size: 30px;
+  width: auto;
+  background: linear-gradient(transparent 90%, #05b5c5 30%);
+  border-radius: 1% 1% 50% 10%/90%;
+  }
+
+.col-cal{
+  font-size: 25px;
+  width: auto;
+  background: linear-gradient(transparent 94%, #05b5c5 30%);
+  border-radius: 1% 1% 50% 10%/90%;
+  }
+
+.pfc{
+  font-size: 23px;
+  width: 200px;
+  padding: 0;
+  vertical-align: middle !important;
+  background: linear-gradient(transparent 94%, #05b5c5 30%);
+  border-radius: 1% 1% 50% 10%/90%;
+  }
+
+.user-show-body{
+  margin: 30px auto;
+  width: 630px;
+  }
+
+.title-text{
+  width: 100%;
+  top: 80px;
+  text-align: center;
+  }
+
+.user-btn{
+  text-align: center;
+  }
+
+.hosoku{
+  text-align: center;
+  width: 600px;
+  color: #9e1800;
+  font-size: 14px;
+}
+
+.men-subtitle {
+  letter-spacing: .5em;
+  display: inline-block;
+  border: 4px double rgba(255,255,255,.25);
+  border-width: 4px 0;
+  padding: 1.5em 0em;
+  margin-top: 50px;
+  width: 40em;
+  border-color: #00008B;
+  }
+
+.men-menu {
+  font: 700 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  padding: .25em 0 .325em;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255,255,255,.5);
+  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: aitf 80s linear infinite;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  }
+
+.women-subtitle {
+  letter-spacing: .5em;
+  display: inline-block;
+  border: 4px double rgba(255,255,255,.25);
+  border-width: 4px 0;
+  padding: 1.5em 0em;
+  margin-top: 50px;
+  width: 40em;
+  border-color: #FF00FF;
+  }
+
+.women-menu {
+  font: 700 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  padding: .25em 0 .325em;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255,255,255,.5);
+  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: aitf 80s linear infinite;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  }
 
 
+@-webkit-keyframes aitf {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+  }
+
+.mentr{
+  background-color: #003;
+  }
+
+.womentr{
+  background-color: #f39;
+  }
+
+.e-btn{
+  display: block;
+  width: 30%;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  text-decoration: none;
+  color: #EC407A;
+  border: 2px solid #EC407A;
+  border-radius: 3px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.e-btn:hover {
+  background: #EC407A;
+  color: #fff;
+  }
+
+.men-e-btn{
+  display: block;
+  width: 30%;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  text-decoration: none;
+  color: #03c;
+  border: 2px solid #03c;
+  border-radius: 3px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.men-e-btn:hover {
+  background: #f93;
+  color: #fff;
+  }
 
 //-------------------------------------------
-// article ページ ----------------------------
+//articleページ -----------------------------
 
 
 .hoge {
@@ -480,6 +845,26 @@ button{
 
 //---------------------------------------
 // GYM ページ ----------------------------
+
+
+
+//---------------------------------------
+// 退会 ページ ----------------------------
+
+.really{
+  font-size: 50px;
+  color: white;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.think{
+  font-size: 20px;
+  color: white;
+  }
+
+.withrow{
+  margin: 50px 0;
+}
 
 
 
