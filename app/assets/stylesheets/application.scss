@@ -67,6 +67,14 @@ input[type="text"] {
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   }
 
+  input[type="email"] {
+  width: 300px;
+  height: 40px;
+  left: 100px;
+  color: black;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
 input[type="password"] {
   width: 300px;
   height: 40px;
@@ -909,26 +917,72 @@ button{
 .signup {
   font-family: 'M PLUS 1p', sans-serif;
   color:#d3e0eb;
-  .error {
+    .error {
       font-family: $error;
       color: #e53935;
       font-size: 15px;
-      h2 {
-          font-size: 20px;
       }
   }
-  .title {
-      color: #424242;
-      font-size: 40px;
-  }
-  p {
-      font-family: $gothic;
-  }
-  .pass {
-      font-size: 14px;
-  }
-}
+
 
 .signin{
 	font-family: 'M PLUS 1p', sans-serif;
   }
+
+.signup-btn {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  background-color: #f74677;
+  border: 2px solid #9ec34b;
+  font-size: 16px;
+  color: #9ec34b;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 4px;
+  position: relative;
+  }
+
+.signup-btn span {
+  position: relative;
+  z-index: 1;
+  }
+
+.signup-btn::before,
+.signup-btn::after {
+  content: "";
+  display: block;
+  background-color: #FFF;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: .2s;
+  }
+.signup-btn::before {
+  left: 0;
+  }
+.signup-btn::after {
+  right: 0;
+  }
+
+.signup-btn:hover:before,
+.signup-btn:hover:after {
+  width: 0;
+  background-color: #FFF;
+  }
+
+.signup-btn:hover {
+  color: #FFF;
+  }
+
+.devise-row{
+  margin:80px auto 100px;
+  text-align: center;
+  color: black;
+  }
+
+.sign{
+  text-align: center;
+}

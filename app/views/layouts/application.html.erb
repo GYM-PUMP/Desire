@@ -37,7 +37,7 @@
                             <td class="td-tag"><%= link_to "MY PAGE" ,users_user_path(current_user),class: "exhibition" %></td>
                             <td class="td-tag"><%= link_to "LOG OUT" ,destroy_user_session_path , method: :delete ,class: "exhibition" %></td>
                           <% else %>
-                            <td class="td-tag"><%= link_to "新規登録" ,new_user_registration_path, class: "exhibition" %></td>
+                            <td class="td-tag"><%= link_to "SIGN UP" ,new_user_registration_path, class: "exhibition" %></td>
                             <td class="td-tag"><%= link_to "LOG IN" ,new_user_session_path, class: "exhibition" %></td>
                           <% end %>
 
