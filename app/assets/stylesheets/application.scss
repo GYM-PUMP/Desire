@@ -509,6 +509,7 @@ a:active {
   position: relative;
   display: inline-block;
   border-radius: 50%;
+  object-fit:cover;
   }
 
 .user-profile{
@@ -743,6 +744,10 @@ a:active {
   background: #f93;
   color: #fff;
   }
+
+.edit-body{
+ margin: 100px 100px 200px 100px;
+}
 
 //-------------------------------------------
 //articleページ -----------------------------
