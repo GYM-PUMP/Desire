@@ -1,9 +1,15 @@
-<div class ="container">
+<%= javascript_include_tag "admins/genre.js" %>
+
+<% if @user.gender == true %>
+  <div class ="container men-container">
+<% else %>
+  <div class ="container women-container">
+<% end %>
 	<div class = "row">
 		<div class="col-xs-12 title-text">
 			<p class="subtitle">
 				  <span class="sub-menu">
-				  	USERS:
+				  	USER edit:
 				  </span>
 			  	&mdash; Let's praise each other &mdash;
 			</p>
@@ -11,20 +17,22 @@
 	</div>
 		<%= form_with(model: [:users, @user], data: {remote: false}) do |f| %><!-- デフォルトで非同期で通信しようとするため 非同期しない場合は　data: {remote: false}と記述要-->
 		<!-- エラーメッセージ表示-->
-			<% if @user.errors.any? %>
-				<h3><%= @user.errors.count %>error occurrence</h3><!--エラーメッセ-->
+			  <% if @user.errors.any? %>
+				<h3><%= @user.errors.count %>error occurrence</h3>
 				<ul>
 					<% @user.errors.full_messages.each do |message| %>
-				<li><%= message %></li>
-			<% end %>
-			</ul>
-		<% end %>
+					<li><%= message %></li>
+			  <% end %>
+				</ul>
+					<% end %>
 		<!-- エラーメッセージ表示-->
 
 		<div class = "row edit-body">
+				<%= attachment_image_tag @user, :image,  id:"img_prev", class: "profile-img", fallback: "man-no-image.png" %>
+				<%#= image_tag "no_image.jpg", id:"img_prev", size: "250x250", alt:"Image preview" %>
 			<div class="field">
-				<%= f.label :image, class: "lab" %>
-				<%= f.attachment_field :image, class: "image" %>
+				<%= f.label :profile_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+				<%= f.attachment_field :image, id:"post_img", class: "image", style:"display:none;" %>
 			</div>
 			<div class="field">
 				<%= f.radio_button :gender, :true %>
@@ -64,9 +72,9 @@
 				</span>
 			</div>
 			<div>
-				<%= f.submit "UPDATE", :class=>"actions"%>
+				<%= f.submit "UPDATE", class: "btn btn-primary btn-lg" %>
+				<%= link_to "Good by", withdraw_users_user_path(@user), class: "btn btn-danger btn-lg" %>
 			</div>
 		<% end %>
-				<%= link_to "Good by", withdraw_users_user_path(@user), class: "actions2" %>
   		</div>
-</div>
+   </div>

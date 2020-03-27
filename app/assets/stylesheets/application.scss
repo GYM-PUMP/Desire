@@ -562,6 +562,34 @@ a:active {
   border-bottom: none;
   }
 
+.wellcome {
+    width: 50%;
+    margin: 10px auto;
+    padding: 20px;
+    border: 2px solid #da4033;
+    border-radius: 50px;
+    position:relative;
+    text-align: center;
+    font-size: 20px;
+    background-color: #F5F5F5;
+    }
+
+.wellcome::before {
+    background-color: #4B0082;
+    color: #da4033;
+    content: "Wellcome";
+    font-weight: bold;
+    position: absolute;
+    padding: 0 20px;
+    left: 10px;
+    top: -10px;
+    }
+
+.user-edit{
+  font-size: 30px;
+  background: linear-gradient(transparent 80%, #FFD700 90%);
+}
+
 .user-image{
   width: 150px;
   height: 150px;
@@ -690,7 +718,7 @@ a:active {
   }
 
 .hosoku{
-  text-align: center;
+  text-align: left;
   width: 600px;
   color: #9e1800;
   font-size: 14px;
@@ -806,7 +834,12 @@ a:active {
 
 .edit-body{
   margin: 100px 100px 200px 100px;
+  text-align: center;
   }
+
+.show-footer{
+  margin: 150px auto 100px;
+}
 
 //-------------------------------------------
 //articleページ -----------------------------

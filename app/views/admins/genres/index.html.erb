@@ -22,7 +22,7 @@
 						</tr>
 					<% end %>
 				</table>
-				<%= image_tag "no_image.jpg", id:"genre_img_prev", size: "210x60", alt:"Image preview" %>
+				<%= image_tag "no_image.jpg", id:"img_prev", size: "210x60", alt:"Image preview" %>
 				<%= form_for(@genre, url: admins_genres_path) do |f| %>
 					<div class="row genre-index-add" style="margin-left: 0; margin-right: 0;">
 						GRNRE追加<%= f.attachment_field :genre_image, id:"post_img" %>
