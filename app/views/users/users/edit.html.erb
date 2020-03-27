@@ -28,8 +28,11 @@
 		<!-- エラーメッセージ表示-->
 
 		<div class = "row edit-body">
+			<% if @user.gender == true %>
 				<%= attachment_image_tag @user, :image,  id:"img_prev", class: "profile-img", fallback: "man-no-image.png" %>
-				<%#= image_tag "no_image.jpg", id:"img_prev", size: "250x250", alt:"Image preview" %>
+			<% else %>
+				<%= attachment_image_tag @user, :image,  id:"img_prev", class: "profile-img", fallback: "woman-no-image.png" %>
+			<% end %>
 			<div class="field">
 				<%= f.label :profile_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
 				<%= f.attachment_field :image, id:"post_img", class: "image", style:"display:none;" %>

@@ -1,12 +1,17 @@
 <div class ="container">
 	<div class = "row">
 		<div class="col-xs-8 col-xs-offset-2">
-			<h2 class="elementor-heading-title">USERS:</h2>
-				<%= form_with(model: [:users, @user], data: {remote: false}) do |f| %><!-- デフォルトで非同期で通信しようとするため 非同期しない場合は　data: {remote: false}と記述要-->
-
+			<h2 class="elementor-heading-title">USER:</h2>
+			<%= form_with(model: [:users, @user], data: {remote: false}) do |f| %><!-- デフォルトで非同期で通信しようとするため 非同期しない場合は　data: {remote: false}と記述要-->
+				<div class = "row edit-body">
+					<% if @user.gender == true %>
+						<%= attachment_image_tag @user, :image,  id:"img_prev", class: "profile-img", fallback: "man-no-image.png" %>
+					<% else %>
+						<%= attachment_image_tag @user, :image,  id:"img_prev", class: "profile-img", fallback: "woman-no-image.png" %>
+					<% end %>
 					<div class="field">
-						<%= f.label :image %>
-						<%= f.attachment_field :image, class: "image" %>
+						<%= f.label :profile_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+						<%= f.attachment_field :image, id:"post_img", class: "image", style:"display:none;" %>
 					</div>
 
 					<div class="field">
@@ -17,9 +22,10 @@
 					</div>
 
 					<div>
-						<%= f.submit "UPDATE", :class=>"actions"%>
+						<%= f.submit "UPDATE", class: "btn btn-primary btn-lg" %>
 					</div>
-				<% end %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>

@@ -33,63 +33,63 @@
 					 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "woman-no-image.png" %>
 				<% end %>
 			</div>
-
 				<div class="col-xs-6 user-body">
-					<div class="row">
-						<h4 class="col-xs-6">NAME: <%= @user.name %></h4>
+					<div class="row user-show-body">
+						<h4 class="col-xs-6 col-name">NAME: <strong><%= @user.name %></strong></h4>
 					</div>
-					<div class="row">
-						<h4 class="col-xs-6">AGE: <%= @user.age %>  /  <%= @user.height %>cm  /  <%= @user.weight %>kg</h4>
-					</div>
-
-					<div class="row">
-						<h4 class="col-xs-6">あなたの基礎代謝<br><%= @user.basal_metabolism.round(0) %>Kcal</h4>
+					<div class="row user-show-body">
+						<h4 class="col-xs-6 col-col">AGE: <%= @user.age %>  /  <%= @user.height %>cm  /  <%= @user.weight %>kg</h4>
 					</div>
 
-					<div class="row">
-						<% a = @user.total_ingestion_cal %>
-						<h4 class="col-xs-6">総摂取カロリー<br><%= a["basal_metabolism"].round(0) %>Kcal</h4>
+					<div class="row user-show-body">
+						<h4 class="col-xs-3 col-cal">基礎代謝<br>
+							<%= @user.basal_metabolism.round(0) %>Kcal
+						</h4>
+							<% a = @user.total_ingestion_cal %>
+						<h4 class="col-xs-3 col-cal">総摂取<br>
+							<%= a["basal_metabolism"].round(0) %>Kcal
+						</h4>
 					</div>
 
-					<div class="row">
-						<h4 class="col-xs-6">
-							タンパク質摂取量<br><%= a["protein"].round(0) %>g<br>
+					<div class="row user-show-body">
+						<h4 class="col-xs-2 pfc">
+							タンパク質量<br>
+							<%= a["protein"].round(0) %>g /
 							<%= (a["protein"] * 4).round(0) %>Kcal
 						</h4>
-					</div>
-
-					<div class="row">
-						<h4 class="col-xs-6">
-							脂質摂取量<br><%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g<br>
+						<h4 class="col-xs-2 pfc">
+							脂質量<br>
+							<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
 							<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
 						</h4>
-					</div>
-
-					<div class="row">
-						<h4 class="col-xs-6">
-							炭水化物摂取量<br><%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g<br>
+						<h4 class="col-xs-2 pfc">
+							炭水化物量<br>
+							<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
 							<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
 						</h4>
 					</div>
+					<div class="row hosoku">
+						<p>1日あたりの目安です。<br>運動量によって数値が変動するのでスタイルに合わせて設定してね。</p>
+					</div>
 				</div>
 			</div>
-			<div class="row">
-					<% if @user.gender == true %>
-						<%= link_to "EDIT", edit_admins_user_path(@user), class: "men-e-btn"%>
-					<% else %>
-						<%= link_to "EDIT", edit_admins_user_path(@user), class: "e-btn"%>
-					<% end %>
-			</div>
-
-			<h2>お近くのトレーニングGYM</h2>
-				<div id="map" style="width: 400px; height: 400px;"></div>
-				<script>
-				  handler = Gmaps.build("Google");
-				  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-				    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-				    handler.bounds.extendWith(markers);
-				    handler.fitMapToBounds();
-				    handler.getMap().setZoom(19);
-				  });
-				</script>
+		<div class="row show-footer">
+			<% if @user.gender == true %>
+				<%= link_to "EDIT", edit_admins_user_path(@user), class: "men-e-btn"%>
+			<% else %>
+				<%= link_to "EDIT", edit_admins_user_path(@user), class: "e-btn"%>
+			<% end %>
+		</div>
+		<h2>map</h2>
+		<div id="map" style="width: 400px; height: 400px;"></div>
 	</div>
+
+<script>
+  handler = Gmaps.build("Google");
+  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(19);
+  });
+</script>
