@@ -1,6 +1,6 @@
 class Admins::GymsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   def index
     @gyms = Gym.all
   end
@@ -12,7 +12,7 @@ class Admins::GymsController < ApplicationController
   def create
     @gym = Gym.new(gym_params)
     if @gym.save
-      redirect_to admins_gym_path(@gym)
+      redirect_to admins_gyms_path
     else
       render 'new'
     end
