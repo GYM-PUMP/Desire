@@ -85,5 +85,5 @@ group :production do
 end
 
 gem 'impressionist'
-
 gem 'faker'
+gem 'rails-i18n'
