@@ -4,7 +4,7 @@
         	<%= f.label :body, '口コミ内容 ', class:'col-md-3 col-form-label' %>
             <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "口コミを投稿してください。" %>
         </div>
-        <div class="form-group row" id="star-<%= supplement.id %>">
+        <div class="form-group" id="star-<%= supplement.id %>">
 		    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
 		    <%= f.hidden_field :rate, id: :review_star %>
 		</div>

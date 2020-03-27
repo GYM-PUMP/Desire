@@ -3,7 +3,7 @@ class Users::HomesController < ApplicationController
   before_action :authenticate_user!, except: [:top,:about,:privacy,:tos]
 
   def top
-    @popular_articles = Article.order('impressions_count DESC').take(6)
+    @popular_articles = Article.order('impressions_count DESC').take(5)
   end
 
   def about
@@ -26,8 +26,7 @@ class Users::HomesController < ApplicationController
       flash[:success] = 'ご意見賜りましてありがとうございます。'
       redirect_to root_path
     else
-      @popular_articles = Article.order('impressions_count DESC').take(6)
-      render 'top'
+      render 'contact'
     end
   end
 

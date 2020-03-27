@@ -1,4 +1,4 @@
-<div class ="container">
+<div class ="container supple-container">
 	<div class = "row">
 		<div class="col-xs-12 title-text">
 			<p class="subtitle">
@@ -21,8 +21,8 @@
 </div>
 <div class = "row">
 	<div class="col-xs-2 genre-sarch">
-			<h3>SARCH:</h3>
-			<table>
+			<h3 class="sarch">SARCH:</h3>
+			<table class="genre-table">
 				<tr>
 					<td class="genre-names"><%= link_to "ALL SUPPLE", users_supplements_path %></td>
 				</tr>
@@ -49,15 +49,21 @@
 							<p class="text-over">￥<%= supplement.price %></p>
 							<p class="text-over"><%= supplement.maker.truncate(10) %></p>
 							<p class="text-over"><%= supplement.genre.genre_name.truncate(10) %></p>
-
 						</div>
 					</div>
 				</button>
 			</div>
 		   <%= render 'show', { supplement: supplement } %>
-			<div class="row admin-item likes_buttons_<%= supplement.id %>">
-				<%= render partial: 'users/likes/like', locals: { supplement: supplement} %>
-			</div>
+			<!-- <div class="row admin-item likes_buttons_<%#= supplement.id %>">
+				<%#= render partial: 'users/likes/like', locals: { supplement: supplement} %>
+			</div> -->
 		<% end %>
+	</div>
+	<div class = "row fight">
+		<h2 class="lets-go-text">Overcome your limit.!</h2>
+		<p class="text-foryou">
+			「筋トレとプロテインで99％の悩みは解決します」<br>
+			ゴリラをリスペクトしてるので迷ったり悩んだ時は「こんな時ゴリラならどうする？」と自問自答するのですが<br>迷いも悩みもぶっ飛びます。ゴリラは本能に従うのでリスクを取る事にビビらないし、将来の心配とか太った痩せたとか陰口叩かれたとか<br>そんな細かい事気にしません。<span class="strong-text">人類はゴリラを模倣すべき！</span>
+		</p>
 	</div>
 </div>

@@ -3,7 +3,7 @@ class Users::ArticlesController < ApplicationController
 
   def index
     @articles = Article.all
-	@popular_articles = Article.order('impressions_count DESC').take(6)
+	@popular_articles = Article.order('impressions_count DESC').take(5)
   end
 
   def show
