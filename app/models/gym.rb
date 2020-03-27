@@ -3,4 +3,13 @@ class Gym < ApplicationRecord
  attachment :gym_image
  validates :gym_name, presence: true
  validates :description, presence: true
+
+ #google API ------------------
+
+  geocoded_by :address
+  after_validation :geocode
+
+#-------------------------------------------
+
+
 end

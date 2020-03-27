@@ -28,17 +28,19 @@
 		</div>
 			<div id="b-<%= i %>" class="col-xs-6 gym-space">
 				<h2 class="impact"><%= gym.gym_name %>.</h2>
-				<h2 class="heading-title">Let's get started from here.</h2>
-				<div class="text-editor">
+				<div>
 					<p><%= gym.description %></p>
-				</div>
-				<div class="text-editor">
-					<p><%= gym.postal_code %></p>
-				</div>
-				<div class="text-editor">
+					<p>〒<%= gym.postal_code %></p>
 					<p><%= gym.address %></p>
 				</div>
-				<%= link_to "LEARN MORE" ,homes_about_path,class: "button-text" %>
+
+				<div class="row admin-item">
+					<h3>URL:</h3>
+					<% if gym.gym_url != nil %>
+					<%= link_to "LEARN MORE" ,gym.gym_url,class: "button-text", target: "_blank" %>
+					<% end %>
+				</div>
+
 			</div>
 		    <%= render 'show', {gym: gym} %>
 		  <% i= i + 1 %>

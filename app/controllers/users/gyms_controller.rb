@@ -3,6 +3,10 @@ class Users::GymsController < ApplicationController
 
   def index
     @gyms = Gym.all
+    @hash = Gmaps4rails.build_markers(@gyms) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+    end
   end
 
   def show
