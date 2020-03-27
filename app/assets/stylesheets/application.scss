@@ -881,12 +881,16 @@ a:active {
   text-align: center;
   }
 
+  .article-bottom:hover {
+  color: #ff6666;
+  font-family:'Tahoma','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+
 .article-bottom .text-foryou {
-  position: absolute;
   top: 50%;
   left: 50%;
-  -ms-transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
   transform: translate(-50%,-50%);
   margin:0;
   padding:0;
@@ -897,9 +901,6 @@ a:active {
   font-family :Quicksand, sans-serif;
   }
 
-.article-bottom img {
-  width: 60%;
-  }
 
 //---------------------------------------
 // TOS ページ ----------------------------
