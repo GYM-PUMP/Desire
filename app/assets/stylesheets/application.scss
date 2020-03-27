@@ -63,27 +63,27 @@ input[type="text"] {
   width: 300px;
   height: 40px;
   left: 100px;
-  color: black;
-  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  color: #000000;
+  font-family:'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
   }
 
   input[type="email"] {
   width: 300px;
   height: 40px;
   left: 100px;
-  color: black;
-  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  color: #000000;
+  font-family:'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
   }
 
 input[type="password"] {
   width: 300px;
   height: 40px;
   left: 100px;
-  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-family:'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
   }
 
 .field{
-  color: white;
+  color: #FFFFFF;
   font-family:'Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
   margin: 20px auto;
@@ -98,6 +98,58 @@ label {
   background: linear-gradient(transparent 90%, #FFD700 90%);
   }
 
+//-----------------------------------------
+// モーダル --------------------------------
+
+
+.hoge {
+  position: relative;
+  width: 200px;
+  }
+
+.hoge a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent:-999px;
+  z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+  }
+
+.hoge:hover {
+  filter:alpha(opacity=70);/* IE 6,7*/
+  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
+  -moz-opacity:0.7;/* FF , Netscape */
+  -khtml-opacity: 0.7;/* Safari 1.x */
+  opacity:0.7;
+  zoom:1;/*IE*/
+  }
+
+.thumbnail{
+  margin: 10px auto;
+  background-color: #000000;
+  width: 90%;
+  height: 90%;
+  border: black;
+  }
+
+.caption{
+  background: #eee;
+  }
+
+
+.modal_back{
+  background-color: #000000;
+  color:#FFFFFF;
+  }
+
+button{
+  margin: 10px;
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  }
 
 //---------------------------------------
 // ヘッダー ---------------------------
@@ -145,10 +197,10 @@ header {
 footer {
   opacity: 0.7;
   border-top: double;
-  border-color: white;
+  border-color: #FFFFFF;
   font-family: 'M PLUS 1p', sans-serif;
   margin-bottom: 0;
-  color:white;
+  color:#FFFFFF;
   text-align:center;
   vertical-align:center;
   margin-left: auto;
@@ -213,25 +265,25 @@ ul {
   letter-spacing: 1px;
   margin-top: 150px;
   text-align: center;
-  color: white;
+  color: #FFFFFF;
   background: linear-gradient(transparent 70%, #f92 70%);
   border-radius: 80% 30% 50% 50%/50%;
   }
 
-  .vol{
-    color: black;
+.vol{
+  color: #000000;
   }
 
 //-------------------------------------
 // リンク-------------------------------
 
 a:link {
-  color:white;
+  color:#FFFFFF;
   text-decoration: none;
   }
 
 a:visited {
-  color:white;
+  color:#FFFFFF;
   }
 
 a:hover {
@@ -247,7 +299,7 @@ a:active {
 
 .top-word{
   text-align: center;
-  color: white;
+  color: #FFFFFF;
   font-size: 30px;
   font-family:'ヒラギノ角ゴ Std W8','Hiragino Kaku Gothic Std',sans-serif;
   margin-top: 20px;
@@ -255,7 +307,7 @@ a:active {
 
 .top-word2{
   text-align: center;
-  color: white;
+  color: #FFFFFF;
   font-size: 30px;
   font-family:'ヒラギノ角ゴ Std W8','Hiragino Kaku Gothic Std',sans-serif;
   margin-top: 200px;
@@ -289,7 +341,7 @@ a:active {
 
 .muscle-body{
   position: absolute;
-  color: white;
+  color: #FFFFFF;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 15px;
   text-align: center;
@@ -329,7 +381,7 @@ a:active {
 
 .word-space{
   margin: center;
-  color: white;
+  color: #FFFFFF;
   width: 50%;
   height: 600px;
   margin: 0;
@@ -364,19 +416,19 @@ a:active {
   }
 
 .fight{
-  color: white;/*文字は白に*/
+  color: #FFFFFF;/*文字は白に*/
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   text-align: center;
-  margin:50px auto 50px;
+  margin:100px auto 100px;
     .lets-go-text{
       font-size: 50px;
       }
     .text-foryou{
       margin-top:50px;
       font-family:'Comic Sans MS','Hiragino Kaku Gothic Std',sans-serif;
+      font-size: 20px;
       }
   }
-
 
 /* ローディングの背景部分のCSS ---------------*/
 .loader{
@@ -397,7 +449,6 @@ a:active {
   top:50%;
   width:10px;
   color:#ffffff;
-  //text-indent:-9999em;
   font-size:50px;
   -webkit-transform:translateZ(0);
   -ms-transform:translateZ(0);
@@ -412,26 +463,26 @@ a:active {
   100% {
     box-shadow:0 0;
     height:4em;
+    }
+    40% {
+      box-shadow:0 -2em;
+      height:5em;
+      }
   }
-  40% {
-    box-shadow:0 -2em;
-    height:5em;
-  }
-}
 @keyframes load1 {
   0%,
   80%,
   100% {
     box-shadow:0 0;
     height:4em;
-  }
-  40% {
-    box-shadow:0 -2em;
-    height:5em;
-  }
-}
+    }
+    40% {
+      box-shadow:0 -2em;
+      height:5em;
+      }
+   }
 
-//---------------------------------
+//-----------------------------------------
 
 
 
@@ -521,7 +572,7 @@ a:active {
   }
 
 .user-profile{
-  color: white;
+  color: #FFFFFF;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   text-align: center;
   margin:50px auto 50px;
@@ -590,7 +641,7 @@ a:active {
   height: 500px;
   left: 5%;
   padding: 0;
-  color: white;
+  color: #FFFFFF;
   width: 300px;
   }
 
@@ -754,77 +805,59 @@ a:active {
   }
 
 .edit-body{
- margin: 100px 100px 200px 100px;
-}
+  margin: 100px 100px 200px 100px;
+  }
 
 //-------------------------------------------
 //articleページ -----------------------------
 
-
-.hoge {
-  position: relative;
-  width: 200px;
+.strong-text{
+  color: red;
+  font-size: 30px;
+  /*background: linear-gradient(transparent 80%, #ffff66 80%);*/
+  /*font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;*/
   }
 
-.hoge a {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-indent:-999px;
-  z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
-  }
-
-.hoge:hover {
-  filter:alpha(opacity=70);/* IE 6,7*/
-  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
-  -moz-opacity:0.7;/* FF , Netscape */
-  -khtml-opacity: 0.7;/* Safari 1.x */
-  opacity:0.7;
-  zoom:1;/*IE*/
-  }
-
-.thumbnail{
-  margin: 10px;
-  background-color: black;
-  }
-
-.caption{
-  background: #eee;
-  //overflow: hidden;
-  //width: 100%;
-  //color: white;
-  }
-
-//.text-over {
-    //overflow: hidden;
-    //text-overflow: ellipsis;
-    //white-space: nowrap;
-  //}
-
-.modal_back{
-  background-color: black;
-  color:white;
-  }
-
-button{
-  margin: 10px;
-  background-color: black;
-  }
-
-#slideshow {
-  margin: 0 auto;
-  padding-top: 50px;
-  height: 600px;
-  width: 100%;
-  box-sizing: border-box;
+.article-scl{
+  width: auto;
   }
 
 .article-index{
   margin: 100px auto 100px;
-}
+  display: flex;
+  flex-wrap: wrap;
+  }
 
+.article-container{
+  margin: 10px 0 0 0;
+  width: auto;
+  }
+
+.article-bottom {
+  position: relative;
+  margin-bottom: 100px;
+  text-align: center;
+  }
+
+.article-bottom .text-foryou {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  position: absolute;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 2em;
+  font-family :Quicksand, sans-serif;
+  }
+
+.article-bottom img {
+  width: 60%;
+  }
 
 //---------------------------------------
 // TOS ページ ----------------------------
@@ -838,6 +871,34 @@ button{
 .tos-body{
   line-height: 2.2em;
   color:#d3e0eb;
+  }
+
+
+//contact  -----------------------------
+
+.toiawase-row{
+  margin:80px auto 100px;
+  text-align: center;
+  color: #000000;
+  }
+
+.toiawase{
+  color: #FFFFFF;
+  font-family:'Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  margin: 20px auto;
+  }
+
+.feedback{
+  width: 600px;
+  height: 300px;
+  left: 100px;
+  color: #000000;
+  font-family:'Sylfaen','Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.copy-text{
+  text-align: right;
   }
 
 
@@ -861,23 +922,93 @@ button{
 
 .gym-container{
   width: 100%;
-}
+  }
 
 .gym-index{
   margin: 100px auto 100px;
-}
+  }
+
+.gym-space{
+  margin: center;
+  color: #FFFFFF;
+  width: 50%;
+  height: 600px;
+  margin: 0;
+  background-color: #778899;
+  }
+
+.gym-img{
+  margin: center;
+  width: 50%;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  }
+
+.gym-btn{
+  margin: 0;
+  border: black;
+  }
+
+.heading-title{
+  color: #FFFF00;
+  font-size: 50px;
+  margin-top: 20%;
+  }
+
+.text-editor{
+  margin-top: 5%;
+  }
+
+  .hogu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  }
+
+.hogu a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent:-999px;
+  z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+  }
+
+.hogu:hover {
+  filter:alpha(opacity=70);/* IE 6,7*/
+  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
+  -moz-opacity:0.7;/* FF , Netscape */
+  -khtml-opacity: 0.7;/* Safari 1.x */
+  opacity:0.7;
+  zoom:1;/*IE*/
+  }
+
+.caption{
+  background: #eee;
+  }
+
+.gym-image{
+  width: 90%;
+  height: 90%;
+  }
+
+.gym-row{
+  margin: 100px auto 100px;
+  }
 
 //---------------------------------------
 // supplement ページ ---------------------
 
 .supple-quantity{
-  color: white;
+  color: #FFFFFF;
   font-size: 20px;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   }
 
 .genre-sarch{
-  color: white;
+  color: #FFFFFF;
   font-size: 20px;
   }
 
@@ -888,6 +1019,32 @@ button{
 
 .supple-index{
   margin: 50px auto 100px;
+  display: flex;
+  flex-wrap: wrap;
+  }
+
+.sarch{
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  color: #FF1493;
+  font-size: 35px;
+  text-align: center;
+  }
+
+.form-group{
+  margin: 4%;
+  }
+
+.supple-tr{
+  color: #FF4500;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.supple-container{
+  width: 100%;
+  }
+
+.genre-table{
+  margin: 0 auto;
   }
 
 
@@ -896,18 +1053,18 @@ button{
 
 .really{
   font-size: 50px;
-  color: white;
+  color: #FFFFFF;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   }
 
 .think{
   font-size: 20px;
-  color: white;
+  color: #FFFFFF;
   }
 
 .withrow{
   margin: 50px 0;
-}
+  }
 
 
 
@@ -923,7 +1080,6 @@ button{
       font-size: 15px;
       }
   }
-
 
 .signin{
 	font-family: 'M PLUS 1p', sans-serif;
@@ -960,9 +1116,11 @@ button{
   top: 0;
   transition: .2s;
   }
+
 .signup-btn::before {
   left: 0;
   }
+
 .signup-btn::after {
   right: 0;
   }
@@ -980,9 +1138,16 @@ button{
 .devise-row{
   margin:80px auto 100px;
   text-align: center;
-  color: black;
+  color: #000000;
   }
 
 .sign{
   text-align: center;
-}
+  }
+
+// error Message--------------------------------
+
+#error_explanation{
+  color: #FF6347;
+  text-align: center;
+  }
