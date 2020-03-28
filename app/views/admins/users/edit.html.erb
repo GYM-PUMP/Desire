@@ -10,7 +10,7 @@
 						<%= attachment_image_tag @user, :image,  id:"img_prev", class: "profile-img", fallback: "woman-no-image.png" %>
 					<% end %>
 					<div class="field">
-						<%= f.label :profile_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+						<%= f.label :image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
 						<%= f.attachment_field :image, id:"post_img", class: "image", style:"display:none;" %>
 					</div>
 
