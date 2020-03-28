@@ -1,46 +1,45 @@
 <%= javascript_include_tag "admins/genre.js" %>
 
-
 <div class = "container">
 	<div class = "row">
-		<div class="col-xs-12">
+		<div class="col-xs-8 col-xs-offset-2">
 			<h3 class="elementor-heading-title">GYM CREATE:</h3>
 		</div>
-
-	  <%= form_for(@gym, url:admins_gyms_path(@gym),method: :post) do |f| %>
-
-		<div class="col-xs-4" style="margin-top: 100px;">
-			<%= image_tag "no_image.jpg", id:"img_prev", size: "250x250", alt:"Image preview" %>
-			<%= f.label :gym_image, "ADD image" ,class: "btn btn-warning btn-lg" ,for:"post_img" %>
-			<%= f.attachment_field :gym_image, id:"post_img", style:"display:none;" %>
-		</div>
-
-		<div class="col-xs-8">
-			<div class="row admin-item">
-				<%= f.label :gym_name, "GYM", class:"col-xs-2" %>
-				<%= f.text_field :gym_name, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :description, "Overview", class:"col-xs-2" %>
-				<%= f.text_area :description, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :postal_code, "Postal Code", class:"col-xs-2" %>
-				<%= f.text_field :postal_code, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :address, "Address", class:"col-xs-2" %>
-				<%= f.text_field :address, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :gym_url, "GYMURL", class:"col-xs-2" %>
-				<%= f.text_area :gym_url, class:"col-xs-4" %>
-			</div>
-		</div>
 	</div>
-		<div class="row admin-item-show-btn">
-			<%= f.submit "新規登録", class:"col-xs-2 col-xs-offset-8 btn btn-primary" %>
+	<%= form_for(@gym, url:admins_gyms_path(@gym),method: :post) do |f| %>
+		<div class = "row edit-body">
+			<div class="field">
+				<%= attachment_image_tag @gym, :gym_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+			</div>
+		 	<div class="field">
+				<%= f.label :gym_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+				<%= f.attachment_field :gym_image, id:"post_img", class: "image", style:"display:none;" %>
+			</div>
+
+			<div class="field">
+				<%= f.label :gym_name, "GYM" %><br />
+				<%= f.text_field :gym_name %>
+			</div>
+			<div class="field">
+				<%= f.label :description, "Overview" %><br />
+				<%= f.text_area :description %>
+			</div>
+			<div class="field">
+				<%= f.label :postal_code, "Postal Code" %><br />
+				<%= f.text_field :postal_code %>
+			</div>
+			<div class="field">
+				<%= f.label :address, "Address" %><br />
+				<%= f.text_field :address %>
+			</div>
+			<div class="field">
+				<%= f.label :gym_url, "GYMURL" %><br />
+				<%= f.text_area :gym_url %>
+			</div>
+			<div class="row admin-item-show-btn">
+				<%= f.submit "新規登録", class: "btn btn-primary" %>
+			</div>
 		</div>
-	  <% end %>
+	<% end %>
 </div>
 
