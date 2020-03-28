@@ -27,7 +27,7 @@ class Admins::ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to admins_articles_path
     else
-      render "edit"
+      render 'edit'
     end
   end
 
