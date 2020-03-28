@@ -9,61 +9,59 @@
 			</p>
 		</div>
 	</div>
-<div class = "row supple-quantity">
-	<% if params[:category].present? %>
-		<h2>
-			<%= @genre.genre_name %>
-			<span>(全<%= @supplements_quantity %>件)</span>
-		</h2>
-	<% else %>
-		<h2>ALL SUPPLEMENTS<span>(全<%= @supplements_quantity %>件)</span></h2>
-	<% end %>
-</div>
-<div class = "row">
-	<div class="col-xs-2 genre-sarch">
-			<h3 class="sarch">SARCH:</h3>
+	<div class = "row supple-quantity">
+		<% if params[:category].present? %>
+			<h2>
+				<%= @genre.genre_name %>
+				<span>(全<%= @supplements_quantity %>件)</span>
+			</h2>
+		<% else %>
+			<h2>ALL SUPPLEMENTS<span>(全<%= @supplements_quantity %>件)</span></h2>
+		<% end %>
+	</div>
+	<div class = "row">
+	    <div class="col-xs-2 genre-sarch">
+		  <h3 class="sarch">SARCH:</h3>
 			<table class="genre-table">
-				<tr>
-					<td class="genre-names"><%= link_to "ALL SUPPLE", users_supplements_path %></td>
-				</tr>
- 			<% @genres.each do |genre| %>
- 				<tr>
-					<td class="genre-names">
+				 <tr>
+				 	 <td class="genre-names"><%= link_to "ALL SUPPLE", users_supplements_path %></td>
+				 </tr>
+	 		  <% @genres.each do |genre| %>
+ 				 <tr>
+					 <td class="genre-names">
 						<%= link_to users_supplements_path(category: genre.genre_name) do %>
 							<%= genre.genre_name %>
 						<% end %>
-					</td>
-				</tr>
- 			<% end %>
- 		</table>
-	</div>
- 	<div class="col-xs-10 supple-index">
-		<% @supplements.each do |supplement| %>
-			<div class="hoge">
-				<button type="button" data-toggle="modal" data-target="#sampleModal-<%= supplement.id %> ">
-					<div class="thumbnail">
-						<%= attachment_image_tag supplement, :supple_image, :fill, 200, 200, format: 'jpeg' %>
-						<div class="caption">
-							<p class="text-over"><%= supplement.item_name.truncate(10) %></p>
-							<p class="text-over"><%= supplement.description.truncate(10) %></p>
-							<p class="text-over">￥<%= supplement.price %></p>
-							<p class="text-over"><%= supplement.maker.truncate(10) %></p>
-							<p class="text-over"><%= supplement.genre.genre_name.truncate(10) %></p>
+					 </td>
+				 </tr>
+	 		   <% end %>
+	 		</table>
+	    </div>
+	 	<div class="col-xs-10 supple-index">
+			<% @supplements.each do |supplement| %>
+				<div class="hoge">
+					<button type="button" data-toggle="modal" data-target="#sampleModal-<%= supplement.id %> ">
+						<div class="thumbnail">
+							<%= attachment_image_tag supplement, :supple_image, :fill, 200, 200, format: 'jpeg' %>
+							<div class="caption">
+								<p class="text-over"><%= supplement.item_name.truncate(10) %></p>
+								<p class="text-over"><%= supplement.description.truncate(10) %></p>
+								<p class="text-over">￥<%= supplement.price %></p>
+								<p class="text-over"><%= supplement.maker.truncate(10) %></p>
+								<p class="text-over"><%= supplement.genre.genre_name.truncate(10) %></p>
+							</div>
 						</div>
-					</div>
-				</button>
-			</div>
-		   <%= render 'show', { supplement: supplement } %>
-			<!-- <div class="row admin-item likes_buttons_<%#= supplement.id %>">
-				<%#= render partial: 'users/likes/like', locals: { supplement: supplement} %>
-			</div> -->
-		<% end %>
-	</div>
-	<div class = "row fight">
-		<h2 class="lets-go-text">Overcome your limit.!</h2>
-		<p class="text-foryou">
-			「筋トレとプロテインで99％の悩みは解決します」<br>
-			ゴリラをリスペクトしてるので迷ったり悩んだ時は「こんな時ゴリラならどうする？」と自問自答するのですが<br>迷いも悩みもぶっ飛びます。ゴリラは本能に従うのでリスクを取る事にビビらないし、将来の心配とか太った痩せたとか陰口叩かれたとか<br>そんな細かい事気にしません。<span class="strong-text">人類はゴリラを模倣すべき！</span>
-		</p>
+					</button>
+				</div>
+			   <%= render 'show', { supplement: supplement } %>
+			<% end %>
+		</div>
+		<div class = "row fight">
+			<h2 class="lets-go-text">Overcome your limit.!</h2>
+			<p class="text-foryou">
+				「筋トレとプロテインで99％の悩みは解決します」<br>
+				ゴリラをリスペクトしてるので迷ったり悩んだ時は「こんな時ゴリラならどうする？」と自問自答するのですが<br>迷いも悩みもぶっ飛びます。ゴリラは本能に従うのでリスクを取る事にビビらないし、将来の心配とか太った痩せたとか陰口叩かれたとか<br>そんな細かい事気にしません。<span class="strong-text">人類はゴリラを模倣すべき！</span>
+			</p>
+		</div>
 	</div>
 </div>

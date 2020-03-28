@@ -12,7 +12,7 @@ class Admins::ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to admins_article_path(@article)
+      redirect_to admins_articles_path
     else
       render 'new'
     end

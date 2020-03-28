@@ -1,7 +1,19 @@
 class Admins::SupplementsController < ApplicationController
   before_action :authenticate_admin!
+
   def index
     @supplements = Supplement.all
+    @genres = Genre.all
+      if params[:category].present?
+        # もしcategoryにデータが入っている場合
+        @genre = @genres.find_by(genre_name: params[:category])
+        # ビューで渡した:categoryでgenre_nameを一致させそれを@genreとしてる
+        @supplements = Supplement.where(genre_id: @genre.id)
+        supplements = Supplement.where(genre_id: @genre.id)
+        @supplements_quantity = supplements.length
+      else
+
+      end
   end
 
   def new
@@ -41,7 +53,7 @@ class Admins::SupplementsController < ApplicationController
   private
 
   def supplement_params
-      params.require(:supplement).permit(:genre_id,:item_name,:description,:price,:maker,:supple_image, :sales_target_url)
+      params.require(:supplement).permit(:genre_id, :item_name, :description, :price, :maker, :supple_image, :sales_target_url)
   end
 
 end

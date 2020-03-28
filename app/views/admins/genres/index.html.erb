@@ -28,7 +28,9 @@
 						GRNRE追加<%= f.attachment_field :genre_image, id:"post_img" %>
 					    <%= f.text_field :genre_name, class:"col-xs-3 genre-field" %><br>
 					</div>
-					<%= f.submit "ADD",class: "btn btn-info" %>
+					<div class="row btn-footer">
+						<%= f.submit "ADD",class: "btn btn-info" %>
+					</div>
 				<% end %>
 			</div>
 		</div>
