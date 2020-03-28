@@ -38,7 +38,7 @@ class Admins::SupplementsController < ApplicationController
   def update
     @supplement = Supplement.find(params[:id])
     if @supplement.update(supplement_params)
-      redirect_to admins_supplement_path
+      redirect_to admins_supplements_path
     else
       render "edit"
     end
