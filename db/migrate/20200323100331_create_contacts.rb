@@ -7,5 +7,5 @@ class CreateContacts < ActiveRecord::Migration[5.2]
       t.timestamps
     end
   end
-  	  remove_column :users, :message, :text
+  	  # remove_column :users, :message, :text
 end
