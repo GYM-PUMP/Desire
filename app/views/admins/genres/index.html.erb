@@ -4,7 +4,7 @@
 <div class ="container">
 	<div class = "row">
 		<div class="col-xs-8 col-xs-offset-2">
-		<h2 class="elementor-heading-title">GENRE:</h2>
+			<h2 class="elementor-heading-title">GENRE:</h2>
 			<div class="genre-body">
 				<table class="table">
 					<tr>
@@ -17,19 +17,32 @@
 							<td><%= attachment_image_tag genre, :genre_image, src: "", id:"item_image", size: "210x60", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
 								<%= genre.genre_name %>
 							</td>
-							<td><%= link_to "EDIT", edit_admins_genre_path(genre.id), class: "btn-sm btn-primary" %></td>
-							<td><%= link_to "DELETE",admins_genre_path(genre), method: :delete, class: "btn-sm btn-danger" %></td>
+							<td><%= link_to "EDIT", edit_admins_genre_path(genre.id), class: "edit-btn" %></td>
+							<td><%= link_to "DELETE",admins_genre_path(genre), method: :delete, class: "destroy-btn" %></td>
 						</tr>
 					<% end %>
 				</table>
-				<%= image_tag "no_image.jpg", id:"img_prev", size: "210x60", alt:"Image preview" %>
+
 				<%= form_for(@genre, url: admins_genres_path) do |f| %>
-					<div class="row genre-index-add" style="margin-left: 0; margin-right: 0;">
-						GRNRE追加<%= f.attachment_field :genre_image, id:"post_img" %>
-					    <%= f.text_field :genre_name, class:"col-xs-3 genre-field" %><br>
-					</div>
-					<div class="row btn-footer">
-						<%= f.submit "ADD",class: "btn btn-info" %>
+					<div class = "row">
+						<div class="col-xs-6">
+							<div class="field">
+								<%= attachment_image_tag @genre, :genre_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+							</div>
+				 			<div class="field">
+								<%= f.label :genre_image,"Image select" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+								<%= f.attachment_field :genre_image, id:"post_img", class: "image", style:"display:none;" %>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="field">
+								<%= f.label :genre_name, "GENRE NAME" %>
+								<%= f.text_field :genre_name %>
+							</div>
+							<div class="field">
+								<%= f.submit " New Genre ",class: "new-btn" %>
+							</div>
+						</div>
 					</div>
 				<% end %>
 			</div>

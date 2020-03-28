@@ -6,24 +6,25 @@
 		</div>
 	</div>
 	<%= form_for(@article, url:admins_article_path(@article),method: :patch) do |f| %>
-		<div class="row">
-			<div class="col-xs-3 col-xs-offset-1">
-				 <%= attachment_image_tag @article, :article_image, src: "", id:"item_image", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
-			 	<%= f.attachment_field :article_image %>
+		<div class = "row edit-body">
+			<div class="field">
+				<%= attachment_image_tag @article, :article_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
 			</div>
-			<div class="col-xs-8">
-				<div class="row admin-item">
-					<%= f.label :title, "タイトル", class:"col-xs-2" %>
-					<%= f.text_field :title, class:"col-xs-4" %>
-				</div>
-				<div class="row admin-item">
-					<%= f.label :body, "内容", class:"col-xs-2" %>
-					<%= f.text_area :body, class:"col-xs-4" %>
-				</div>
+		 	<div class="field">
+				<%= f.label :article_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+				<%= f.attachment_field :article_image, id:"post_img", class: "image", style:"display:none;" %>
 			</div>
-		</div>
-		<div class="row admin-item-show-btn">
-			<%= f.submit "変更を保存", class:"col-xs-2 col-xs-offset-8 btn btn-primary"  %>
+		 	<div class="field">
+				<%= f.label :title, "タイトル" %><br />
+				<%= f.text_field :title %>
+			</div>
+		 	<div class="field">
+				<%= f.label :body, "内容" %><br />
+				<%= f.text_area :body %>
+			</div>
+			<div class="row admin-item-show-btn">
+				<%= f.submit "変更を保存", class: "update-btn" %>
+			</div>
 		</div>
 	<% end %>
 </div>

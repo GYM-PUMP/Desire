@@ -2,42 +2,46 @@
 
 <div class = "container">
 	<div class = "row">
-		<div class="col-xs-12">
-			<h3 class="elementor-heading-title">SUPPLEMENT CREATE:</h3>
-		</div>
-	  <%= form_for(@supplement, url:admins_supplements_path(@supplement),method: :post) do |f| %>
-		<div class="col-xs-4" style="margin-top: 100px;">
-			<%= f.attachment_field :supple_image, id:"post_img" %>
-		</div>
-		<div class="col-xs-8">
-			<div class="row admin-item">
-				<%= f.label :item_name, "商品名", class:"col-xs-2" %>
-				<%= f.text_field :item_name, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :description, "商品説明", class:"col-xs-2" %>
-				<%= f.text_area :description, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :price, "価格", class:"col-xs-2" %>
-				￥<%= f.number_field :price, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :maker, "メーカー名", class:"col-xs-2" %>
-				<%= f.text_field :maker, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :genre_id, "ジャンル", class:"col-xs-2" %>
-				<%= f.collection_select :genre_id, Genre.all, :id, :genre_name, class:"col-xs-4" %>
-			</div>
-			<div class="row admin-item">
-				<%= f.label :sales_target_url, "販売先URL", class:"col-xs-2" %>
-				<%= f.text_area :sales_target_url, class:"col-xs-4" %>
-			</div>
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">SUPPLEMENT CREATE:</h2>
 		</div>
 	</div>
-		<div class="row admin-item-show-btn">
-			<%= f.submit "新規登録", class:"col-xs-2 col-xs-offset-8 btn btn-primary" %>
-		</div>
-	  <% end %>
+	    <%= form_for(@supplement, url:admins_supplements_path(@supplement),method: :post) do |f| %>
+			<div class = "row edit-body">
+				<div class="field">
+					<%= attachment_image_tag @supplement, :supple_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+				</div>
+			 	<div class="field">
+					<%= f.label :supple_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+					<%= f.attachment_field :supple_image, id:"post_img", class: "image", style:"display:none;" %>
+				</div>
+				<div class="field">
+					<%= f.label :item_name, "商品名" %><br />
+					<%= f.text_field :item_name %>
+				</div>
+				<div class="field">
+					<%= f.label :description, "商品説明" %><br />
+					<%= f.text_area :description %>
+				</div>
+				<div class="field">
+					<%= f.label :price, "価格" %><br />
+					￥<%= f.number_field :price %>
+				</div>
+				<div class="field">
+					<%= f.label :maker, "メーカー名" %><br />
+					<%= f.text_field :maker %>
+				</div>
+				<div class="field">
+					<%= f.label :genre_id, "ジャンル" %><br />
+					<%= f.collection_select :genre_id, Genre.all, :id, :genre_name %>
+				</div>
+				<div class="field">
+					<%= f.label :sales_target_url, "販売先URL" %><br />
+					<%= f.text_area :sales_target_url %>
+				</div>
+				<div class="field">
+					<%= f.submit "New Spple", class: "new-btn" %>
+				</div>
+			</div>
+	    <% end %>
 </div>

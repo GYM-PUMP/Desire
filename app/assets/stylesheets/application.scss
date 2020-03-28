@@ -84,7 +84,7 @@ input[type="password"] {
   }
 
 .field{
-  color: #FFFFFF;
+  color: #000000;
   font-family:'Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
   margin: 20px auto;
@@ -97,6 +97,7 @@ label {
   font-weight: bold;
   width: 200px;
   background: linear-gradient(transparent 90%, #FFD700 90%);
+  color: #ffffff;
   }
 
 //-----------------------------------------
@@ -273,6 +274,91 @@ ul {
 .vol{
   color: #000000;
   }
+
+//-------------------------------------
+// 共通  ------------------------------
+
+.edit-body{
+  text-align: center;
+  margin: 10% auto 15%;
+  color: #000000;
+  }
+
+.edit-btn{
+  display: block;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #03c;
+  background-color: #d1d1d1;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.edit-btn:hover {
+  background: #008cff;
+  color: #fff;
+  }
+
+.destroy-btn{
+  display: block;
+  margin: auto;
+  width: 100%;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #03c;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.destroy-btn:hover {
+  background: #bd4a2d;
+  color: #fff;
+  }
+
+.update-btn{
+  display: block;
+  margin: auto;
+  width: 100%;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #03c;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.update-btn:hover {
+  background: #ffff00;
+  color: #000000;
+  }
+
+.new-btn{
+  display: block;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #03c;
+  background: #eded76;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.new-btn:hover {
+  background: #ffae00;
+  color: #000000;
+  }
+
+.withdraw{
+  margin: 5%;
+}
 
 //-------------------------------------
 // リンク-------------------------------
@@ -831,11 +917,6 @@ a:active {
   color: #fff;
   }
 
-.edit-body{
-  margin: 100px 100px 200px 100px;
-  text-align: center;
-  }
-
 .btn-footer{
   margin: 150px auto 100px;
   }
@@ -848,7 +929,7 @@ a:active {
 
 .user-index-footer-col{
   padding: 0;
-}
+  }
 
 //-------------------------------------------
 //articleページ -----------------------------
@@ -1218,12 +1299,6 @@ a:active {
 
 .signup-btn:hover {
   color: #FFF;
-  }
-
-.devise-row{
-  margin:80px auto 100px;
-  text-align: center;
-  color: #000000;
   }
 
 .sign{

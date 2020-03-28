@@ -1,15 +1,15 @@
 <%= form_with(model:[:users, supplement, comment], remote: true) do |f| %> <!--”remote: true”を記述する場所に注意-->
     <div class="row">
         <div class="col-sm-12">
-        	<%= f.label :body, '口コミ内容 ', class:'col-md-3 col-form-label' %>
-            <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "口コミを投稿してください。" %>
+          <%= f.label :body, '口コミ内容 ', class:'col-md-3 col-form-label' %>
+          <%= f.text_area :body, rows:'5', class: "form-control",placeholder: "口コミを投稿してください。" %>
         </div>
         <div class="form-group" id="star-<%= supplement.id %>">
-		    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
-		    <%= f.hidden_field :rate, id: :review_star %>
-		</div>
+		      <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+		      <%= f.hidden_field :rate, id: :review_star %>
+		    </div>
     </div>
-    <%= f.submit "評価レビュー", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+    <%= f.submit "評価レビュー", class: "edit-btn" %>
 <% end %>
 
      <!-- 評価javascript -->

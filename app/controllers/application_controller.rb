@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def after_sign_up_path_for(resource) 
+	def after_sign_up_path_for(resource)
    		 admins_users_path(resource)
   	end
 

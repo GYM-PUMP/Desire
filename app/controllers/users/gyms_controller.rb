@@ -9,8 +9,4 @@ class Users::GymsController < ApplicationController
     end
   end
 
-  def show
-    @gym = Gym.find(params[:id])
-  end
-
 end

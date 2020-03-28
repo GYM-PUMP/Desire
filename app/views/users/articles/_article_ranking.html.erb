@@ -1,21 +1,22 @@
 <div class="row">
 		<% popular_articles.each do |article| %>
    			<div class="col-xs-2 article-scl">
-   				<%#= link_to admins_article_path(article) do %>
-					<div class="hoges">
-						<button class="article" data-id="<%= article.id %>" type="button" data-toggle="modal" data-target="#sampleModal-<%= article.id %> ">
-							<div class="thumbnail">
-								<%= attachment_image_tag article, :article_image, :fill, 200, 200, format: 'jpeg' %>
-								<div class="caption">
-									<p class="text-over"><%= article.title.truncate(10) %></p>
-									<p class="text-over">投稿日時 / <%= article.created_at.strftime("%Y/%m/%d") %></p>
-									<p class="text-over"><strong>閲覧数:</strong><span class="impression_count"><%= article.impressions_count %></span></p>
-								</div>
+				<div class="hoges">
+					<button class="article" data-id="<%= article.id %>" type="button" data-toggle="modal" data-target="#sampleModal-<%= article.id %> ">
+						<div class="thumbnail">
+							<%= attachment_image_tag article, :article_image, :fill, 200, 200, format: 'jpeg' %>
+							<div class="caption">
+								<p class="text-over"><%= article.title.truncate(10) %></p>
+								<p class="text-over">投稿日時 / <%= article.created_at.strftime("%Y/%m/%d") %></p>
+								<p class="text-over">
+									<strong>閲覧数:</strong>
+									<span class="impression_count"><%= article.impressions_count %></span>
+								</p>
 							</div>
-						</button>
-					</div>
-					<%= render partial: 'users/articles/show', locals: {article: article} %>
-				<%# end %>
+						</div>
+					</button>
+				</div>
+				<%= render partial: 'users/articles/show', locals: {article: article} %>
   			</div>
 		<% end %>
 	</div>
