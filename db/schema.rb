@@ -141,6 +141,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_092821) do
     t.boolean "user_status", default: true, null: false
     t.float "latitude"
     t.float "longitude"
+    t.integer "exercise_quantity", default: 0, null: false
     t.float "movement", default: 1.2, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
