@@ -276,6 +276,15 @@ ul {
   }
 
 //-------------------------------------
+// 共通 edit new -----------------------
+
+.edit-body{
+  text-align: center;
+  margin: 10% auto 15%;
+  color: #000000;
+  }
+
+//-------------------------------------
 // リンク-------------------------------
 
 a:link {
@@ -832,12 +841,6 @@ a:active {
   color: #fff;
   }
 
-.edit-body{
-  text-align: center;
-  margin: 15% auto 15%;
-  color: #000000;
-  }
-
 .btn-footer{
   margin: 150px auto 100px;
   }
@@ -850,7 +853,7 @@ a:active {
 
 .user-index-footer-col{
   padding: 0;
-}
+  }
 
 //-------------------------------------------
 //articleページ -----------------------------
