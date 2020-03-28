@@ -1,24 +1,42 @@
-# README
+# Desire
+http://18.222.144.146/
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Description  
+人生100年時代。もしあなたが100才まで生きるとしたら、どんな人生を想像しますか？  
+学校で学び、卒業、就職して、会社で働いたあと、静かな老後を迎える。もしかすると、そうしたプランは今後成り立たなくなるかもしれません。  
+老後資金を潤沢に貯める事ができても身体が健康でなければ幸せな老後が保証されるわけではありません。  
+豊かな人生を歩むために必要なのは貯金よりも筋肉の貯筋！生涯衰えを知らない”カラダ”を  
+心身共に元気になれるよう考え作成致しました。  
 
-Things you may want to cover:
+<img width="600" alt="スクリーンショット 2020-03-29 4 23 13" src="https://user-images.githubusercontent.com/58713888/77831865-08bdf300-7175-11ea-9de2-5f64299e5f4b.png">
 
-* Ruby version
+## Demo  
+性別・年齢・身長・体重を入力することであなたに合った基礎代謝、  
+PFC表（P：タンパク質・F：脂質・C：糖質）が作られ、最適なカラダ作りのサポートを致します。  
+![体組成表](https://user-images.githubusercontent.com/58713888/77832231-dcf03c80-7177-11ea-84dc-1afbaa0e3982.gif)  
 
-* System dependencies
 
-* Configuration
+## Requirement  
+ruby 2.5.7  
+Rails 5.2.4.1
 
-* Database creation
+## function  
+・会員登録  
+・GoogleMap(API)  
+・会員登録  
+・モーダル機能  
+・コメント機能（非同期）  
+・会員退会機能  
+・いいね機能（非同期）  
+・フォロー機能  
+・閲覧数カウント機能（非同期）  
+・ランキング機能  
+・ジャンル検索機能  
 
-* Database initialization
+## Author  
+GYM-PUMP  
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## License
+MIT  
+LICENSE.txtをお読みください。
