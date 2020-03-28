@@ -11,7 +11,10 @@ http://18.222.144.146/
 <img width="600" alt="スクリーンショット 2020-03-29 4 23 13" src="https://user-images.githubusercontent.com/58713888/77831865-08bdf300-7175-11ea-9de2-5f64299e5f4b.png">
 
 ## Demo  
-![体組成表](https://user-images.githubusercontent.com/58713888/77832231-dcf03c80-7177-11ea-84dc-1afbaa0e3982.gif)
+性別・年齢・身長・体重を入力することであなたに合った基礎代謝、  
+PFC表（P：タンパク質・F：脂質・C：糖質）が作られ、最適なカラダ作りのサポートを致します。  
+![体組成表](https://user-images.githubusercontent.com/58713888/77832231-dcf03c80-7177-11ea-84dc-1afbaa0e3982.gif)  
+
 
 ## Requirement  
 ruby 2.5.7  
