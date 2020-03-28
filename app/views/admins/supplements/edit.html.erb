@@ -1,35 +1,35 @@
 <%= javascript_include_tag "admins/genre.js" %>
-<div class ="container">
+
+<div class = "container">
 	<div class = "row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<h2 class="elementor-heading-title">SUPPLEMENT EDIT:</h2>
 		</div>
 	</div>
-	<%= form_for(@supplement, url:admins_supplement_path(@supplement),method: :patch) do |f| %>
-		<div class = "row devise-row">
-
-				 <%= attachment_image_tag @supplement, :supple_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
-
+		<%= form_for(@supplement, url:admins_supplement_path(@supplement),method: :patch) do |f| %>
+			<div class = "row edit-body">
+				<div class="field">
+					<%= attachment_image_tag @supplement, :supple_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+				</div>
 			 	<div class="field">
 					<%= f.label :supple_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
 					<%= f.attachment_field :supple_image, id:"post_img", class: "image", style:"display:none;" %>
 				</div>
-
 				<div class="field">
 					<%= f.label :item_name, "商品名" %><br />
 					<%= f.text_field :item_name %>
 				</div>
 				<div class="field">
 					<%= f.label :description, "商品説明" %><br />
-					<%= f.text_field :description %>
+					<%= f.text_area :description %>
 				</div>
 				<div class="field">
 					<%= f.label :price, "価格" %><br />
 					￥<%= f.number_field :price %>
 				</div>
 				<div class="field">
-					<%= f.label :maker, "メーカー" %><br />
-					<%= f.text_area :maker %>
+					<%= f.label :maker, "メーカー名" %><br />
+					<%= f.text_field :maker %>
 				</div>
 				<div class="field">
 					<%= f.label :genre_id, "ジャンル" %><br />
@@ -39,9 +39,9 @@
 					<%= f.label :sales_target_url, "販売先URL" %><br />
 					<%= f.text_area :sales_target_url %>
 				</div>
-		<div class="row admin-item-show-btn">
-			<%= f.submit "変更を保存", class: "btn btn-primary btn-lg" %>
-		</div>
-	<% end %>
-	</div>
+				<div class="field">
+					<%= f.submit "変更を保存", class: "btn btn-primary btn-lg" %>
+				</div>
+			</div>
+		<% end %>
 </div>
