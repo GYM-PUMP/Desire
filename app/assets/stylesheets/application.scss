@@ -84,7 +84,7 @@ input[type="password"] {
   }
 
 .field{
-  color: #FFFFFF;
+  color: #000000;
   font-family:'Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
   margin: 20px auto;
@@ -97,6 +97,7 @@ label {
   font-weight: bold;
   width: 200px;
   background: linear-gradient(transparent 90%, #FFD700 90%);
+  color: #ffffff;
   }
 
 //-----------------------------------------
@@ -832,8 +833,8 @@ a:active {
   }
 
 .edit-body{
-  margin: 100px 100px 200px 100px;
   text-align: center;
+  margin: 15% auto 15%;
   }
 
 .btn-footer{
