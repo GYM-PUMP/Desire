@@ -1,4 +1,7 @@
 class Users::UsersController < ApplicationController
+
+  before_action :authenticate_user!
+
   def show
 	  @user = User.find(params[:id])
 	  @hash = Gmaps4rails.build_markers(@user) do |place, marker|
@@ -60,7 +63,7 @@ class Users::UsersController < ApplicationController
 private
 
   def user_params
-  	  params.require(:user).permit(:name, :postal_code, :address, :height, :age, :gender, :weight, :gym_id, :user_status, :movement)
+  	  params.require(:user).permit(:name, :postal_code, :image, :address, :height, :age, :gender, :weight, :gym_id, :user_status, :movement)
   end
 
   def change_params

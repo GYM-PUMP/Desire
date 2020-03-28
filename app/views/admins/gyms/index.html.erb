@@ -8,7 +8,7 @@
 			<% @gyms.each do |gym| %>
 	   			<div class="col-xs-2">
 	   				<%#= link_to admins_gym_path(gym) do %>
-						<div class="hoge">
+						<div class="hoges">
 							<button type="button" data-toggle="modal" data-target="#sampleModal-<%= gym.id %> ">
 								<div class="thumbnail">
 									<%= attachment_image_tag gym, :gym_image, :fill, 200, 200, format: 'jpeg' %>
@@ -26,5 +26,7 @@
 	  			</div>
   			<% end %>
 		</div>
-	<%= link_to "NEW GYM", new_admins_gym_path,class: "col-xs-4 col-xs-offset-4 btn btn-primary" %>
+	<div class="row btn-footer">
+		<%= link_to "NEW GYM", new_admins_gym_path,class: "col-xs-4 col-xs-offset-4 btn btn-primary" %>
+	</div>
 </div>

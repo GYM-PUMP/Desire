@@ -1,10 +1,12 @@
 class Admins::GymsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @gyms = Gym.all
-  end
-
-  def show
-    @gym = Gym.find(params[:id])
+    @hash = Gmaps4rails.build_markers(@gyms) do |place, marker|
+      marker.lat place.latitude
+      marker.lng place.longitude
+    end
   end
 
   def new
@@ -14,7 +16,7 @@ class Admins::GymsController < ApplicationController
   def create
     @gym = Gym.new(gym_params)
     if @gym.save
-      redirect_to admins_gym_path(@gym)
+      redirect_to admins_gyms_path
     else
       render 'new'
     end
@@ -27,7 +29,7 @@ class Admins::GymsController < ApplicationController
   def update
     @gym = Gym.find(params[:id])
     if @gym.update(gym_params)
-      redirect_to admins_gym_path
+      redirect_to admins_gyms_path
     else
       render "edit"
     end
@@ -42,7 +44,7 @@ class Admins::GymsController < ApplicationController
   private
 
   def gym_params
-      params.require(:gym).permit(:gym_name,:description,:gym_image,:postal_code,:address)
+      params.require(:gym).permit(:gym_name, :description, :gym_image, :postal_code, :address, :gym_url)
   end
 
 end

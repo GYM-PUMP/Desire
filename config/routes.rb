@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     root 'users/homes#top'
     get "homes/about" => "users/homes#about"
     get "homes/privacy" => "users/homes#privacy"
-    get "homes/contact" => "users/homes#contact"
     get "homes/tos" => "users/homes#tos"
 
 
@@ -30,6 +29,8 @@ Rails.application.routes.draw do
         get 'withdraw'
         patch 'status_change' => 'users#status_change'
       end
+      get "contact" => "homes#contact"
+      post "contact" => "homes#create"
     end
 
     resources :supplements,only: [:show,:index] do

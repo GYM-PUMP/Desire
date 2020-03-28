@@ -1,4 +1,7 @@
 class Users::LikesController < ApplicationController
+
+    before_action :authenticate_user!
+
   def create
         @supplement = Supplement.find(params[:supplement_id])
         like = current_user.likes.new(supplement_id: @supplement.id)

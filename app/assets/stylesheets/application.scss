@@ -55,6 +55,102 @@ body{
   text-decoration: none;
   }
 
+td{
+  vertical-align: middle !important;
+  }
+
+input[type="text"] {
+  width: 300px;
+  height: 40px;
+  left: 100px;
+  color: #000000;
+  font-family:'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+  input[type="email"] {
+  width: 300px;
+  height: 40px;
+  left: 100px;
+  color: #000000;
+  font-family:'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+input[type="password"] {
+  width: 300px;
+  height: 40px;
+  left: 100px;
+  color: #000000;
+  font-family:'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.field{
+  color: #FFFFFF;
+  font-family:'Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  margin: 20px auto;
+  }
+
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: bold;
+  width: 200px;
+  background: linear-gradient(transparent 90%, #FFD700 90%);
+  }
+
+//-----------------------------------------
+// モーダル --------------------------------
+
+
+.hoges {
+  position: relative;
+  }
+
+.hoges a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent:-999px;
+  z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+  }
+
+.hoges:hover {
+  filter:alpha(opacity=70);/* IE 6,7*/
+  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
+  -moz-opacity:0.7;/* FF , Netscape */
+  -khtml-opacity: 0.7;/* Safari 1.x */
+  opacity:0.7;
+  zoom:1;/*IE*/
+  }
+
+.thumbnail{
+  margin: 10px auto;
+  background-color: #000000;
+  width: 90%;
+  height: 90%;
+  border: black;
+  }
+
+.caption{
+  background: #eee;
+  }
+
+
+.modal_back{
+  background-color: #000000;
+  color:#FFFFFF;
+  }
+
+button{
+  margin: 10px;
+  background-color: #000000;
+  width: 100%;
+  height: 100%;
+  }
+
 //---------------------------------------
 // ヘッダー ---------------------------
 
@@ -79,7 +175,6 @@ header {
   content: "";
   display: block;
   transition: all .3s ease;
-
   width: 0;
   }
 
@@ -91,24 +186,26 @@ header {
 	text-align:center;
 	width: 150px;
 	height: 100px;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 30px;
 	}
+
 
 //---------------------------------------
 // フッター ------------------------------
 
 footer {
   opacity: 0.7;
-  margin-top: 150px;
   border-top: double;
-  border-color: white;
+  border-color: #FFFFFF;
   font-family: 'M PLUS 1p', sans-serif;
   margin-bottom: 0;
-  color:white;
+  color:#FFFFFF;
   text-align:center;
   vertical-align:center;
   margin-left: auto;
   margin-right: auto;
- }
+  }
 
 ul {
 	padding-inline-start: 0px;
@@ -119,18 +216,46 @@ ul {
 .icon {
   text-align:center;
   vertical-align:center;
-}
+  }
 
 .icon {
   text-align: center;
   font-size: 30px;
   span{
     margin: 20px;
+    }
   }
-}
 
 //-------------------------------------
-// 共通タイトルindex ページ --------------
+// 共通タイトル -------------------------
+
+.subtitle {
+  letter-spacing: .5em;
+  display: inline-block;
+  border: 4px double rgba(255,255,255,.25);
+  border-width: 4px 0;
+  padding: 1.5em 0em;
+  margin-top: 50px;
+  margin-bottom: 90px;
+  width: 40em;
+  border-color: #f60;
+  }
+
+.sub-menu {
+  font: 700 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  padding: .25em 0 .325em;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255,255,255,.5);
+  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: aitf 80s linear infinite;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  }
 
 .elementor-heading-title {
   font-family: "Raleway", Sans-serif;
@@ -140,21 +265,25 @@ ul {
   letter-spacing: 1px;
   margin-top: 150px;
   text-align: center;
-  color: white;
-  background: #f92;
+  color: #FFFFFF;
+  background: linear-gradient(transparent 70%, #f92 70%);
   border-radius: 80% 30% 50% 50%/50%;
+  }
+
+.vol{
+  color: #000000;
   }
 
 //-------------------------------------
 // リンク-------------------------------
 
 a:link {
-  color:white;
+  color:#FFFFFF;
   text-decoration: none;
   }
 
 a:visited {
-  color:white;
+  color:#FFFFFF;
   }
 
 a:hover {
@@ -168,61 +297,137 @@ a:active {
 //---------------------------------------
 // TOPページ --------------------------------
 
-/*
-@import url('https://fonts.googleapis.com/css?family=Courgette');
-
-
-
-.toppage, .mymymy {
-  position: absolute;
-}
-
-.toppage {
-  font: 50px/1.2 'Courgette', cursive;
-  color: #fff;
+.top-word{
   text-align: center;
-  margin-top: 80px;
-  margin-left: 5%;
-  z-index: 2;
-}
-.mymymy {
-  width: 280px;
-  height: 300px;
-  mix-blend-mode: multiply;
-}
+  color: #FFFFFF;
+  font-size: 30px;
+  font-family:'ヒラギノ角ゴ Std W8','Hiragino Kaku Gothic Std',sans-serif;
+  margin-top: 20px;
+  }
 
-.circle-1 {
-  background: #f66;
-  border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
-  animation: border-animation 6s infinite linear;
-}
-.circle-2 {
-  background: #f92;
-  border-radius: 80% 30% 50% 50%/50%;
-  animation: border-animation 4s infinite linear;
-}
-.circle-3 {
-  background: #fc2;
-  border-radius: 40% 40% 50% 40%/30% 50% 50% 50%;
-  animation: border-animation 3s infinite linear;
-}
+.top-word2{
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 30px;
+  font-family:'ヒラギノ角ゴ Std W8','Hiragino Kaku Gothic Std',sans-serif;
+  margin-top: 200px;
+  }
 
-@keyframes border-animation {
-  to { transform: rotate(360deg); }
-}
+.point {
+  background-color: #FF8C00;
+  border-radius:  50%;
+  padding:  10px;
+  font-size: 40px;
+  color: #fff;
+  margin-right: 5px;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  }
 
-
-.box-top{
-    width: 400px;
-    margin: 50px auto 0;
-    height: 400px;
-    }
-*/
+.youtube{
+  text-align: center;
+  margin-top: 20px;
+  }
 
 .ranking{
-  margin:100px auto;
+  margin:100px auto 0;
   text-align: center;
-}
+  }
+
+.top-about{
+  margin:10px auto 0;
+  text-align: center;
+  position:relative
+  }
+
+.muscle-body{
+  position: absolute;
+  color: #FFFFFF;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 15px;
+  text-align: center;
+  margin:0;
+  padding:0;
+  left: 28%;
+  }
+
+.share{
+  background: #FFFF00;
+  }
+
+.power::after {
+  border-bottom: solid 2px #1E90FF;
+  bottom: 0;
+  content: "";
+  display: block;
+  transition: all .3s ease;
+  width: 0;
+  }
+
+.power:hover::after {
+  width: 100%;
+  }
+
+.image-app{
+  width: 100%;
+  margin: 80px auto 0;
+  }
+
+.canva{
+  width: 50%;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  }
+
+.word-space{
+  margin: center;
+  color: #FFFFFF;
+  width: 50%;
+  height: 600px;
+  margin: 0;
+  background-color: #2F4F4F
+  }
+
+.heading-title{
+  color: #FFFF00;
+  font-size: 50px;
+  margin-top: 20%;
+  }
+
+.text-editor{
+  margin-top: 5%;
+  }
+
+.button-text{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #f7f7f7;
+  border-left: solid 6px #ff7c5c;
+  color: #ff7c5c;/*文字色*/
+  font-weight: bold;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  }
+
+.button-text:active{
+  box-shadow: inset 0 0 2px rgba(128, 128, 128, 0.1);
+  transform: translateY(2px);
+  }
+
+.fight{
+  color: #FFFFFF;/*文字は白に*/
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  text-align: center;
+  margin:100px auto 100px;
+    .lets-go-text{
+      font-size: 50px;
+      }
+    .text-foryou{
+      margin-top:50px;
+      font-family:'Comic Sans MS','Hiragino Kaku Gothic Std',sans-serif;
+      font-size: 20px;
+      }
+  }
 
 /* ローディングの背景部分のCSS ---------------*/
 .loader{
@@ -233,7 +438,7 @@ a:active {
   top:0;
   width:100%;
   z-index:10;
-}
+  }
 
 .loader-animation {
   height:10px;
@@ -243,14 +448,13 @@ a:active {
   top:50%;
   width:10px;
   color:#ffffff;
-  //text-indent:-9999em;
   font-size:50px;
   -webkit-transform:translateZ(0);
   -ms-transform:translateZ(0);
   transform:translateZ(0);
   -webkit-animation-delay:-0.16s;
   animation-delay:-0.16s;
-}
+  }
 
 @-webkit-keyframes load1 {
   0%,
@@ -258,100 +462,28 @@ a:active {
   100% {
     box-shadow:0 0;
     height:4em;
+    }
+    40% {
+      box-shadow:0 -2em;
+      height:5em;
+      }
   }
-  40% {
-    box-shadow:0 -2em;
-    height:5em;
-  }
-}
 @keyframes load1 {
   0%,
   80%,
   100% {
     box-shadow:0 0;
     height:4em;
-  }
-  40% {
-    box-shadow:0 -2em;
-    height:5em;
-  }
-}
+    }
+    40% {
+      box-shadow:0 -2em;
+      height:5em;
+      }
+   }
 
-//---------------------------------
-.concon {
-  margin: 0 auto;
-  width: 250px;
-  height: 200px;
-  position: relative;
-  perspective: 1000px;
-}
+//-----------------------------------------
 
-.carousel {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-}
 
-.item {
-  display: block;
-  position: absolute;
-  background: #000;
-  width: 250px;
-  height: 200px;
-  line-height: 200px;
-  font-size: 5em;
-  text-align: center;
-  color: #FFF;
-  opacity: 0.95;
-  border-radius: 10px;
-}
-
-.a {
-  transform: rotateY(0deg) translateZ(250px);
-  background: #ed1c24;
-}
-.b {
-  transform: rotateY(60deg) translateZ(250px);
-  background: #0072bc;
-}
-.c {
-  transform: rotateY(120deg) translateZ(250px);
-  background: #39b54a;
-}
-.d {
-  transform: rotateY(180deg) translateZ(250px);
-  background: #f26522;
-}
-.e {
-  transform: rotateY(240deg) translateZ(250px);
-  background: #630460;
-} 
-.f {
-  transform: rotateY(300deg) translateZ(250px);
-  background: #8c6239;
-}
-
-.next, .prev {
-  color: #444;
-  position: absolute;
-  top: 100px;
-  padding: 1em 2em;
-  cursor: pointer;
-  background: #CCC;
-  border-radius: 5px;
-  border-top: 1px solid #FFF;
-  box-shadow: 0 5px 0 #999;
-  transition: box-shadow 0.1s, top 0.1s;
-}
-.next:hover, .prev:hover { color: #000; }
-.next:active, .prev:active {
-  top: 104px;
-  box-shadow: 0 1px 0 #999;
-}
-.next { right: 5em; }
-.prev { left: 5em; }
 
 //-----------------------------------------
 // genre ページ ----------------------------
@@ -367,75 +499,407 @@ a:active {
 
 
 
-//---------------------------------------
-// MY PAGE ------------------------------
+//-----------------------------------------
+// USER PAGE ------------------------------
 
+.men-container{
+  width: 100%;
+  background-color: #3cf;
+  }
 
+.women-container{
+  width: 100%;
+  background-color: #FF69B4;
+  }
 
-//-------------------------------------------
-// article ページ ----------------------------
+.unfollow-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #ff8181;
+  color: #FFF;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #00BFFF;
+  transition: .4s;
+  vertical-align: middle !important;
+  }
 
+.unfollow-btn:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+  }
 
-.hoge {
-    position: relative;
-    width: 200px;
+.follow-btn{
+  display: inline-block;
+  text-decoration: none;
+  background: #00BFFF;
+  color: #FFF;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  overflow: hidden;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #bd6565;
+  transition: .4s;
+  }
+
+.follow-btn:active {
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  border-bottom: none;
+  }
+
+.wellcome {
+    width: 50%;
+    margin: 10px auto;
+    padding: 20px;
+    border: 2px solid #da4033;
+    border-radius: 50px;
+    position:relative;
+    text-align: center;
+    font-size: 20px;
+    background-color: #F5F5F5;
     }
 
-.hoge a {
+.wellcome::before {
+    background-color: #4B0082;
+    color: #da4033;
+    content: "Wellcome";
+    font-weight: bold;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    text-indent:-999px;
-    z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+    padding: 0 20px;
+    left: 10px;
+    top: -10px;
     }
 
-.hoge:hover {
-  filter:alpha(opacity=70);/* IE 6,7*/
-  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
-  -moz-opacity:0.7;/* FF , Netscape */
-  -khtml-opacity: 0.7;/* Safari 1.x */
-  opacity:0.7;
-  zoom:1;/*IE*/
-  }
-
-.thumbnail{
-  margin: 10px;
-  background-color: black;
-  }
-
-.caption{
-  background: #eee;
-  //overflow: hidden;
-  //width: 100%;
-  //color: white;
-  }
-
-//.text-over {
-    //overflow: hidden;
-    //text-overflow: ellipsis;
-    //white-space: nowrap;
-  //}
-
-.modal_back{
-  background-color: black;
-  color:white;
-  }
-
-button{
-  margin: 10px;
-  background-color: black;
-  }
-
-#slideshow {
-    margin: 0 auto;
-    padding-top: 50px;
-    height: 600px;
-    width: 100%;
-    box-sizing: border-box;
+.user-edit{
+  font-size: 30px;
+  background: linear-gradient(transparent 80%, #FFD700 90%);
 }
 
+.user-image{
+  width: 150px;
+  height: 150px;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  object-fit:cover;
+  }
+
+.user-profile{
+  color: #FFFFFF;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  text-align: center;
+  margin:50px auto 50px;
+  font-size: 30px;
+  }
+
+.actions{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #000000;
+  background-image: linear-gradient(#6795fd 0%, #67ceff 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #5e7fca;
+  margin-top: 30px;
+  }
+
+.actions:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+  }
+
+.actions2{
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  border-radius: 4px;
+  color: #000000;
+  background-image: linear-gradient(#FF4500 0%, #E9967A 100%);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 3px #FFFF00;
+  margin-top: 10px;
+  }
+
+.actions2:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+  border-bottom: none;
+  }
+
+.profile-img{
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  width: 500px;
+  height: 500px;
+  object-fit:cover;
+  }
+
+.image-point{
+  margin-top: 150px;
+  }
+
+.image-pos{
+  text-align: center;
+  padding: 0;
+  }
+
+.user-body{
+  text-align: center;
+  font-family: 'Montserrat', sans-serif !important;
+  height: 500px;
+  left: 5%;
+  padding: 0;
+  color: #FFFFFF;
+  width: 300px;
+  }
+
+.col-name{
+  font-size: 30px;
+  background: linear-gradient(transparent 60%, #f92 85%);
+  border-radius: 61% 0% 90% 10%/90%;
+  }
+
+.col-col{
+  font-size: 30px;
+  width: auto;
+  background: linear-gradient(transparent 90%, #05b5c5 30%);
+  border-radius: 1% 1% 50% 10%/90%;
+  }
+
+.col-cal{
+  font-size: 25px;
+  width: auto;
+  background: linear-gradient(transparent 94%, #05b5c5 30%);
+  border-radius: 1% 1% 50% 10%/90%;
+  }
+
+.pfc{
+  font-size: 23px;
+  width: 200px;
+  padding: 0;
+  vertical-align: middle !important;
+  background: linear-gradient(transparent 94%, #05b5c5 30%);
+  border-radius: 1% 1% 50% 10%/90%;
+  }
+
+.user-show-body{
+  margin: 30px auto;
+  width: 630px;
+  }
+
+.title-text{
+  width: 100%;
+  top: 80px;
+  text-align: center;
+  }
+
+.user-btn{
+  text-align: center;
+  }
+
+.hosoku{
+  text-align: left;
+  width: 600px;
+  color: #9e1800;
+  font-size: 14px;
+}
+
+.men-subtitle {
+  letter-spacing: .5em;
+  display: inline-block;
+  border: 4px double rgba(255,255,255,.25);
+  border-width: 4px 0;
+  padding: 1.5em 0em;
+  margin-top: 50px;
+  width: 40em;
+  border-color: #00008B;
+  }
+
+.men-menu {
+  font: 700 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  padding: .25em 0 .325em;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255,255,255,.5);
+  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: aitf 80s linear infinite;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  }
+
+.women-subtitle {
+  letter-spacing: .5em;
+  display: inline-block;
+  border: 4px double rgba(255,255,255,.25);
+  border-width: 4px 0;
+  padding: 1.5em 0em;
+  margin-top: 50px;
+  width: 40em;
+  border-color: #FF00FF;
+  }
+
+.women-menu {
+  font: 700 4em/1 "Oswald", sans-serif;
+  letter-spacing: 0;
+  padding: .25em 0 .325em;
+  display: block;
+  margin: 0 auto;
+  text-shadow: 0 0 80px rgba(255,255,255,.5);
+  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: aitf 80s linear infinite;
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+  }
+
+
+@-webkit-keyframes aitf {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+  }
+
+.mentr{
+  background-color: #003;
+  }
+
+.womentr{
+  background-color: #f39;
+  }
+
+.e-btn{
+  display: block;
+  width: 30%;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  text-decoration: none;
+  color: #EC407A;
+  border: 2px solid #EC407A;
+  border-radius: 3px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.e-btn:hover {
+  background: #EC407A;
+  color: #fff;
+  }
+
+.men-e-btn{
+  display: block;
+  width: 30%;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  text-decoration: none;
+  color: #03c;
+  border: 2px solid #03c;
+  border-radius: 3px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.men-e-btn:hover {
+  background: #f93;
+  color: #fff;
+  }
+
+.edit-body{
+  margin: 100px 100px 200px 100px;
+  text-align: center;
+  }
+
+.btn-footer{
+  margin: 150px auto 100px;
+  }
+
+.user-index-footer{
+  height: 600px;
+  width: 100%;
+  margin: 200px auto 200px;
+  }
+
+.user-index-footer-col{
+  padding: 0;
+}
+
+//-------------------------------------------
+//articleページ -----------------------------
+
+.strong-text{
+  color: red;
+  font-size: 30px;
+  /*background: linear-gradient(transparent 80%, #ffff66 80%);*/
+  /*font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;*/
+  }
+
+.article-scl{
+  width: auto;
+  }
+
+.article-index{
+  margin: 100px auto 100px;
+  display: flex;
+  flex-wrap: wrap;
+  }
+
+.article-container{
+  margin: 10px 0 0 0;
+  width: auto;
+  }
+
+.article-bottom {
+  position: relative;
+  margin-bottom: 100px;
+  text-align: center;
+  }
+
+  .article-bottom:hover {
+  color: #ff6666;
+  font-family:'Tahoma','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+
+.article-bottom .text-foryou {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+  position: absolute;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 2em;
+  font-family :Quicksand, sans-serif;
+  }
 
 
 //---------------------------------------
@@ -450,6 +914,34 @@ button{
 .tos-body{
   line-height: 2.2em;
   color:#d3e0eb;
+  }
+
+
+//contact  -----------------------------
+
+.toiawase-row{
+  margin:80px auto 100px;
+  text-align: center;
+  color: #000000;
+  }
+
+.toiawase{
+  color: #FFFFFF;
+  font-family:'Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  margin: 20px auto;
+  }
+
+.feedback{
+  width: 600px;
+  height: 300px;
+  left: 100px;
+  color: #000000;
+  font-family:'Sylfaen','Osaka－等幅','Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.copy-text{
+  text-align: right;
   }
 
 
@@ -471,34 +963,276 @@ button{
 //---------------------------------------
 // GYM ページ ----------------------------
 
+.gym-container{
+  width: 100%;
+  }
+
+.gym-index{
+  margin: 100px auto 100px;
+  }
+
+.gym-space {
+  color: #FFFFFF;
+  width: 50%;
+  height: 600px;
+  margin: 0;
+  background-color: #090909;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all  0.3s ease;
+  font-family:'Century Gothic','Hiragino Kaku Gothic Std',sans-serif;
+  text-align: center;
+  }
+
+.gym-space:hover {
+  background-color: #111111;
+  font-family:'Tahoma','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.gym-img{
+  margin: center;
+  width: 50%;
+  height: 600px;
+  }
+
+.gym-btn{
+  margin: 0;
+  border: black;
+  }
+
+.impact{
+  color: #FFFF00;
+  font-size: 50px;
+  margin: 16% auto;
+  font-family:'Century Gothic','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.text-editor{
+  margin-top: 5%;
+  }
+
+  .hogu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  }
+
+.hogu a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent:-999px;
+  z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+  }
+
+.hogu:hover {
+  filter:alpha(opacity=70);/* IE 6,7*/
+  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
+  -moz-opacity:0.7;/* FF , Netscape */
+  -khtml-opacity: 0.7;/* Safari 1.x */
+  opacity:0.7;
+  zoom:1;/*IE*/
+  }
+
+.caption{
+  background: #eee;
+  }
+
+.gym-image{
+  width: 90%;
+  height: 90%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+  object-fit:cover;
+  }
+
+.gym-row{
+  margin: 100px auto 100px;
+  }
+
+//---------------------------------------
+// supplement ページ ---------------------
+
+
+.hoge {
+  position: relative;
+  width: 17%;
+  height: 20%;
+  }
+
+.hoge a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-indent:-999px;
+  z-index: 2; /* 必要であればリンク要素の重なりのベース順序指定 */
+  }
+
+.hoge:hover {
+  filter:alpha(opacity=70);/* IE 6,7*/
+  -ms-filter: "alpha(opacity=70)";/* IE 8,9 */
+  -moz-opacity:0.7;/* FF , Netscape */
+  -khtml-opacity: 0.7;/* Safari 1.x */
+  opacity:0.7;
+  zoom:1;/*IE*/
+  }
+
+.supple-quantity{
+  color: #FFFFFF;
+  font-size: 20px;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.genre-sarch{
+  color: #FFFFFF;
+  font-size: 20px;
+  }
+
+.genre-names{
+  background: linear-gradient(transparent 94%, #05b5c5 30%);
+  border-radius: 30% 25% 11% 2%/52%;
+  }
+
+.supple-index{
+  margin: 50px auto 100px;
+  display: flex;
+  flex-wrap: wrap;
+  }
+
+.sarch{
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  color: #FF1493;
+  font-size: 35px;
+  text-align: center;
+  }
+
+.form-group{
+  margin: 4%;
+  }
+
+.supple-tr{
+  color: #FF4500;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.supple-container{
+  width: 100%;
+  }
+
+.genre-table{
+  margin: 0 auto;
+  }
+
+
+//---------------------------------------
+// 退会 ページ ----------------------------
+
+.really{
+  font-size: 50px;
+  color: #FFFFFF;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  }
+
+.think{
+  font-size: 20px;
+  color: #FFFFFF;
+  }
+
+.withrow{
+  margin: 50px 0;
+  }
+
 
 
 //---------------------------------------
 // devise--------------------------------
 
 .signup {
-    font-family: 'M PLUS 1p', sans-serif;
-    color:#d3e0eb;
+  font-family: 'M PLUS 1p', sans-serif;
+  color:#d3e0eb;
     .error {
-        font-family: $error;
-        color: #e53935;
-        font-size: 15px;
-        h2 {
-            font-size: 20px;
-        }
-    }
-    .title {
-        color: #424242;
-        font-size: 40px;
-    }
-    p {
-        font-family: $gothic;
-    }
-    .pass {
-        font-size: 14px;
-    }
-}
+      font-family: $error;
+      color: #e53935;
+      font-size: 15px;
+      }
+  }
 
 .signin{
 	font-family: 'M PLUS 1p', sans-serif;
-}
+  }
+
+.signup-btn {
+  display: inline-block;
+  width: 200px;
+  text-align: center;
+  background-color: #f74677;
+  border: 2px solid #9ec34b;
+  font-size: 16px;
+  color: #9ec34b;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 4px;
+  position: relative;
+  }
+
+.signup-btn span {
+  position: relative;
+  z-index: 1;
+  }
+
+.signup-btn::before,
+.signup-btn::after {
+  content: "";
+  display: block;
+  background-color: #FFF;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transition: .2s;
+  }
+
+.signup-btn::before {
+  left: 0;
+  }
+
+.signup-btn::after {
+  right: 0;
+  }
+
+.signup-btn:hover:before,
+.signup-btn:hover:after {
+  width: 0;
+  background-color: #FFF;
+  }
+
+.signup-btn:hover {
+  color: #FFF;
+  }
+
+.devise-row{
+  margin:80px auto 100px;
+  text-align: center;
+  color: #000000;
+  }
+
+.sign{
+  text-align: center;
+  }
+
+// error Message--------------------------------
+
+#error_explanation{
+  color: #FF6347;
+  text-align: center;
+  }

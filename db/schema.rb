@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_21_112248) do
+ActiveRecord::Schema.define(version: 2020_03_27_092821) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2020_03_21_112248) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
     t.string "genre_image_id"
@@ -59,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_112248) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "gym_url"
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -110,6 +118,7 @@ ActiveRecord::Schema.define(version: 2020_03_21_112248) do
     t.string "supple_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "sales_target_url"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,10 +132,10 @@ ActiveRecord::Schema.define(version: 2020_03_21_112248) do
     t.string "name"
     t.string "postal_code"
     t.text "address"
-    t.integer "height"
-    t.integer "age"
-    t.boolean "gender"
-    t.integer "weight"
+    t.integer "height", default: 0, null: false
+    t.integer "age", default: 0, null: false
+    t.boolean "gender", default: true
+    t.integer "weight", default: 0, null: false
     t.integer "gym_id"
     t.string "image_id"
     t.boolean "user_status", default: true, null: false

@@ -1,27 +1,49 @@
-<div class ="container">
+<%= javascript_include_tag "users/gym.js" %>
+
+
+<div class ="container gym-container">
 	<div class = "row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h2 class="elementor-heading-title">GYMS:</h2>
+		<div class="col-xs-12 title-text">
+			<p class="subtitle">
+				  <span class="sub-menu">
+				  	GYMS:
+				  </span>
+			  	&mdash; I want to work on my abs more. &mdash;
+			</p>
 		</div>
 	</div>
-	<div class="row">
-		<% @gyms.each do |gym| %>
-   			<div class="col-xs-2">
-   				<%#= link_to admins_gym_path(gym) do %>
-					<div class="hoge">
-						<button type="button" data-toggle="modal" data-target="#sampleModal-<%= gym.id %> ">
-							<div class="thumbnail">
-								<%= attachment_image_tag gym, :gym_image, :fill, 200, 200, format: 'jpeg' %>
-								<div class="caption">
-									<p class="text-over"><%= gym.gym_name.truncate(10) %></p>
-									<p class="text-over"><%= gym.description.truncate(10) %></p>
-								</div>
-							</div>
-						</button>
-					</div>
-					<%= render 'show', {gym: gym} %>
-				<%# end %>
-  			</div>
+<% i = 1 %>
+  <% @gyms.each do |gym| %>
+	<div class="row gym-row" id="aaaaa">
+		<div id="a-<%= i %>" class="col-xs-6 gym-img">
+			<div class="hogu">
+				<button class="gym-btn" type="button" data-toggle="modal" data-target="#sampleModal-<%= gym.id %> ">
+						<%= attachment_image_tag gym, :gym_image, format: 'jpeg', class: "gym-image" %>
+						<!-- <div class="caption">
+							<p class="text-over"><%#= gym.gym_name.truncate(10) %></p>
+							<p class="text-over"><%#= gym.description.truncate(10) %></p>
+						</div> -->
+				</button>
+			</div>
+		</div>
+			<div id="b-<%= i %>" class="col-xs-6 gym-space">
+				<h2 class="impact"><%= gym.gym_name %>.</h2>
+				<div>
+					<p><%= gym.description %></p>
+					<p>〒<%= gym.postal_code %></p>
+					<p><%= gym.address %></p>
+				</div>
+
+				<div class="row admin-item">
+					<h3>URL:</h3>
+					<% if gym.gym_url != nil %>
+					<%= link_to "LEARN MORE" ,gym.gym_url,class: "button-text", target: "_blank" %>
+					<% end %>
+				</div>
+
+			</div>
+		    <%= render 'show', {gym: gym} %>
+		  <% i= i + 1 %>
 		<% end %>
 	</div>
 </div>

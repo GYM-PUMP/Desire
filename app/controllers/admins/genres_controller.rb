@@ -1,4 +1,5 @@
 class Admins::GenresController < ApplicationController
+ before_action :authenticate_admin!
 
 	def index
 		@genre = Genre.new
@@ -27,9 +28,6 @@ class Admins::GenresController < ApplicationController
   	else
     	redirect_back(fallback_location: edit_admins_genre_path)
 	end
-	end
-
-	def show
 	end
 
 	def destroy

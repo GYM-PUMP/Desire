@@ -1,12 +1,4 @@
 class User < ApplicationRecord
-  MOVEMENT_FACTOR = {
-    # 英語にした方がいい
-    "普段運動しない": 1.2,
-    "週に１回〜２回軽く運動する": 1.375,
-    "週に２回〜３回筋トレする": 1.55,
-    "週に４回〜６回激しい筋トレする": 1.725,
-    "筋トレ上級者": 1.9
-  }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -15,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
@@ -31,7 +24,15 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-#------------------------------
+#-------------------------------------------
+# validatesion -----------------------------
+
+validates :name, presence: true
+
+validates :name,
+    length: { minimum: 2, maximum: 20 }
+
+#-------------------------------------------
 
 # ユーザーをフォローする-----------------------
   def follow(user_id)
@@ -49,6 +50,16 @@ class User < ApplicationRecord
   end
 #-------------------------------------------
 # 体組成計算 ---------------------------------
+
+  MOVEMENT_FACTOR = {
+      # 英語にした方がいい
+      "普段運動しない": 1.2,
+      "週に１回〜２回軽く運動する": 1.375,
+      "週に２回〜３回筋トレする": 1.55,
+      "週に４回〜６回激しい筋トレする": 1.725,
+      "筋トレ上級者": 1.9
+    }
+
 
   def basal_metabolism
     if gender

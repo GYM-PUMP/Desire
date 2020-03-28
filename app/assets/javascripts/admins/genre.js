@@ -5,9 +5,9 @@ $(function(){
       if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function (e) {
-          $('#item_image').attr('src', e.target.result);
+          $('#img_prev').attr('src', e.target.result);
         }
-        reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(input.files[0])
       }
     }
     $("#post_img").change(function(){

@@ -1,66 +1,51 @@
 <div class = "container signup">
-	<div class = "row">
+	<div class="row">
 		<div class="col-xs-12">
-			<h2 class="elementor-heading-title">お問い合わせフォーム:</h2>
-				<section id="contact-form" class="mailForm container" style="padding-top: 50px;">
-					<div class="row justify-content-md-center">
-						<div class="col-12 col-md-9">
-							<div id="wufoo-zdk8f280mkdut0">
-								<iframe title="Embedded Wufoo Form" id="wufooFormzdk8f280mkdut0" class="wufoo-form-container" height="706" allowtransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none" src="https://yasslab.wufoo.com/embed/zdk8f280mkdut0/def/embedKey=zdk8f280mkdut0492178&amp;entsource=&amp;referrer=https%3Awuslashwuslashrailsguides.jpwuslash">
-									<a href="https://yasslab.wufoo.com/forms/zdk8f280mkdut0/" title="html form">
-										Fill out my Wufoo form!
-									</a>
-								</iframe>
-							</div>
-							<script type="text/javascript">var zdk8f280mkdut0;
-								(function (d, t) {
-								var s = d.createElement(t), options = {
-								'userName': 'yasslab',
-								'formHash': 'zdk8f280mkdut0',
-								'autoResize': true,
-								'height': '497',
-								'async': true,
-								'host': 'wufoo.com',
-								'header': 'show',
-								'ssl': true
-								};
-								s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
-								s.onload = s.onreadystatechange = function () {
-								var rs = this.readyState;
-								if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-								try {
-								zdk8f280mkdut0 = new WufooForm();
-								zdk8f280mkdut0.initialize(options);
-								zdk8f280mkdut0.display();
-								} catch (e) {
-								}
-								};
-								var scr = d.getElementsByTagName(t)[0], par = scr.parentNode;
-								par.insertBefore(s, scr);
-								})(document, 'script');
-							</script>
-						</div>
-					</div>
-				</section>
-			<ul>
-				<li><a href="/ja">HOME</a></li>
-				<li><a href="/ja/agile">開発支援</a></li>
-				<li><a href="/ja/about">会社概要</a></li>
-				<li><a href="/ja/works">事業実績</a></li>
-				<li><a href="/ja/join-forces">採用情報</a></li>
-				<li><a href="/ja/docs">公開資料</a></li>
-				<li><a href="/ja/#contact">お問い合わせ</a></li>
-				<li><a href="/ja/news">お知らせ</a></li>
-				<li><a href="/ja/privacy">プライバシーポリシー</a></li>
-				<li><a href="/ja/brand">ブランドガイドライン</a></li>
-				<li><a href="/en">English</a></li>
-			</ul>
-			<p>
+			<h2 class="elementor-heading-title">ご意見・ご要望フォーム:</h2>
+		</div>
+	</div>
+  <div class="row">
+    <div class="col-xs-12">
+      <% if @contact.errors.any? %>
+        <div id="error_explanation">
+          <h3><%= @contact.errors.count %> errors prohibited this obj from being saved:</h3>
+          <ul>
+          <% @contact.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+  </div>
+	<div class="row">
+		<div class="form">
+    		<%= form_for(@contact, url: users_user_contact_path(current_user), method: :post) do |f| %>
+        <div class = "row toiawase-row">
+            <div class="toiawase">
+              <%= f.label :name %><br />
+              <%= current_user.name %>
+            </div>
+            <div class="toiawase">
+              <%= f.label :email %><br />
+              <%= current_user.email %>
+            </div>
+            <div class="toiawase">
+              <%= f.label :message %><br />
+              <%= f.text_area :message, class: 'feedback', placeholder: 'message' %>
+            </div>
+            <div class="submit">
+              <%= f.submit '送信', class: 'signup-btn' %>
+            </div>
+        </div>
+      	<% end %>
+  		</div>
+  	</div>
+      	<div class="row">
+			<p class="copy-text">
 				<small>
-			Copyright © 2020 bigmuscle Inc. All Rights Reserved.<br>
-			東京都大腿郡僧帽筋町広背筋原2101-29  CASE Kinniku
+					Copyright © 2020 bigmuscle Inc. All Rights Reserved.<br>
+					東京都大腿郡僧帽筋町広背筋原2101-29  CASE Kinniku
 				</small>
 			</p>
 		</div>
-	</div>
-</div>

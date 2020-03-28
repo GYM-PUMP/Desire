@@ -1,65 +1,95 @@
-<div class ="container">
-	<div class = "row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<% if @user == current_user %>
-				<h2 class="elementor-heading-title">MY PAGE:</h2>
-			<% else %>
-			<h2 class="elementor-heading-title">USER SHOW:</h2>
-			<% end %>
+<% if @user.gender == true %>
+	<div class ="container men-container">
+		<div class = "row">
+			<div class="col-xs-12 title-text">
+				<p class="men-subtitle">
+				    Step up your Body with Heart
+					  <span class="men-menu">
+					     USER SHOW::
+					  </span>
+				    &mdash; no  Muscle no Change &mdash;
+				</p>
+			</div>
 		</div>
-	</div>
-			 <%= attachment_image_tag @user, :image,:fill, 60, 60, format: 'jpeg', class: "col-xs-2 col-xs-offset-1 pull-left profile-img", fallback: "no_image.jpg" %>
+<% else %>
+		<div class ="container women-container">
+		<div class = "row">
+			<div class="col-xs-12 title-text">
+				<p class="women-subtitle">
+				  　Beautiful Mind and Body
+					  <span class="women-menu">
+					    　USER SHOW::
+					  </span>
+				  　&mdash; most beautiful in the world &mdash;
+				</p>
+			</div>
+		</div>
+<% end %>
+		<div class = "row image-point">
+			<div class="col-xs-6 image-pos">
+				<% if @user.gender == true %>
+					 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "man-no-image.png" %>
+				<% else %>
+					 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "woman-no-image.png" %>
+				<% end %>
+			</div>
+				<div class="col-xs-6 user-body">
+					<div class="row user-show-body">
+						<h4 class="col-xs-6 col-name">NAME: <strong><%= @user.name %></strong></h4>
+					</div>
+					<div class="row user-show-body">
+						<h4 class="col-xs-6 col-col">AGE: <%= @user.age %>  /  <%= @user.height %>cm  /  <%= @user.weight %>kg</h4>
+					</div>
 
-			<div class="col-xs-6">
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.name %></h4>
-				</div>
+					<div class="row user-show-body">
+						<h4 class="col-xs-3 col-cal">基礎代謝<br>
+							<%= @user.basal_metabolism.round(0) %>Kcal
+						</h4>
+							<% a = @user.total_ingestion_cal %>
+						<h4 class="col-xs-3 col-cal">総摂取<br>
+							<%= a["basal_metabolism"].round(0) %>Kcal
+						</h4>
+					</div>
 
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.postal_code %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.postal_code %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.address %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.height %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.age %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.gender %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.weight %></h4>
-				</div>
-
-				<div class="row admin-item">
-					<h4 class="col-xs-3"></h4>
-					<h4 class="col-xs-6"><%= @user.gym_id %></h4>
+					<div class="row user-show-body">
+						<h4 class="col-xs-2 pfc">
+							タンパク質量<br>
+							<%= a["protein"].round(0) %>g /
+							<%= (a["protein"] * 4).round(0) %>Kcal
+						</h4>
+						<h4 class="col-xs-2 pfc">
+							脂質量<br>
+							<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
+							<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
+						</h4>
+						<h4 class="col-xs-2 pfc">
+							炭水化物量<br>
+							<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
+							<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
+						</h4>
+					</div>
+					<div class="row hosoku">
+						<p>1日あたりの目安です。<br>運動量によって数値が変動するのでスタイルに合わせて設定してね。</p>
+					</div>
 				</div>
 			</div>
-		<div class="row admin-item-show-btn">
-		  <% if @user == current_user %>
-			<%= link_to "EDIT", edit_admins_user_path(@user),class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
-		  <% end %>
-			<%= link_to "USERS", admins_users_path,class: "col-xs-2 col-xs-offset-9 btn btn-primary" %>
+		<div class="row btn-footer">
+			<% if @user.gender == true %>
+				<%= link_to "EDIT", edit_admins_user_path(@user), class: "men-e-btn"%>
+			<% else %>
+				<%= link_to "EDIT", edit_admins_user_path(@user), class: "e-btn"%>
+			<% end %>
 		</div>
-</div>
+		<h2>map</h2>
+		<div id="map" style="width: 400px; height: 400px;"></div>
+	</div>
+
+<script>
+  handler = Gmaps.build("Google");
+  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
+    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(19);
+  });
+</script>
