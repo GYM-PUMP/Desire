@@ -831,7 +831,7 @@ $(function(){
     var $button = $(this)
     var id = $button.data('id');
     $.ajax({
-      url: `/users/articles/${id}`,
+      url: '/users/articles/' + id,
       type: 'GET',
     }).done(function(response){
       $("#sampleModal-" + id).find('.impression_count').text(response.impression_count)
