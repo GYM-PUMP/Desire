@@ -7,26 +7,24 @@
 		<div class="row">
 			<% @gyms.each do |gym| %>
 	   			<div class="col-xs-2">
-	   				<%#= link_to admins_gym_path(gym) do %>
-						<div class="hoges">
-							<button type="button" data-toggle="modal" data-target="#sampleModal-<%= gym.id %> ">
-								<div class="thumbnail">
-									<%= attachment_image_tag gym, :gym_image, :fill, 200, 200, format: 'jpeg' %>
-									<div class="caption">
-										<p class="text-over"><%= gym.gym_name.truncate(10) %></p>
-										<p class="text-over"><%= gym.description.truncate(10) %></p>
-									</div>
+					<div class="hoges">
+						<button type="button" data-toggle="modal" data-target="#sampleModal-<%= gym.id %> ">
+							<div class="thumbnail">
+								<%= attachment_image_tag gym, :gym_image, :fill, 200, 200, format: 'jpeg' %>
+								<div class="caption">
+									<p class="text-over"><%= gym.gym_name.truncate(10) %></p>
+									<p class="text-over"><%= gym.description.truncate(10) %></p>
 								</div>
-							</button>
-						</div>
-						<%= render 'show', {gym: gym} %>
-					<%# end %>
-			        <%= link_to "EDIT", edit_admins_gym_path(gym.id), class: "btn-sm btn-primary" %>
-			        <%= link_to "DELETE",admins_gym_path(gym.id), method: :delete, class: "btn-sm btn-danger", data: { confirm: '本当に消しますか？' } %>
+							</div>
+						</button>
+					</div>
+					<%= render 'show', {gym: gym} %>
+		       		<%= link_to "EDIT", edit_admins_gym_path(gym.id), class: "edit-btn" %>
+		        	<%= link_to "DELETE",admins_gym_path(gym.id), method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %>
 	  			</div>
   			<% end %>
 		</div>
 	<div class="row btn-footer">
-		<%= link_to "NEW GYM", new_admins_gym_path,class: "col-xs-4 col-xs-offset-4 btn btn-primary" %>
+		<%= link_to "NEW GYM", new_admins_gym_path,class: "new-btn" %>
 	</div>
 </div>

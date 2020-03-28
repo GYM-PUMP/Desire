@@ -4,7 +4,7 @@
 <div class ="container">
 	<div class = "row">
 		<div class="col-xs-8 col-xs-offset-2">
-		<h2 class="elementor-heading-title">GENRE:</h2>
+			<h2 class="elementor-heading-title">GENRE:</h2>
 			<div class="genre-body">
 				<table class="table">
 					<tr>
@@ -17,8 +17,8 @@
 							<td><%= attachment_image_tag genre, :genre_image, src: "", id:"item_image", size: "210x60", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
 								<%= genre.genre_name %>
 							</td>
-							<td><%= link_to "EDIT", edit_admins_genre_path(genre.id), class: "btn-sm btn-primary" %></td>
-							<td><%= link_to "DELETE",admins_genre_path(genre), method: :delete, class: "btn-sm btn-danger" %></td>
+							<td><%= link_to "EDIT", edit_admins_genre_path(genre.id), class: "edit-btn" %></td>
+							<td><%= link_to "DELETE",admins_genre_path(genre), method: :delete, class: "destroy-btn" %></td>
 						</tr>
 					<% end %>
 				</table>
@@ -40,7 +40,7 @@
 								<%= f.text_field :genre_name %>
 							</div>
 							<div class="field">
-								<%= f.submit " ADD ",class: "btn btn-info" %>
+								<%= f.submit " New Genre ",class: "new-btn" %>
 							</div>
 						</div>
 					</div>

@@ -74,9 +74,13 @@
 					<%= f.select :movement, User::MOVEMENT_FACTOR, {}  %>
 				</span>
 			</div>
-			<div>
-				<%= f.submit "UPDATE", class: "btn btn-primary btn-lg" %>
-				<%= link_to "Good by", withdraw_users_user_path(@user), class: "btn btn-danger btn-lg" %>
+			<div class="row">
+				<div class="col-xs-3 col-xs-offset-3">
+					<%= f.submit "UPDATE", class: "update-btn" %>
+				</div>
+				<div class="col-xs-3">
+					<%= link_to "Good bye", withdraw_users_user_path(@user), class: "destroy-btn" %>
+				</div>
 			</div>
 		<% end %>
   		</div>

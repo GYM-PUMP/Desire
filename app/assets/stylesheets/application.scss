@@ -276,13 +276,89 @@ ul {
   }
 
 //-------------------------------------
-// 共通 edit new -----------------------
+// 共通  ------------------------------
 
 .edit-body{
   text-align: center;
   margin: 10% auto 15%;
   color: #000000;
   }
+
+.edit-btn{
+  display: block;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #03c;
+  background-color: #d1d1d1;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.edit-btn:hover {
+  background: #008cff;
+  color: #fff;
+  }
+
+.destroy-btn{
+  display: block;
+  margin: auto;
+  width: 100%;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #03c;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.destroy-btn:hover {
+  background: #bd4a2d;
+  color: #fff;
+  }
+
+.update-btn{
+  display: block;
+  margin: auto;
+  width: 100%;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #03c;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.update-btn:hover {
+  background: #ffff00;
+  color: #000000;
+  }
+
+.new-btn{
+  display: block;
+  margin: auto;
+  padding: 0.8em;
+  text-align: center;
+  border: 2px solid #03c;
+  background: #eded76;
+  border-radius: 30px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  }
+
+.new-btn:hover {
+  background: #ffae00;
+  color: #000000;
+  }
+
+.withdraw{
+  margin: 5%;
+}
 
 //-------------------------------------
 // リンク-------------------------------

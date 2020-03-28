@@ -50,13 +50,13 @@
 					</button>
 				</div>
 				<%= render 'show', {supplement: supplement} %>
-	        	<%= link_to "EDIT", edit_admins_supplement_path(supplement.id), class: "btn-sm btn-primary" %>
-	        	<%= link_to "DELETE",admins_supplement_path(supplement.id), method: :delete, class: "btn-sm btn-danger", data: { confirm: '本当に消しますか？' } %>
+	        	<%= link_to "EDIT", edit_admins_supplement_path(supplement.id), class: "edit-btn" %>
+	        	<%= link_to "DELETE",admins_supplement_path(supplement.id), method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %>
 	        </div>
   			<% end %>
   		  </div>
 		</div>
 	<div class="row btn-footer">
-		<%= link_to "NEW SUPPLEMENT", new_admins_supplement_path,class: "col-xs-4 col-xs-offset-4 btn btn-primary" %>
+		<%= link_to "NEW SUPPLEMENT", new_admins_supplement_path,class: "new-btn" %>
 	</div>
 </div>
