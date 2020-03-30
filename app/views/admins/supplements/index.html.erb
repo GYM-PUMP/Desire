@@ -19,12 +19,12 @@
 			  <h3 class="sarch">SARCH:</h3>
 				<table class="genre-table">
 					 <tr>
-					 	 <td class="genre-names"><%= link_to "ALL SUPPLE", users_supplements_path %></td>
+					 	 <td class="genre-names"><%= link_to "ALL SUPPLE", admins_supplements_path %></td>
 					 </tr>
 		 		  <% @genres.each do |genre| %>
 	 				 <tr>
 						 <td class="genre-names">
-							<%= link_to users_supplements_path(category: genre.genre_name) do %>
+							<%= link_to admins_supplements_path(category: genre.genre_name) do %>
 								<%= genre.genre_name %>
 							<% end %>
 						 </td>
