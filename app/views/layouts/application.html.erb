@@ -35,27 +35,27 @@
                           <td class="td-tag"><%= link_to "SUPPLEMENT" ,users_supplements_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "G Y M"  ,users_gyms_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "ARTICLE"  ,users_articles_path,class: "exhibition" %></td>
-                          <%  if user_signed_in? %>
+                        <%  if user_signed_in? %>
                             <td class="td-tag"><%= link_to "MY PAGE" ,users_user_path(current_user),class: "exhibition" %></td>
-                            <td class="td-tag"><%= link_to "LOG OUT" ,destroy_user_session_path , method: :delete ,class: "exhibition" %></td>
-                          <% else %>
+                            <td class="td-tag">
+                              <%= link_to "LOG OUT" ,destroy_user_session_path , method: :delete ,class: "exhibition" %>
+                            </td>
+                        <% else %>
                             <td class="td-tag"><%= link_to "SIGN UP" ,new_user_registration_path, class: "exhibition" %></td>
                             <td class="td-tag"><%= link_to "LOG IN" ,new_user_session_path, class: "exhibition" %></td>
-                          <% end %>
+                            <td class="td-tag"><%= link_to "管理者" ,new_admin_session_path,class: "exhibition" %></td>
+                        <% end %>
 
                           <!-- 管理者ログイン時 -->
-                          <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
+                        <% elsif admin_signed_in? && request.fullpath.include?("admins") %>
                           <!-- URLにadminsが含まれている場合に表示 -->
-                          <td class="td-tag"><%= link_to "HOME",root_path ,data: {"turbolinks" => false},class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "USERS" ,admins_users_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "SUPPLEMENT",admins_supplements_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "G Y M" ,admins_gyms_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "ARTICLE" ,admins_articles_path,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "GENRE",admins_genres_path ,class: "exhibition" %></td>
                           <td class="td-tag"><%= link_to "LOG OUT" ,destroy_admin_session_path, method: :delete,class: "exhibition" %></td>
-                        <% else %>
-                         <td class="td-tag"><%= link_to "管理者用LOG IN" ,new_admin_session_path,class: "exhibition" %></td>
-                      <% end %>
+                        <% end %>
                   </tr>
               </tbody>
           </table>
