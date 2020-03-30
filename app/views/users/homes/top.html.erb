@@ -2,8 +2,17 @@
 	<div class = "row center head">
 		<video src="<%= asset_path 'make_up_body.mp4' %>"width="100%" height="100%"autoplay muted loop playsinline></video>
 	</div>
+	<div class = "row">
+		<p class="text-foryou">
+			<span class="strong-text">人生100年時代</span>　もしあなたが100才まで生きるとしたら<br>
+			どんな人生を想像しますか？<br><br>
+			学校で学び、卒業、就職して、会社で働いたあと、静かな老後を迎える。もしかすると、そうしたプランは今後成り立たなくなるかもしれません。
+			老後資金を潤沢に貯める事ができても身体が健康でなければ幸せな老後が保証されるわけではありません。
+			豊かな人生を歩むために必要なのは<span class="strong-text">貯金</span>よりも筋肉の<span class="strong-text">貯筋！</span><br>生涯衰えを知らない”カラダ”を手に入れましょう！！
+		</p>
+	</div>
 	<div class = "row ranking">
-			<%= image_tag 'ranking.top.png', width:"420" ,height:"200" %>
+		<%= image_tag 'ranking.top.png', width:"420" ,height:"200" %>
 	</div>
 	<div class = "row top-word">
 		<div class="col-xs-12">
@@ -14,13 +23,13 @@
 	<%= render 'users/articles/article_ranking', {popular_articles: @popular_articles} %>
 
 	<div class = "row top-about">
-			<%= image_tag 'ABOUT.png', width:"200" ,height:"150" %>
-			<p class="muscle-body">MUSCLE BODY<br><br>
-				みんなの筋肉で日本を支えて行こう！健康こそあなたの一番の財産です。<br><br>
-				<span class="share">
-					<%= link_to "新しい情報をみんなでSHAREハピしよお" ,homes_about_path,class: "power" %>
-				</span>
-			</p>
+		<%= image_tag 'ABOUT.png', width:"200" ,height:"150" %>
+		<p class="muscle-body">MUSCLE BODY<br><br>
+			みんなの筋肉で日本を支えて行こう！健康こそあなたの一番の財産です。<br><br>
+			<span class="share">
+				<%= link_to "新しい情報をみんなでSHAREハピしよお" ,homes_about_path,class: "power" %>
+			</span>
+		</p>
 	</div>
 
 	<div class = "row top-word2">
