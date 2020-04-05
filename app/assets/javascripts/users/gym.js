@@ -1,7 +1,4 @@
 $(document).ready(function(){
-	// var apoint= $(".gym-img")
-	// var bpoint= $(".gym-space")
-	// var reapoint = Number(apoint.attr('id').split('-')[1])
 	var row_div = $(".gym-img")
 	var row_div2 = $(".gym-space")
 	for (var i=0; i < row_div.length; i++){

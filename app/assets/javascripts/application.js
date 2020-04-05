@@ -160,20 +160,6 @@ $(function(){
       }
     },
 
-    _adjustPrecision: function() {
-      this.opt.half = true;
-    },
-
-    _adjustStarType: function() {
-      var replaces = ['cancelOff', 'cancelOn', 'starHalf', 'starOff', 'starOn'];
-
-      this.opt.path = '';
-
-      for (var i = 0; i < replaces.length; i++) {
-        this.opt[replaces[i]] = this.opt[replaces[i]].replace('.', '-');
-      }
-    },
-
     _apply: function(score) {
       methods._fill.call(this, score);
 
@@ -220,54 +206,6 @@ $(function(){
           }
 
           methods._apply.call(that, score);
-        }
-      });
-    },
-
-    _bindClickCancel: function() {
-      var that = this;
-
-      that.cancel.on('click.raty', function(evt) {
-        that.score.removeAttr('value');
-
-        if (that.opt.click) {
-          that.opt.click.call(that, null, evt);
-        }
-      });
-    },
-
-    _bindOut: function() {
-      var that = this;
-
-      that.self.on('mouseleave.raty', function(evt) {
-        var score = +that.score.val() || undefined;
-
-        methods._apply.call(that, score);
-        methods._target.call(that, score, evt);
-        methods._resetTitle.call(that);
-
-        if (that.opt.mouseout) {
-          that.opt.mouseout.call(that, score, evt);
-        }
-      });
-    },
-
-    _bindOutCancel: function() {
-      var that = this;
-
-      that.cancel.on('mouseleave.raty', function(evt) {
-        var icon = that.opt.cancelOff;
-
-        if (that.opt.starType !== 'img') {
-          icon = that.opt.cancelClass + ' ' + icon;
-        }
-
-        methods._setIcon.call(that, this, icon);
-
-        if (that.opt.mouseout) {
-          var score = +that.score.val() || undefined;
-
-          that.opt.mouseout.call(that, score, evt);
         }
       });
     },
@@ -326,27 +264,6 @@ $(function(){
       return $('<input />', { name: this.opt.scoreName, type: 'hidden' }).appendTo(this);
     },
 
-    _createCancel: function() {
-      var
-        icon   = this.opt.path + this.opt.cancelOff,
-        cancel = $('<' + this.opt.starType + ' />', { title: this.opt.cancelHint, 'class': this.opt.cancelClass });
-
-      if (this.opt.starType === 'img') {
-        cancel.attr({ src: icon, alt: 'x' });
-      } else {
-        // TODO: use $.data
-        cancel.attr('data-alt', 'x').addClass(icon);
-      }
-
-      if (this.opt.cancelPlace === 'left') {
-        this.self.prepend('&#160;').prepend(cancel);
-      } else {
-        this.self.append('&#160;').append(cancel);
-      }
-
-      this.cancel = cancel;
-    },
-
     _createScore: function() {
       var score = $(this.opt.targetScore);
 
@@ -373,12 +290,6 @@ $(function(){
       }
 
       this.stars = this.self.children(this.opt.starType);
-    },
-
-    _error: function(message) {
-      $(this).text(message);
-
-      $.error(message);
     },
 
     _fill: function(score) {
@@ -424,10 +335,6 @@ $(function(){
       }
 
       return result;
-    },
-
-    _getRangeIcon: function(irange, turnOn) {
-      return turnOn ? irange.on || this.opt.starOn : irange.off || this.opt.starOff;
     },
 
     _getScoreByPosition: function(evt, icon) {
@@ -481,30 +388,8 @@ $(function(){
       return width;
     },
 
-    _lock: function() {
-      var hint = methods._getHint.call(this, this.score.val());
-
-      this.style.cursor = '';
-      this.title        = hint;
-
-      this.score.prop('readonly', true);
-      this.stars.prop('title', hint);
-
-      if (this.cancel) {
-        this.cancel.hide();
-      }
-
-      this.self.data('readonly', true);
-    },
-
     _nameForIndex: function(i) {
       return this.opt.score && this.opt.score >= i ? 'starOn' : 'starOff';
-    },
-
-    _resetTitle: function() {
-      for (var i = 0; i < this.opt.number; i++) {
-        this.stars[i].title = methods._getHint.call(this, i + 1);
-      }
     },
 
     _roundHalfScore: function(score) {
@@ -547,18 +432,6 @@ $(function(){
 
     _setIcon: function(star, icon) {
       star[this.opt.starType === 'img' ? 'src' : 'className'] = this.opt.path + icon;
-    },
-
-    _setTarget: function(target, score) {
-      if (score) {
-        score = this.opt.targetFormat.toString().replace('{score}', score);
-      }
-
-      if (target.is(':input')) {
-        target.val(score);
-      } else {
-        target.html(score);
-      }
     },
 
     _setTitle: function(score, evt) {
@@ -607,51 +480,6 @@ $(function(){
       return this.opt.single ? (i === score) : (i <= score);
     },
 
-    _unlock: function() {
-      this.style.cursor = 'pointer';
-      this.removeAttribute('title');
-
-      this.score.removeAttr('readonly');
-
-      this.self.data('readonly', false);
-
-      for (var i = 0; i < this.opt.number; i++) {
-        this.stars[i].title = methods._getHint.call(this, i + 1);
-      }
-
-      if (this.cancel) {
-        this.cancel.css('display', '');
-      }
-    },
-
-    cancel: function(click) {
-      return this.each(function() {
-        var self = $(this);
-
-        if (self.data('readonly') !== true) {
-          methods[click ? 'click' : 'score'].call(self, null);
-
-          this.score.removeAttr('value');
-        }
-      });
-    },
-
-    click: function(score) {
-      return this.each(function() {
-        if ($(this).data('readonly') !== true) {
-          score = methods._adjustedScore.call(this, score);
-
-          methods._apply.call(this, score);
-
-          if (this.opt.click) {
-            this.opt.click.call(this, score, $.Event('click'));
-          }
-
-          methods._target.call(this, score);
-        }
-      });
-    },
-
     destroy: function() {
       return this.each(function() {
         var
@@ -663,81 +491,6 @@ $(function(){
         } else {
           self.data('raw', self.clone()[0]);
         }
-      });
-    },
-
-    getScore: function() {
-      var
-        score = [],
-        value ;
-
-      this.each(function() {
-        value = this.score.val();
-
-        score.push(value ? +value : undefined);
-      });
-
-      return (score.length > 1) ? score : score[0];
-    },
-
-    move: function(score) {
-      return this.each(function() {
-        var
-          integer  = parseInt(score, 10),
-          decimal  = methods._getFirstDecimal.call(this, score);
-
-        if (integer >= this.opt.number) {
-          integer = this.opt.number - 1;
-          decimal = 10;
-        }
-
-        var
-          width   = methods._getWidth.call(this),
-          steps   = width / 10,
-          star    = $(this.stars[integer]),
-          percent = star.offset().left + steps * decimal,
-          evt     = $.Event('mousemove', { pageX: percent });
-
-        this.move = true;
-
-        star.trigger(evt);
-
-        this.move = false;
-      });
-    },
-
-    readOnly: function(readonly) {
-      return this.each(function() {
-        var self = $(this);
-
-        if (self.data('readonly') !== readonly) {
-          if (readonly) {
-            self.off('.raty').children(this.opt.starType).off('.raty');
-
-            methods._lock.call(this);
-          } else {
-            methods._binds.call(this);
-            methods._unlock.call(this);
-          }
-
-          self.data('readonly', readonly);
-        }
-      });
-    },
-
-    reload: function() {
-      return methods.set.call(this, {});
-    },
-
-    score: function() {
-      var self = $(this);
-
-      return arguments.length ? methods.setScore.apply(self, arguments) : methods.getScore.call(self);
-    },
-
-    set: function(options) {
-      return this.each(function() {
-        $(this).raty($.extend({}, this.opt, options));
       });
     },
 

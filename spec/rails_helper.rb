@@ -31,6 +31,12 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include FactoryBot::Syntax::Methods
+  config.before(:each) do |example|
+    if example.metadata[:type].in?(%i[system feature])
+      # typeがsystemまたはfeatureのときに実行したい処理を書く
+    end
+  end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

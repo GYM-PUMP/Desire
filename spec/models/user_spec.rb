@@ -16,7 +16,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         is_expected.to eq false;
       end
       it '2文字以上であること' do
-        test_user.name = Faker::Lorem.characters(number:10)
+        test_user.name = Faker::Lorem.characters(number:1)
         is_expected.to eq false;
       end
       it '20文字以下であること' do
@@ -82,4 +82,3 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
   end
 end
-# アソシエーションのテスト
