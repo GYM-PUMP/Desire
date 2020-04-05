@@ -32,3 +32,4 @@
 
 /.env
 /public/uploads/*
+/vendor/bundle/*
