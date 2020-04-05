@@ -67,11 +67,11 @@
         <div class="container">
           <div class="low">
                 <ul>
-                  <li><%= link_to "トップページ",root_path,data: {"turbolinks" => false} %></li><br>
-                  <li><%= link_to "利用規約" , homes_tos_path %></li><br>
-                  <li><%= link_to "プライバシーポリシー", homes_privacy_path  %></li><br>
+                    <li><%= link_to "トップページ",root_path,data: {"turbolinks" => false} %></li><br>
+                    <li><%= link_to "利用規約" , homes_tos_path %></li><br>
                   <%  if user_signed_in? %>
-                    <li><%= link_to "ご意見・ご要望", users_user_contact_path(current_user) %></li><br>
+                      <li><%= link_to "プライバシーポリシー", homes_privacy_path  %></li><br>
+                      <li><%= link_to "ご意見・ご要望", users_user_contact_path(current_user) %></li><br>
                   <% end %>
                 </ul>
           </div>

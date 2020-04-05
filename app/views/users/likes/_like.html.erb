@@ -1,11 +1,15 @@
 <% if supplement.liked_by?(current_user) %>
 	<%= link_to users_supplement_likes_path(supplement), method: :delete, remote: true do %>
-		<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-		<%= supplement.likes.count %> いいね
+		<h4>
+			<i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+			<%= supplement.likes.count %> いいね
+		</h4>
 	<% end %>
 <% else %>
 	<%= link_to users_supplement_likes_path(supplement), method: :post, remote: true do %>
-		<i class="far fa-heart" aria-hidden="true"></i>
-		<%= supplement.likes.count %> いいね
+		<h4>
+			<i class="far fa-heart" aria-hidden="true"></i>
+			<%= supplement.likes.count %> いいね
+		</h4>
 	<% end %>
 <% end %>

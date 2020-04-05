@@ -5,12 +5,12 @@ class Users::CommentsController < ApplicationController
 	    @supplement = Supplement.find(params[:supplement_id])
 	    @supplement_comment = current_user.comments.build(supplement_comment_params)
 	    @supplement_comment.supplement_id = @supplement.id
+	    @supplement_comment.score = Language.get_data(supplement_comment_params[:body])
 	  	if @supplement_comment.save
 	      # logger.info @supplement_comment.errors.messages.inspect
 		end
 	    render 'comments/create.js.erb'
 	end
-
 
 
 	def destroy
@@ -30,6 +30,6 @@ private
 	    params.require(:comment).permit(:body, :rate)
 	end
 	def gym_comment_params
-	    params.require(:comment).permit(:body, :rat)
+	    params.require(:comment).permit(:body, :rate)
 	end
 end

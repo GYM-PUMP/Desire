@@ -360,6 +360,26 @@ ul {
   margin: 5%;
 }
 
+.tag-btn{
+  margin: 1%;
+  padding: 0.4em;
+  text-align: center;
+  border: 2px solid #f1a7ee;
+  border-radius: 10px;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 15px;
+  -webkit-animation: bg-color 10s infinite;
+    @-webkit-keyframes bg-color {
+      0% { background-color: #e74c3c; }
+      20% { background-color: #f1c40f; }
+      40% { background-color: #1abc9c; }
+      60% { background-color: #3498db; }
+      80% { background-color: #9b59b6; }
+      100% { background-color: #e74c3c; }
+      }
+  }
+
+
 //-------------------------------------
 // リンク-------------------------------
 

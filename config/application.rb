@@ -10,6 +10,7 @@ module Desire
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.paths.add 'lib', eager_load: true # 追加
     unless Rails.env.production?
       # config.web_console.whitelisted_ips = '10.0.2.2'
 	end

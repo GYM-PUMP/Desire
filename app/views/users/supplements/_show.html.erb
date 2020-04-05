@@ -29,34 +29,76 @@
 					<h4 class="col-xs-12"><%= supplement.genre.genre_name %></h4>
 				</div>
 				<div class="row admin-item">
+					<h3>tag:</h3>
+					<% supplement.tags.each do |tag| %>
+                		<span class="tag-btn"><%= tag.name %></span>
+              		<% end %>
+              	</div>
+				<div class="row admin-item">
 					<h3>URL:</h3>
 					<% if supplement.sales_target_url != nil %>
 					<h4 class="col-xs-12"><a href="<%= supplement.sales_target_url %>" target="_blank">販売先リンク<br><small>※金額等変更されている場合がございます。詳細はこちらで確認お願い申し上げます。</small></a></h4>
 					<% end %>
 				</div>
-				<div class="row admin-item likes_buttons_<%= supplement.id %>">
-					<%= render partial: 'users/likes/like', locals: { supplement: supplement} %>
-				</div>
 			</div>
+
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
 			</div>
 
+			<div class="row admin-item modal-body likes_buttons_<%= supplement.id %>">
+				<h4><%= render partial: 'users/likes/like', locals: { supplement: supplement} %></h4>
+			</div>
 			<div id="comments_count_show">
-				コメント数：<%= supplement.comments.count %>
+				<h4>コメント数：<%= supplement.comments.count %></h4>
+			</div>
+			<div id="rate_show">
+				<h4>USER 評価平均：<%= supplement.comments.select("rate").average(:rate).to_f.floor(2) %></h4>
 			</div>
 
 			<div id="rate_show">
-				評価：<%= supplement.comments.select("rate").average(:rate) %>
-			</div>
+				<h4>
+					<% if supplement.comments.select("score").average(:score).present? %>
+						<% if supplement.comments.select("score").average(:score) <= -0.5 %>
+							AI 評価平均：
+							<i class="fas fa-star" style="color: #3B82C4;"></i>
+							<i class="far fa-sad-tear 3x" style="color: #3B82C4;"></i>
+						<% elsif supplement.comments.select("score").average(:score) < 0.0 %>
+							AI 評価平均：
+							<i class="fas fa-star" style="color: #6EC7E2;"></i>
+							<i class="fas fa-star-half" style="color: #6EC7E2;"></i>
+							<i class="far fa-frown-open 3x" style="color: #6EC7E2;"></i>
+						<% elsif supplement.comments.select("score").average(:score) <= 0.5 %>
+							AI 評価平均：
+							<i class="fas fa-star" style="color: #F5A500;"></i>
+							<i class="fas fa-star" style="color: #F5A500;"></i>
+							<i class="fas fa-star" style="color: #F5A500;"></i>
+							<i class="far fa-grin-alt 3x" style="color: #F5A500;"></i>
+						<% elsif supplement.comments.select("score").average(:score) <= 1.0 %>
+							AI 評価平均：
+							<i class="fas fa-star" style="color: #E84566;"></i>
+							<i class="fas fa-star" style="color: #E84566;"></i>
+							<i class="fas fa-star" style="color: #E84566;"></i>
+							<i class="fas fa-star" style="color: #E84566;"></i>
+							<i class="fas fa-star" style="color: #E84566;"></i>
+							<i class="far fa-grin-squint 3x" style="color: #E84566;"></i>
+						<% else %>
+							AI 評価平均：
+							<i class="fas fa-star" style="color: #92CB97;"></i>
+							<i class="fas fa-star" style="color: #92CB97;"></i>
+							<i class="fas fa-star-half" style="color: #92CB97;"></i>
+							<i class="far fa-meh 3x" style="color: #92CB97;"></i>
+						<% end %>
+					<% end %>
+				</h4>
+			</div><br>
 
 			<div id="s-comments">
 				<% supplement.comments.each do |comment| %>
 					<%= render partial: 'comments/supple_comment' , locals: {comment: comment} %>
 				<% end %> <!--  eachメソッドでrenderの中身を１つ１つ取り出す。 -->
 			</div>
-
-			 <div id="form_supple_comment">
+			<div id="form_supple_comment">
 				<%= render partial: 'comments/form_spple_comment', locals: { supplement: supplement, comment: supplement.comments.new(supplement_id: supplement.id) } %>					<!-- Supplementモデルに紐づくCommentをnewする。.buildでも可 -->
 			</div>
 		</div>

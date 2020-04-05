@@ -21,11 +21,16 @@ class Admins::SupplementsController < ApplicationController
     @genres = Genre.all
   end
 
+
   def create
     @supplement = Supplement.new(supplement_params)
     @genres = Genre.all
     if @supplement.save
-      redirect_to admins_supplements_path
+       tags = Vision.get_image_data(@supplement.supple_image)
+       tags.each do |tag|
+         @supplement.tags.create(name: tag)
+       end
+        redirect_to admins_supplements_path
     else
       render 'new'
     end
@@ -38,7 +43,11 @@ class Admins::SupplementsController < ApplicationController
   def update
     @supplement = Supplement.find(params[:id])
     if @supplement.update(supplement_params)
-      redirect_to admins_supplements_path
+       tags = Vision.get_image_data(@supplement.supple_image)
+       tags.each do |tag|
+         @supplement.tags.create(name: tag)
+       end
+        redirect_to admins_supplements_path
     else
       render "edit"
     end

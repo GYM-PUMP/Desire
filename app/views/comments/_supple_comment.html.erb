@@ -11,14 +11,51 @@
 		<td class="active">コメ文</td>
 		<td><%= comment.body %></td>
 	</tr>
-	<tr>
-		<td id="star-rate-<%= comment.id %>"></td>
-		<td><h4 class="mb-3">評価：<%= comment.rate %>点</h4></td>
+	<tr class="supple-tr">
+		<td class="active">AI 評価</td>
+		<td>
+			<% if comment.score.present? %>
+				<% if comment.score <= -0.5 %>
+					<i class="fas fa-star" style="color: #3B82C4;"></i>
+					<i class="far fa-sad-tear 3x" style="color: #3B82C4;"></i>
+				<% elsif comment.score < 0.0 %>
+					<i class="fas fa-star" style="color: #6EC7E2;"></i>
+					<i class="fas fa-star-half" style="color: #6EC7E2;"></i>
+					<i class="far fa-frown-open 3x" style="color: #6EC7E2;"></i>
+				<% elsif comment.score <= 0.5 %>
+					<i class="fas fa-star" style="color: #F5A500;"></i>
+					<i class="fas fa-star" style="color: #F5A500;"></i>
+					<i class="fas fa-star" style="color: #F5A500;"></i>
+					<i class="far fa-grin-alt 3x" style="color: #F5A500;"></i>
+				<% elsif comment.score <= 1.0 %>
+					<i class="fas fa-star" style="color: #E84566;"></i>
+					<i class="fas fa-star" style="color: #E84566;"></i>
+					<i class="fas fa-star" style="color: #E84566;"></i>
+					<i class="fas fa-star" style="color: #E84566;"></i>
+					<i class="fas fa-star" style="color: #E84566;"></i>
+					<i class="far fa-grin-squint 3x" style="color: #E84566;"></i>
+				<% else %>
+					<i class="fas fa-star" style="color: #92CB97;"></i>
+					<i class="fas fa-star" style="color: #92CB97;"></i>
+					<i class="fas fa-star-half" style="color: #92CB97;"></i>
+					<i class="far fa-meh 3x" style="color: #92CB97;"></i>
+				<% end %>
+			<% end %>
+		</td>
+	</tr>
+	<tr class="supple-tr">
+		<td class="active" >USER 評価</td>
+		<td id="star-rate-<%= comment.id %>"><h4><%= comment.rate %>点</h4></td>
 	</tr>
 	<tr>
-		<td><% if comment.user == current_user %>
+		<td>
+			<% if comment.user == current_user %>
 				<%= link_to "Destroy",users_supplement_comments_path(comment.id), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "destroy-btn destroy_book_#{comment.id}" %>
 			<% end %>
+			<% if admin_signed_in? && request.fullpath.include?("admins") %>
+				<%= link_to "Destroy",users_supplement_comments_path(comment.id), method: :delete, remote: true, data: {confirm: "本当に削除してもよろしいですか？"}, class: "destroy-btn destroy_book_#{comment.id}" %>
+			<% end %>
+
 		</td>
 	</tr>
 </table>
