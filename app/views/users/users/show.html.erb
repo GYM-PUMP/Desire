@@ -132,8 +132,10 @@
 					<% end %>
 				<% end %>
 			</div>
-		<h2>map</h2>
-		<div id="map" style="width: 400px; height: 400px;"></div>
+			<% if @user == current_user %>
+				<h2>map</h2>
+				<div id="map" style="width: 400px; height: 400px;"></div>
+			<% end %>
 	</div>
 
 	<script>
