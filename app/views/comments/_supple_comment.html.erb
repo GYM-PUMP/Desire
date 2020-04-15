@@ -43,10 +43,6 @@
 			<% end %>
 		</td>
 	</tr>
-	<tr class="supple-tr">
-		<td class="active" >USER 評価</td>
-		<td id="star-rate-<%= comment.id %>"><h4><%= comment.rate %>点</h4></td>
-	</tr>
 	<tr>
 		<td>
 			<% if comment.user == current_user %>
@@ -59,17 +55,3 @@
 		</td>
 	</tr>
 </table>
-
-<!-- 評価javascript -->
-<script>
-$('#star-rate-<%= comment.id %>').raty({
-	size: 36,
-	starOff:  '<%= asset_path('star-off.png') %>',
-	starOn : '<%= asset_path('star-on.png') %>',
-	starHalf: '<%= asset_path('star-half.png') %>',
-	half: true,
-	readOnly: true,
-	score: <%= comment.rate %>,
-  });
-</script>
-<!--/星評価-->

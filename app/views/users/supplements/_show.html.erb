@@ -52,9 +52,6 @@
 			<div id="comments_count_show">
 				<h4>コメント数：<%= supplement.comments.count %></h4>
 			</div>
-			<div id="rate_show">
-				<h4>USER 評価平均：<%= supplement.comments.select("rate").average(:rate).to_f.floor(2) %></h4>
-			</div>
 
 			<div id="rate_show">
 				<h4>
