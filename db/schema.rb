@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_15_064452) do
+ActiveRecord::Schema.define(version: 2020_04_17_070232) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,6 +45,39 @@ ActiveRecord::Schema.define(version: 2020_04_15_064452) do
   create_table "contacts", force: :cascade do |t|
     t.integer "user_id"
     t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "daily_cals", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "total_ingestion_cal"
+    t.integer "total_protein"
+    t.integer "total_fat"
+    t.integer "total_carb"
+    t.integer "total_consumption_cal"
+    t.integer "result_cal"
+    t.integer "weight"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "food_genres", force: :cascade do |t|
+    t.string "food_genre_name"
+    t.string "food_genre_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "foods", force: :cascade do |t|
+    t.integer "food_genre_id"
+    t.string "food_name"
+    t.string "food_content"
+    t.string "food_image_id"
+    t.integer "ingestion_cal"
+    t.integer "protein"
+    t.integer "fat"
+    t.integer "carb"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,9 +135,34 @@ ActiveRecord::Schema.define(version: 2020_04_15_064452) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "my_menus", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "training_id"
+    t.integer "food_id"
+    t.integer "food_quantity"
+    t.integer "training_quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "select_daily_cals", force: :cascade do |t|
+    t.integer "daily_cals_id"
+    t.integer "training_id"
+    t.integer "food_id"
+    t.integer "ingestion_cal"
+    t.integer "protein"
+    t.integer "fat"
+    t.integer "carb"
+    t.integer "consumption_cal"
+    t.integer "food_quantity"
+    t.integer "training_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -124,6 +182,24 @@ ActiveRecord::Schema.define(version: 2020_04_15_064452) do
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.integer "supplement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "training_genres", force: :cascade do |t|
+    t.string "training_genre_name"
+    t.string "training_genre_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.integer "training_genre_id"
+    t.string "training_name"
+    t.text "training_content"
+    t.string "training_image_id"
+    t.string "movie_url"
+    t.integer "consumed_cal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

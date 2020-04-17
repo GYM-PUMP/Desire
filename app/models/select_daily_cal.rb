@@ -1,0 +1,2 @@
+class SelectDailyCal < ApplicationRecord
+end

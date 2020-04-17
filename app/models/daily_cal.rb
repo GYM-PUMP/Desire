@@ -1,0 +1,2 @@
+class DailyCal < ApplicationRecord
+end
