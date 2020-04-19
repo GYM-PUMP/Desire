@@ -2,9 +2,17 @@
 <%= javascript_include_tag "admins/genre.js" %>
 
 <div class ="container">
+	<div class = "row genres_row">
+		<div class="col-xs-4 col-xs-offset-2">
+			<%= link_to "FOOD GENRE", admins_food_genres_path, class: "f_genre-btn" %>
+		</div>
+		<div class="col-xs-4">
+			<%= link_to "TRAINING GENRE", admins_training_genres_path, class: "t_genre-btn" %>
+		</div>
+	</div>
 	<div class = "row">
 		<div class="col-xs-8 col-xs-offset-2">
-			<h2 class="elementor-heading-title">GENRE:</h2>
+			<h2 class="elementor-heading-title">SUPPLEMENT GENRE:</h2>
 			<div class="genre-body">
 				<table class="table">
 					<tr>

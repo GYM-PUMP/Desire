@@ -1,0 +1,59 @@
+<!-- .jsファイル呼び出し -->
+<%= javascript_include_tag "admins/genre.js" %>
+
+<div class ="container">
+	<div class = "row genres_row">
+		<div class="col-xs-4 col-xs-offset-2">
+			<%= link_to "TRAINING GENRE", admins_training_genres_path, class: "t_genre-btn" %>
+		</div>
+		<div class="col-xs-4">
+			<%= link_to "SUPPLEMENT GENRE", admins_genres_path, class: "s_genre-btn" %>
+		</div>
+	</div>
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">FOOD GENRE:</h2>
+			<div class="genre-body">
+				<table class="table">
+					<tr>
+						<th>GENRE LIST</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<% @food_genres.each do |f_genre| %>
+						<tr>
+							<td><%= attachment_image_tag f_genre, :food_genre_image, src: "", id:"item_image", size: "210x60", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+								<%= f_genre.food_genre_name %>
+							</td>
+							<td><%= link_to "EDIT", edit_admins_food_genre_path(f_genre.id), class: "edit-btn" %></td>
+							<td><%= link_to "DELETE",admins_food_genre_path(f_genre), method: :delete, class: "destroy-btn" %></td>
+						</tr>
+					<% end %>
+				</table>
+
+				<%= form_for(@food_genre, url: admins_food_genres_path) do |f| %>
+					<div class = "row">
+						<div class="col-xs-6">
+							<div class="field">
+								<%= attachment_image_tag @food_genre, :food_genre_image, src: "", id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+							</div>
+				 			<div class="field">
+								<%= f.label :food_genre_image,"Image select" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+								<%= f.attachment_field :food_genre_image, id:"post_img", class: "image", style:"display:none;" %>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="field">
+								<%= f.label :food_genre_name, "GENRE NAME" %>
+								<%= f.text_field :food_genre_name %>
+							</div>
+							<div class="field">
+								<%= f.submit " New Genre ",class: "new-btn" %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+<!-- .jsファイル呼び出し -->
+<%= javascript_include_tag "admins/genre.js" %>
+
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">FOOD GENRE EDIT:</h2>
+			<div class="genre-body">
+				<%= form_for(@food_genre, url: admins_food_genre_path(@food_genre.id)) do |f| %>
+					<div class = "row">
+						<div class="col-xs-6">
+							<div class="field">
+								<%= attachment_image_tag @food_genre, :food_genre_image, src: "", id:"img_prev", size: "200x150", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+							</div>
+				 			<div class="field">
+								<%= f.label :food_genre_image,"Image select" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+								<%= f.attachment_field :food_genre_image, id:"post_img", class: "image", style:"display:none;" %>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="field">
+								<%= f.label :food_genre_name, "GENRE NAME" %>
+								<%= f.text_field :food_genre_name %>
+							</div>
+							<div class="field">
+								<%= f.submit "変更を保存", class: "update-btn" %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

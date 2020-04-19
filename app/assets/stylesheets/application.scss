@@ -264,7 +264,7 @@ ul {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-top: 150px;
+  margin-top: 10%;
   text-align: center;
   color: #FFFFFF;
   background: linear-gradient(transparent 70%, #f92 70%);
@@ -284,7 +284,7 @@ ul {
   color: #000000;
   }
 
-.edit-btn{
+.edit-btn, .destroy-btn, .update-btn, .new-btn, .f_genre-btn, .t_genre-btn, .s_genre-btn{
   display: block;
   margin: auto;
   padding: 0.8em;
@@ -302,35 +302,9 @@ ul {
   color: #fff;
   }
 
-.destroy-btn{
-  display: block;
-  margin: auto;
-  width: 100%;
-  padding: 0.8em;
-  text-align: center;
-  border: 2px solid #03c;
-  border-radius: 30px;
-  transition: .4s;
-  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
-  font-size: 20px;
-  }
-
 .destroy-btn:hover {
   background: #bd4a2d;
   color: #fff;
-  }
-
-.update-btn{
-  display: block;
-  margin: auto;
-  width: 100%;
-  padding: 0.8em;
-  text-align: center;
-  border: 2px solid #03c;
-  border-radius: 30px;
-  transition: .4s;
-  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
-  font-size: 20px;
   }
 
 .update-btn:hover {
@@ -338,22 +312,24 @@ ul {
   color: #000000;
   }
 
-.new-btn{
-  display: block;
-  margin: auto;
-  padding: 0.8em;
-  text-align: center;
-  border: 2px solid #03c;
-  background: #eded76;
-  border-radius: 30px;
-  transition: .4s;
-  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
-  font-size: 20px;
-  }
-
 .new-btn:hover {
   background: #ffae00;
   color: #000000;
+  }
+
+.f_genre-btn:hover {
+  background: #f03939;
+  color: #fff;
+  }
+
+.t_genre-btn:hover {
+  background: #ff5e00;
+  color: #fff;
+  }
+
+.s_genre-btn:hover {
+  background: #ff40df;
+  color: #fff;
   }
 
 .withdraw{
@@ -608,7 +584,9 @@ a:active {
   color:#d3e0eb;
   }
 
-
+.genres_row{
+  margin: 10% 10% -10%;
+}
 
 
 
