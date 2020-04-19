@@ -57,6 +57,7 @@ body{
 
 td{
   vertical-align: middle !important;
+  text-align: center;
   }
 
 input[type="text"] {
@@ -740,9 +741,10 @@ a:active {
   position: relative;
   display: inline-block;
   border-radius: 50%;
-  width: 500px;
-  height: 500px;
+  width: 80%;
+  height: 80%;
   object-fit:cover;
+  margin: auto;
   }
 
 .image-point{
@@ -924,7 +926,7 @@ a:active {
   }
 
 .btn-footer{
-  margin: 150px auto 100px;
+  margin: 5% auto 5%;
   }
 
 .user-index-footer{
@@ -1046,6 +1048,47 @@ a:active {
   }
 
 
+
+//---------------------------------------
+// Food ページ ------------------------
+
+.food_index{
+  color: #FFFFFF;
+  font-size: 20px;
+  }
+
+.food_active{
+  text-align: center;
+  margin: 5% auto;
+  }
+
+.food_col{
+  margin: 5%;
+  height: 100%;
+  width: 40%;
+  text-align: center;
+  color: #FFFFFF;
+  }
+
+.food_title{
+  width: 40%;
+  }
+
+.food, .food_body{
+  display: flex;
+  }
+
+.food_colums{
+  margin: auto 5%;
+  }
+
+.food-img{
+  border-radius: 20%;
+  width: 50%;
+  height: 50%;
+  object-fit:cover;
+  margin: 10% auto;
+  }
 
 //---------------------------------------
 // GYM ページ ----------------------------

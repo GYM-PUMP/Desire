@@ -1,0 +1,36 @@
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">FOOD:</h2>
+		</div>
+	</div>
+	<div class="row">
+		<table class="table food_active">
+			<tr class="active food_active">
+				<th class="food_active">画像</th>
+				<th class="food_active">商品名</th>
+				<th class="food_active">カロリー</th>
+				<th class="food_active">タンパク質</th>
+				<th class="food_active">脂質</th>
+				<th class="food_active">炭水化物</th>
+				<th class="food_active">ジャンル</th>
+			</tr>
+		   <% @foods.each do |food| %>
+				<tr class="food_index">
+					<td><%= attachment_image_tag food, :food_image, size: "40x40", fallback: "no_image.jpg" %></td>
+					<td><%= link_to food.food_name, admins_food_path(food) %></td>
+					<td><%= food.ingestion_cal %>kcal</td>
+					<td><%= food.protein %>g</td>
+					<td><%= food.fat %>g</td>
+					<td><%= food.carb %>g</td>
+					<td><%= food.food_genre.food_genre_name %></td>
+				</tr>
+		    <% end %>
+		</table>
+		<%= paginate @foods %>
+	</div>
+	<div class="row btn-footer">
+		<%= link_to "NEW FOOD", new_admins_food_path,class: "new-btn" %>
+	</div>
+</div>
+

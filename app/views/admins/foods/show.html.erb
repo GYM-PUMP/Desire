@@ -1,0 +1,46 @@
+<div class="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">ARTICLE EDIT:</h2>
+		</div>
+	</div>
+	<div class = "food">
+		<div class="food_image">
+		 <%= attachment_image_tag @food, :food_image, size: "100x100", format: 'jpeg', class: "food-img", fallback: "no_image.jpg" %>
+		</div>
+
+		<div class="food_col">
+			<div class="food_body">
+				<h4 class="food_title">商品名</h4>
+				<h4 class="food_colums"><%= @food.food_name %></h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">商品説明</h4>
+				<h4 class="food_colums"><%= @food.food_content %></h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">カロリー</h4>
+				<h4 class="food_colums"><%= @food.ingestion_cal %>kcal</h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">タンパク質</h4>
+				<h4 class="food_colums"><%= @food.protein %>g</h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">脂質</h4>
+				<h4 class="food_colums"><%= @food.fat %>g</h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">炭水化物</h4>
+				<h4 class="food_colums"><%= @food.carb %>g</h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">ジャンル</h4>
+				<h4 class="food_colums"><%= @food.food_genre.food_genre_name %></h4>
+			</div>
+		</div>
+	</div>
+	<div class="row btn-footer">
+		<%= link_to "編集する", edit_admins_food_path, class: "edit-btn"%>
+	</div>
+</div>
