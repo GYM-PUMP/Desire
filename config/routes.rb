@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
 
-
-# ---------------------------------------------------
-
-# user #
+# user #--------------------------------------------
 
 # devise
   devise_for :users, controllers: {
@@ -21,7 +18,7 @@ Rails.application.routes.draw do
 
 
   namespace :users do
-    resources :users,only: [:show,:index,:edit,:update] do
+    resources :users,only: [:index, :edit, :show, :update] do
       resource :relationships,only: [:create,:destroy]
       member do
         get 'follow'
@@ -33,19 +30,28 @@ Rails.application.routes.draw do
       post "contact" => "homes#create"
     end
 
-    resources :supplements,only: [:show,:index] do
+    resources :supplements,only: [:index, :show] do
       resource :likes, only: [:create, :destroy]
       resource :comments, only: [:create, :destroy]
     end
 
-    resources :gyms,only: [:show,:index]  do
+    resources :gyms,only: [:index, :show]  do
       resource :comments, only: [:create, :destroy]
     end
-    resources :articles,only: [:show,:index]
+
+    resources :articles,only: [:index, :show]
+
+    resources :daily_cals, only: [:index, :create, :new, :show]
+    resources :foods, only: [:index, :show]
+    resources :trainings, only: [:index, :show]
+    resources :my_menus, only: [:index, :create, :update, :destroy] do
+      collection do
+        delete :destroy_all
+      end
+    end
   end
 # ---------------------------------------------------
-
-# admin #
+# admin----------------------------------------------
 
 # devise
   devise_for :admins, controllers: {
@@ -57,13 +63,18 @@ Rails.application.routes.draw do
 # 機能
 
   namespace :admins do
-    resources :users, only: [:show, :index, :edit, :update, :destroy]
-    resources :genres, only: [:create, :index, :edit, :update, :destroy]
-    resources :supplements, only: [:new,:show, :index, :edit, :update, :destroy, :create] do
+    resources :users, only: [:index, :edit, :show, :update, :destroy]
+    resources :foods, only: [:index, :create, :new, :edit, :show, :update]
+    resources :trainings, only: [:index, :create, :new, :edit, :show, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :food_genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :training_genres, only: [:index, :create, :edit, :update, :destroy]
+    resources :daily_cals, only: [:index, :show, :update]
+    resources :supplements, only: [:index, :create, :new, :edit, :show, :update, :destroy] do
       resource :comments, only: [:destroy]
     end
-    resources :articles, only: [:new, :create, :show, :index, :edit, :update, :destroy]
-    resources :gyms, only: [:index,:new,:create,:show,  :edit, :update, :destroy] do
+    resources :articles, only: [:index, :create, :new, :edit, :show, :update, :destroy]
+    resources :gyms, only: [:index, :create, :new, :edit, :show, :update, :destroy] do
       resource :comments, only: [:destroy]
     end
   end
