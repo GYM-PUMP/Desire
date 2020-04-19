@@ -1,0 +1,58 @@
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">TRAINING:</h2>
+		</div>
+	</div>
+	<div class = "row supple-quantity">
+		<% if params[:category].present? %>
+			<h2>
+				<%= @training_genre.training_genre_name %>
+				<span>(全<%= @trainings_quantity %>件)</span>
+			</h2>
+		<% else %>
+			<h2>ALL TRAINING<span>(全<%= @trainings_quantity %>件)</span></h2>
+		<% end %>
+	</div>
+		<div class="row">
+			<div class="col-xs-2 genre-sarch">
+			  <h3 class="sarch">SARCH:</h3>
+				<table class="genre-table">
+					 <tr>
+					 	 <td class="genre-names"><%= link_to "ALL TRAINING", admins_trainings_path %></td>
+					 </tr>
+		 		  <% @training_genres.each do |t_genre| %>
+	 				 <tr>
+						 <td class="genre-names">
+							<%= link_to admins_trainings_path(category: t_genre.training_genre_name) do %>
+								<%= t_genre.training_genre_name %>
+							<% end %>
+						 </td>
+					 </tr>
+		 		   <% end %>
+		 		</table>
+		    </div>
+		</div>
+	<div class="row">
+		<table class="table food_active">
+			<tr class="active food_active">
+				<th class="food_active">画像</th>
+				<th class="food_active">トレーニング</th>
+				<th class="food_active">消費カロリー</th>
+				<th class="food_active">ジャンル</th>
+			</tr>
+		   <% @trainings.each do |training| %>
+				<tr class="food_index">
+					<td><%= attachment_image_tag training, :training_image, size: "40x40", fallback: "no_image.jpg" %></td>
+					<td><%= link_to training.training_name, admins_training_path(training) %></td>
+					<td><%= training.consumed_cal %>kcal</td>
+					<td><%= training.training_genre.training_genre_name %></td>
+				</tr>
+		    <% end %>
+		</table>
+	</div>
+	<div class="row btn-footer">
+		<%= link_to "NEW FOOD", new_admins_training_path,class: "new-btn" %>
+	</div>
+</div>
+

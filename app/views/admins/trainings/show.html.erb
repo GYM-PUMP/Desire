@@ -1,0 +1,38 @@
+<div class="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">TRAINING SHOW:</h2>
+		</div>
+	</div>
+	<div class = "food">
+		<div class="food_image">
+		 <%= attachment_image_tag @training, :training_image, size: "100x100", format: 'jpeg', class: "food-img", fallback: "no_image.jpg" %>
+		</div>
+
+		<div class="food_col">
+			<div class="food_body">
+				<h4 class="food_title">トレ名</h4>
+				<h4 class="food_colums"><%= @training.training_name %></h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">説明</h4>
+				<h4 class="food_colums"><%= @training.training_content %></h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">消費カロリー</h4>
+				<h4 class="food_colums"><%= @training.consumed_cal %>kcal</h4>
+			</div>
+			<div class="food_body">
+				<h4 class="food_title">ジャンル</h4>
+				<h4 class="food_colums"><%= @training.training_genre.training_genre_name %></h4>
+			</div>
+		</div>
+	</div>
+	<div class="row youtube">
+		<iframe width="50%" height="400px" src="https://www.youtube.com/embed/<%= @training.movie_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+		</iframe>
+	</div>
+	<div class="row btn-footer">
+		<%= link_to "編集する", edit_admins_training_path, class: "edit-btn"%>
+	</div>
+</div>
