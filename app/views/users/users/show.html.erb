@@ -46,8 +46,8 @@
 		</div>
 <% end %>
 	<div class = "row image-point">
-		<% if @user.age == 0 %>
-			<% if @user == current_user %>
+		<% if @user == current_user %>
+			<% if @user.age == 0 %>
 				<% if @user.gender == true %>
 					<p class="wellcome">
 						ご登録ありがとうございます！！<br>
@@ -66,6 +66,11 @@
 					</p>
 				<% end %>
 			<% end %>
+			<div class = "row">
+				<div class="col-xs-4 col-xs-offset-4">
+					<%= link_to "MY LIST", users_my_menus_path(current_user), class: "f_genre-btn" %>
+				</div>
+			</div>
 		<% end %>
 	</div>
 		<div class = "row image-point">
