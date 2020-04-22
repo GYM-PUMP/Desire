@@ -1,0 +1,188 @@
+<div class="container">
+	<h3>情報確認</h3>
+	<div class="row">
+	    <table class="table table-bordered">
+		    <tr class="active">
+				<th class="food_active">食品名</th>
+				<th class="food_active">カロリー</th>
+				<th class="food_active">タンパク質</th>
+				<th class="food_active">脂質</th>
+				<th class="food_active">炭水化物</th>
+				<th class="food_active">数量</th>
+		    </tr>
+	        <% @my_menus.each do |menu| %>
+		        <% if menu.food.present? %>
+					<tr>
+						<td><%= menu.food&.food_name %><br><%= menu.food&.food_content %></td>
+						<td><%= menu.food&.ingestion_cal %>kcal</td>
+						<td><%= menu.food&.protein %>g</td>
+						<td><%= menu.food&.fat %>g</td>
+						<td><%= menu.food&.carb %></td>
+						<td><%= menu&.food_quantity %></td>
+							<% subingestion_cal = menu.food&.ingestion_cal.to_i * menu.food_quantity %>
+							<% @total_ingestion_cal += subingestion_cal %>
+							<% subprotein = menu.food&.protein.to_i * menu.food_quantity %>
+							<% @total_protein += subprotein %>
+							<% subfat = menu.food&.fat.to_i * menu.food_quantity %>
+							<% @total_fat += subfat %>
+							<% subcarb = menu.food&.carb.to_i * menu.food_quantity %>
+							<% @total_carb += subcarb %>
+					</tr>
+				<% end %>
+			<% end %>
+	    </table>
+	</div>
+	<div class="row">
+	    <table class="table table-bordered">
+		    <tr class="active">
+				<th class="food_active">トレーニング</th>
+				<th class="food_active">運動量</th>
+				<th class="food_active">消費カロリー</th>
+				<th class="food_active">セット数</th>
+		    </tr>
+	        <% @my_menus.each do |menu| %>
+	        	<% if menu.training.present? %>
+					<tr>
+						<td><%= menu.training&.training_name %></td>
+						<td><%= menu.training&.training_content %></td>
+						<td><%= menu.training&.consumption_cal %>kcal</td>
+						<td><%= menu&.training_quantity %></td>
+							<% subconsumption_cal = menu.training&.consumption_cal.to_i * menu.training_quantity %>
+							<% @total_consumption_cal += subconsumption_cal %>
+					</tr>
+	 	    	<% end %>
+	 	    <% end %>
+	    </table>
+	</div>
+	<div class="row">
+		<h3>あなたの1日の目安</h3>
+	</div>
+	<div class="row">
+	　　<% a = @user.total_ingestion_cal %>
+		<h4 class="col-xs-3 col-cal">総摂取<br>
+			<%= a["basal_metabolism"].round(0) %>Kcal
+		</h4>
+	</div>
+
+	<div class="row">
+		<h4 class="col-xs-2 pfc">
+			タンパク質量<br>
+			<%= a["protein"].round(0) %>g /
+			<%= (a["protein"] * 4).round(0) %>Kcal
+		</h4>
+		<h4 class="col-xs-2 pfc">
+			脂質量<br>
+			<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
+			<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
+		</h4>
+		<h4 class="col-xs-2 pfc">
+			炭水化物量<br>
+			<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
+			<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
+		</h4>
+	</div>
+	<div class="row">
+		<h3>今日の実績</h3>
+	</div>
+	<div class="row">
+		<h4 class="col-xs-3 col-cal">総摂取<br>
+			<%= @total_ingestion_cal %>Kcal
+		</h4>
+		<h4 class="col-xs-3 col-cal">総消費<br>
+			<%= @total_consumption_cal %>Kcal
+		</h4>
+	</div>
+
+	<div class="row">
+		<h4 class="col-xs-2 pfc">
+			タンパク質量<br>
+			<%= @total_protein %>g /
+			<%= @total_protein * 4 %>kcal
+		</h4>
+		<h4 class="col-xs-2 pfc">
+			脂質量<br>
+			<%= @total_fat %>g /
+			<%= @total_fat * 9 %>kcal
+		</h4>
+		<h4 class="col-xs-2 pfc">
+			炭水化物量<br>
+			<%= @total_carb %>g /
+			<%= @total_carb * 4 %>kcal
+		</h4>
+	</div>
+
+	<div class="row">
+		<h3>差異</h3>
+	</div>
+	<div class="row">
+		<h4 class="col-xs-3 col-cal">総摂取<br>
+			<% if ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) <= -1000 %>
+			<%= ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) %>kcal
+			<h4>いい感じですね！その調子</h4>
+
+			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) <= -500 %>
+			<%= ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) %>kcal
+			<h4>少し摂生し過ぎているかも知れません。もう少し食べよう！</h4>
+
+			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) <= -100 %>
+			<%= ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) %>kcal
+			<h4>もう少し栄養を取りましょう！筋肉が減ってしまします・・・ぴえん</h4>
+
+			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) >= 150 %>
+			<%= ((@total_ingestion_cal - @total_consumption_cal) - (a["basal_metabolism"].round(0))) %>kcal
+			<h4>あとちょっとだけ抑えて</h4>
+
+			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) >= 300 %>
+			<%= ((@total_ingestion_cal - @total_consumption_cal) - (a["basal_metabolism"].round(0))) %>kcal
+			<h4>少し食べ過ぎちゃったかな。もう少し身体を動かせばなんとかなる。</h4>
+
+			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) >= 1000 %>
+			<%= ((@total_ingestion_cal - @total_consumption_cal) - (a["basal_metabolism"].round(0))) %>kcal
+			<h4>時を戻そう・・・ぴえん</h4>
+            <% end %>
+		</h4>
+	</div>
+	<div class="row">
+		<h4 class="col-xs-2 pfc">
+			タンパク質量<br>
+			<% if a["protein"].round(0) - @total_protein < 0 %>
+			<%= a["protein"].round(0) - @total_protein %>g　不足
+			<% else %>
+			＋<%= a["protein"].round(0) - @total_protein %>g
+			 <% end %>
+		</h4>
+		<h4 class="col-xs-2 pfc">
+			脂質量<br>
+			<% if (a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat < 0 %>
+			<%= (a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat %>g　不足
+			<% else %>
+			<%= (a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat %>g
+			<% end %>
+		</h4>
+		<h4 class="col-xs-2 pfc">
+			炭水化物量<br>
+			<% if (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb < 0 %>
+			<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb %>g　不足
+			<% else %>
+			＋<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb %>g
+			 <% end %>
+		</h4>
+	</div>
+		<%= form_for(@daily_cal, url:users_daily_cals_path) do |f| %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<%= f.hidden_field :total_ingestion_cal, :value => @total_ingestion_cal %>
+			<%= f.hidden_field :total_protein, :value => @total_protein %>
+			<%= f.hidden_field :total_fat, :value => @total_fat %>
+			<%= f.hidden_field :total_carb, :value => @total_carb %>
+			<%= f.hidden_field :total_consumption_cal, :value => @total_consumption_cal %>
+			<%= f.hidden_field :weight, :value => @user.weight %>
+			<%#= f.hidden_field :result_cal, :value => @order.address %>
+			<%= f.hidden_field :limit_ingestion_cal, :value => a["basal_metabolism"].round(0) %>
+			<%= f.hidden_field :limit_protein, :value => a["protein"].round(0) %>
+			<%= f.hidden_field :limit_fat, :value => (a["basal_metabolism"] * 0.2 / 9).round(0) %>
+			<%= f.hidden_field :limit_carb, :value => (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>
+			<%= link_to "入力画面に戻る", users_my_menus_path(current_user), class: "btn-sm btn-primary" %>
+			<%= f.submit "確定する", class: "btn-sm btn-primary" %>
+		<% end %>
+	</div>
+</div>

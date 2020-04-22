@@ -33,8 +33,8 @@
 					<%= f.collection_select :training_genre_id, TrainingGenre.all, :id, :training_genre_name %>
 				</div>
 				<div class="field">
-					<%= f.label :consumed_cal, "カロリー" %><br />
-					<%= f.number_field :consumed_cal %>kcal
+					<%= f.label :consumption_cal, "カロリー" %><br />
+					<%= f.number_field :consumption_cal %>kcal
 				</div>
 				<div class="field">
 					<%= f.label :movie_url, "動画URL" %><br />

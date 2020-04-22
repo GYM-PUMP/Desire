@@ -40,19 +40,21 @@
 				<th class="food_active">トレーニング</th>
 				<th class="food_active">消費カロリー</th>
 				<th class="food_active">ジャンル</th>
+				<th class="food_active"></th>
 			</tr>
 		   <% @trainings.each do |training| %>
 				<tr class="food_index">
 					<td><%= attachment_image_tag training, :training_image, size: "40x40", fallback: "no_image.jpg" %></td>
 					<td><%= link_to training.training_name, admins_training_path(training) %></td>
-					<td><%= training.consumed_cal %>kcal</td>
+					<td><%= training.consumption_cal %>kcal</td>
 					<td><%= training.training_genre.training_genre_name %></td>
+					<td><%= link_to "DELETE",admins_training_path(training.id), method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %></td>
 				</tr>
 		    <% end %>
 		</table>
 	</div>
 	<div class="row btn-footer">
-		<%= link_to "NEW FOOD", new_admins_training_path,class: "new-btn" %>
+		<%= link_to "NEW TRAINING", new_admins_training_path,class: "new-btn" %>
 	</div>
 </div>
 

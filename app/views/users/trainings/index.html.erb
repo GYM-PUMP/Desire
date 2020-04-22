@@ -44,8 +44,8 @@
 		   <% @trainings.each do |training| %>
 				<tr class="food_index">
 					<td><%= attachment_image_tag training, :training_image, size: "40x40", fallback: "no_image.jpg" %></td>
-					<td><%= link_to training.training_name, admins_training_path(training) %></td>
-					<td><%= training.consumed_cal %>kcal</td>
+					<td><%= link_to training.training_name, users_training_path(training) %></td>
+					<td><%= training.consumption_cal %>kcal</td>
 					<td><%= training.training_genre.training_genre_name %></td>
 				</tr>
 		    <% end %>

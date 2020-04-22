@@ -20,7 +20,7 @@
 			</div>
 			<div class="food_body">
 				<h4 class="food_title">消費カロリー</h4>
-				<h4 class="food_colums"><%= @training.consumed_cal %>kcal</h4>
+				<h4 class="food_colums"><%= @training.consumption_cal %>kcal</h4>
 			</div>
 			<div class="food_body">
 				<h4 class="food_title">ジャンル</h4>
@@ -28,10 +28,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="row youtube">
-		<iframe width="50%" height="400px" src="https://www.youtube.com/embed/<%= @training.movie_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-		</iframe>
-	</div>
+    <% if @training.movie_url != ""  %>
+		<div class="row youtube">
+			<iframe width="50%" height="400px" src="https://www.youtube.com/embed/<%= @training.movie_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+			</iframe>
+		</div>
+    <% end %>
 	<div class="row btn-footer">
 		<%= link_to "編集する", edit_admins_training_path, class: "edit-btn"%>
 	</div>

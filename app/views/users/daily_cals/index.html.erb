@@ -1,0 +1,31 @@
+<div class="container">
+	<h3>履歴一覧</h3>
+	<table class="table table-bordered">
+		<tr class="active">
+			<th>履歴日時</th>
+			<th>体重</th>
+			<th>適正摂取カロリー</th>
+			<th>総摂取カロリー</th>
+			<th>総消費カロリー</th>
+			<th></th>
+		</tr>
+		<% @daily_cals.each do |dailycal| %>
+			<tr>
+				<td><%= dailycal.created_at.strftime("%Y/%m/%d") %></td>
+				<td>
+					<%= dailycal.weight %>
+				</td>
+				<td>
+					<%= dailycal.limit_ingestion_cal %>
+				</td>
+				<td>
+					<%= dailycal.total_ingestion_cal %>
+				</td>
+				<td>
+					<%= dailycal.total_consumption_cal %>
+				</td>
+				<td><%= link_to "表示する", users_daily_cal_path(dailycal.id), class:"btn btn-primary" %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

@@ -14,6 +14,7 @@
 				<th class="food_active">脂質</th>
 				<th class="food_active">炭水化物</th>
 				<th class="food_active">ジャンル</th>
+				<th class="food_active"></th>
 			</tr>
 		   <% @foods.each do |food| %>
 				<tr class="food_index">
@@ -24,6 +25,7 @@
 					<td><%= food.fat %>g</td>
 					<td><%= food.carb %>g</td>
 					<td><%= food.food_genre.food_genre_name %></td>
+					<td><%= link_to "DELETE",admins_food_path(food.id), method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %></td>
 				</tr>
 		    <% end %>
 		</table>

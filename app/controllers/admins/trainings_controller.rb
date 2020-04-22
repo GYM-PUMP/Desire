@@ -49,9 +49,15 @@ class Admins::TrainingsController < ApplicationController
 		end
 	end
 
+	def destroy
+	  training = Training.find(params[:id])
+	  training.destroy
+	  redirect_to admins_trainings_path
+	end
+
 
     private
 	def training_params
-		params.require(:training).permit(:training_genre_id, :training_name, :training_content, :training_image, :movie_url, :consumed_cal)
+		params.require(:training).permit(:training_genre_id, :training_name, :training_content, :training_image, :movie_url, :consumption_cal)
 	end
 end

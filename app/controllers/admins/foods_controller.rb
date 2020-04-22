@@ -38,6 +38,12 @@ class Admins::FoodsController < ApplicationController
 		end
 	end
 
+	def destroy
+	  food = Food.find(params[:id])
+	  food.destroy
+	  redirect_to admins_foods_path
+	end
+
 
     private
 	def food_params

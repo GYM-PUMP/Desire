@@ -67,8 +67,8 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :users, only: [:index, :edit, :show, :update, :destroy]
-    resources :foods, only: [:index, :create, :new, :edit, :show, :update]
-    resources :trainings, only: [:index, :create, :new, :edit, :show, :update]
+    resources :foods, only: [:index, :create, :new, :edit, :show, :update, :destroy]
+    resources :trainings, only: [:index, :create, :new, :edit, :show, :update, :destroy]
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :food_genres, only: [:index, :create, :edit, :update, :destroy]
     resources :training_genres, only: [:index, :create, :edit, :update, :destroy]

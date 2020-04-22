@@ -4,7 +4,6 @@ class Users::MyMenusController < ApplicationController
 	def index
 		@my_menus = MyMenu.where(user_id: current_user.id)
 		@daily_cal = DailyCal.new
-		@total_price = 0
 	end
 
 	def create
@@ -35,7 +34,7 @@ class Users::MyMenusController < ApplicationController
 		my_menus = MyMenu.where(user_id: current_user.id)
 	 	if my_menus.find_by(training_id: @my_menu.training_id).present?
 			my_menu = my_menus.find_by(training_id: @my_menu.training_id)
-			my_menu.quantity += @my_menu.quantity
+			my_menu.training_quantity += @my_menu.training_quantity
 			my_menu.save(my_menu_params)
 			redirect_to users_my_menus_path
     	else

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_070232) do
+ActiveRecord::Schema.define(version: 2020_04_22_135355) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -60,6 +60,10 @@ ActiveRecord::Schema.define(version: 2020_04_17_070232) do
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "limit_ingestion_cal"
+    t.integer "limit_protein"
+    t.integer "limit_fat"
+    t.integer "limit_carb"
   end
 
   create_table "food_genres", force: :cascade do |t|
@@ -152,21 +156,6 @@ ActiveRecord::Schema.define(version: 2020_04_17_070232) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "select_daily_cals", force: :cascade do |t|
-    t.integer "daily_cals_id"
-    t.integer "training_id"
-    t.integer "food_id"
-    t.integer "ingestion_cal"
-    t.integer "protein"
-    t.integer "fat"
-    t.integer "carb"
-    t.integer "consumption_cal"
-    t.integer "food_quantity"
-    t.integer "training_quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "supplements", force: :cascade do |t|
     t.integer "genre_id"
     t.string "item_name"
@@ -199,7 +188,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_070232) do
     t.text "training_content"
     t.string "training_image_id"
     t.string "movie_url"
-    t.integer "consumed_cal"
+    t.integer "consumption_cal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

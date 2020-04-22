@@ -296,6 +296,7 @@ ul {
   transition: .4s;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
+  width: 100%;
   }
 
 .edit-btn:hover {
@@ -741,8 +742,8 @@ a:active {
   position: relative;
   display: inline-block;
   border-radius: 50%;
-  width: 80%;
-  height: 80%;
+  width: 500px;
+  height: 500px;
   object-fit:cover;
   margin: auto;
   }
