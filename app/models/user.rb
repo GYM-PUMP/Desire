@@ -22,12 +22,7 @@ class User < ApplicationRecord
 
   attachment :image, destroy: false
 
-#google API ------------------
 
-  geocoded_by :address
-  after_validation :geocode
-
-#-------------------------------------------
 # validatesion -----------------------------
 
 validates :name, presence: true

@@ -80,16 +80,4 @@
 				<%= link_to "EDIT", edit_admins_user_path(@user), class: "e-btn"%>
 			<% end %>
 		</div>
-		<h2>map</h2>
-		<div id="map" style="width: 400px; height: 400px;"></div>
 	</div>
-
-<script>
-  handler = Gmaps.build("Google");
-  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setZoom(19);
-  });
-</script>
