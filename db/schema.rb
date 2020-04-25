@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_22_135355) do
+ActiveRecord::Schema.define(version: 2020_04_24_163723) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2020_04_22_135355) do
     t.integer "total_fat"
     t.integer "total_carb"
     t.integer "total_consumption_cal"
-    t.integer "result_cal"
     t.integer "weight"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -152,6 +151,16 @@ ActiveRecord::Schema.define(version: 2020_04_22_135355) do
   create_table "relationships", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "select_daily_cals", force: :cascade do |t|
+    t.integer "training_id"
+    t.integer "training_quantity"
+    t.integer "food_id"
+    t.integer "food_quantity"
+    t.integer "daily_cal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

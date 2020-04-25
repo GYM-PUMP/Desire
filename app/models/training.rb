@@ -1,6 +1,7 @@
 class Training < ApplicationRecord
 	belongs_to :training_genre
 	has_many :my_menus, dependent: :destroy
+	has_many :select_daily_cals
 	attachment :training_image
 
 	validates :training_name, presence: true
