@@ -4,7 +4,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
 	  t.integer :user_id
 	  t.integer :supplement_id
 	  t.text :body
-	  t.float :rate
+	  t.decimal :score, precision: 5, scale: 3
 	  t.timestamps
     end
   end

@@ -35,15 +35,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       t.timestamps null: false
       t.string :name
-      t.string :postal_code
-      t.text :address
-      t.integer :height
-      t.integer :age
-      t.boolean :gender
-      t.integer :weight
+      t.integer :height, default: 0, null: false
+      t.integer :age, default: 0, null: false
+      t.boolean :gender, default: true
+      t.integer :weight, default: 0, null: false
       t.integer :gym_id
       t.string :image_id
       t.boolean :user_status, default: true, null: false
+      t.float :movement, default: 1.2, null: false
     end
 
     add_index :users, :email,                unique: true

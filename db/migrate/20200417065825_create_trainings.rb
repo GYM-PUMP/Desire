@@ -6,7 +6,7 @@ class CreateTrainings < ActiveRecord::Migration[5.2]
     		t.text :training_content
     		t.string :training_image_id
     		t.string :movie_url
-    		t.integer :consumed_cal
+    		t.integer :consumption_cal
         t.timestamps
     end
   end
