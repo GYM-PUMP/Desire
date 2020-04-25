@@ -1,5 +1,5 @@
-<div class = "container item-container">
-	<div class = "row">
+<div class="container">
+	<div class="row">
 		<div class="col-xs-12 title-text">
 			<p class="subtitle">
 				  <span class="sub-menu">
@@ -9,52 +9,63 @@
 			</p>
 		</div>
 	</div>
-	<div class = "food">
-		<div class="food_img">
-		 	<%= attachment_image_tag @food, :food_image, size: "100x100", format: 'jpeg', class: "food-img", fallback: "no_image.jpg" %>
-		</div>
-
-		<div class="food_col">
-			<div class="food_body">
-				<h4 class="food_title">商品名</h4>
-				<h4 class="food_colums"><%= @food.food_name %></h4>
+		<div class="oya">
+			<div class="fitem_col">
+				<div class="item_body">
+					<div class="item_title">
+			 		<%= attachment_image_tag @food, :food_image, format: 'jpeg', class: "fitem_img", fallback: "no_image.jpg" %>
+					</div>
+				</div>
 			</div>
-			<div class="food_body">
-				<h4 class="food_title">商品説明</h4>
-				<h4 class="food_colums"><%= @food.food_content %></h4>
+			<div class="fitem_col">
+				<div class="item_body">
+					<h4 class="item_title"><span class="description">商品名</span> /
+						<%= @food.food_name %>
+					</h4>
+				</div>
+				<div class="item_body">
+					<h4 class="item_title"><span class="description">内容</span> /
+						<%= @food.food_content %>
+					</h4>
+				</div>
+				<div class="item_body">
+					<h4 class="item_title"><span class="description">ジャンル</span> /
+						<%= @food.food_genre.food_genre_name %>
+					</h4>
+				</div>
+				<div class="item_body">
+					<h4 class="item_title"><span class="description">カロリー</span> /
+						<%= @food.ingestion_cal %>kcal
+					</h4>
+				</div>
+				<div class="item_body">
+					<h4 class="item_title"><span class="description">タンパク質</span> /
+						<%= @food.protein %>g
+					</h4>
+				</div>
+				<div class="item_body">
+					<h4 class="item_title"><span class="description">脂質</span> /
+						<%= @food.fat %>g
+					</h4>
+				</div>
+				<div class="item_body">
+					<h4 class="item_title"><span class="description">炭水化物</span> /
+						<%= @food.carb %>g
+					</h4>
+				</div>
+				<div class="item_body">
+					<div class="item_title">
+						<%= form_for(@my_menu, url:users_my_menus_path) do |f| %>
+							<%= f.number_field :food_quantity, placeholder: "個数" %>
+							<%= f.hidden_field :food_id, :value => @food.id %>
+							<% if user_signed_in? %>
+								<%= f.hidden_field :user_id, :value => current_user.id %>
+							<% end %>
+							<%= f.submit "リストに追加", class: "btn-sm btn-primary" %>
+						<% end %>
+					</div>
+				</div>
 			</div>
-			<div class="food_body">
-				<h4 class="food_title">カロリー</h4>
-				<h4 class="food_colums"><%= @food.ingestion_cal %>kcal</h4>
-			</div>
-			<div class="food_body">
-				<h4 class="food_title">タンパク質</h4>
-				<h4 class="food_colums"><%= @food.protein %>g</h4>
-			</div>
-			<div class="food_body">
-				<h4 class="food_title">脂質</h4>
-				<h4 class="food_colums"><%= @food.fat %>g</h4>
-			</div>
-			<div class="food_body">
-				<h4 class="food_title">炭水化物</h4>
-				<h4 class="food_colums"><%= @food.carb %>g</h4>
-			</div>
-			<div class="food_body">
-				<h4 class="food_title">ジャンル</h4>
-				<h4 class="food_colums"><%= @food.food_genre.food_genre_name %></h4>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-3 col-xs-offset-8">
-			<%= form_for(@my_menu, url:users_my_menus_path) do |f| %>
-				<%= f.number_field :food_quantity, placeholder: "個数選択" %>
-				<%= f.hidden_field :food_id, :value => @food.id %>
-				<% if user_signed_in? %>
-					<%= f.hidden_field :user_id, :value => current_user.id %>
-				<% end %>
-				<%= f.submit "リストに追加", class: "btn-sm btn-primary" %>
-			<% end %>
 		</div>
 	</div>
 </div>

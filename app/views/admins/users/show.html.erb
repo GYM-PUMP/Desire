@@ -1,7 +1,7 @@
-<% if @user.gender == true %>
-	<div class ="container men-container">
-		<div class = "row">
-			<div class="col-xs-12 title-text">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 title-text">
+			<% if @user.gender == true %>
 				<p class="men-subtitle">
 				    Step up your Body with Heart
 					  <span class="men-menu">
@@ -9,12 +9,7 @@
 					  </span>
 				    &mdash; no  Muscle no Change &mdash;
 				</p>
-			</div>
-		</div>
-<% else %>
-		<div class ="container women-container">
-		<div class = "row">
-			<div class="col-xs-12 title-text">
+			<% else %>
 				<p class="women-subtitle">
 				  　Beautiful Mind and Body
 					  <span class="women-menu">
@@ -22,59 +17,57 @@
 					  </span>
 				  　&mdash; most beautiful in the world &mdash;
 				</p>
-			</div>
-		</div>
-<% end %>
-		<div class = "row image-point">
-			<div class="col-xs-6 image-pos">
-				<% if @user.gender == true %>
-					 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "man-no-image.png" %>
-				<% else %>
-					 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "woman-no-image.png" %>
-				<% end %>
-			</div>
-				<div class="col-xs-6 user-body">
-					<div class="row user-show-body">
-						<h4 class="col-xs-6 col-name">NAME: <strong><%= @user.name %></strong></h4>
-					</div>
-					<div class="row user-show-body">
-						<h4 class="col-xs-6 col-col">AGE: <%= @user.age %>  /  <%= @user.height %>cm  /  <%= @user.weight %>kg</h4>
-					</div>
-
-					<div class="row user-show-body">
-						<h4 class="col-xs-3 col-cal">基礎代謝<br>
-							<%= @user.basal_metabolism.round(0) %>Kcal
-						</h4>
-							<% a = @user.total_ingestion_cal %>
-						<h4 class="col-xs-3 col-cal">総摂取<br>
-							<%= a["basal_metabolism"].round(0) %>Kcal
-						</h4>
-					</div>
-
-					<div class="row user-show-body">
-						<h4 class="col-xs-2 pfc">
-							タンパク質量<br>
-							<%= a["protein"].round(0) %>g /
-							<%= (a["protein"] * 4).round(0) %>Kcal
-						</h4>
-						<h4 class="col-xs-2 pfc">
-							脂質量<br>
-							<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
-							<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
-						</h4>
-						<h4 class="col-xs-2 pfc">
-							炭水化物量<br>
-							<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
-							<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
-						</h4>
-					</div>
-				</div>
-			</div>
-		<div class="row btn-footer">
-			<% if @user.gender == true %>
-				<%= link_to "EDIT", edit_admins_user_path(@user), class: "men-e-btn"%>
-			<% else %>
-				<%= link_to "EDIT", edit_admins_user_path(@user), class: "e-btn"%>
 			<% end %>
 		</div>
 	</div>
+	<div class = "row image-point">
+		<div class="col-xs-6 image-pos">
+			<% if @user.gender == true %>
+				 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "man-no-image.png" %>
+			<% else %>
+				 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "woman-no-image.png" %>
+			<% end %>
+		</div>
+		<div class="col-xs-6 user-body">
+			<div class="row user-show-body">
+				<h4 class="col-xs-6 col-name">NAME: <strong><%= @user.name %></strong></h4>
+			</div>
+			<div class="row user-show-body">
+				<h4 class="col-xs-6 col-col">AGE: <%= @user.age %>  /  <%= @user.height %>cm  /  <%= @user.weight %>kg</h4>
+			</div>
+			<div class="row user-show-body">
+				<h4 class="col-xs-3 col-cal">基礎代謝<br>
+					<%= @user.basal_metabolism.round(0) %>Kcal
+				</h4>
+					<% a = @user.total_ingestion_cal %>
+				<h4 class="col-xs-3 col-cal">総摂取<br>
+					<%= a["basal_metabolism"].round(0) %>Kcal
+				</h4>
+			</div>
+			<div class="row user-show-body">
+				<h4 class="col-xs-2 pfc">
+					タンパク質量<br>
+					<%= a["protein"].round(0) %>g /
+					<%= (a["protein"] * 4).round(0) %>Kcal
+				</h4>
+				<h4 class="col-xs-2 pfc">
+					脂質量<br>
+					<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
+					<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
+				</h4>
+				<h4 class="col-xs-2 pfc">
+					炭水化物量<br>
+					<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
+					<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
+				</h4>
+			</div>
+		</div>
+	</div>
+	<div class="row btn-footer">
+		<% if @user.gender == true %>
+			<%= link_to "EDIT", edit_admins_user_path(@user), class: "men-e-btn"%>
+		<% else %>
+			<%= link_to "EDIT", edit_admins_user_path(@user), class: "e-btn"%>
+		<% end %>
+	</div>
+</div>

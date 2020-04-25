@@ -4,7 +4,7 @@
 			<h2 class="elementor-heading-title">SPULEMENT:</h2>
 		</div>
 	</div>
-	<div class = "row supple-quantity">
+	<div class = "row select-item">
 		<% if params[:category].present? %>
 			<h2>
 				<%= @genre.genre_name %>
@@ -41,7 +41,6 @@
 							<%= attachment_image_tag supplement, :supple_image, :fill, 200, 200, format: 'jpeg' %>
 							<div class="caption">
 								<p class="text-over"><%= supplement.item_name.truncate(10) %></p>
-								<p class="text-over"><%= supplement.description.truncate(10) %></p>
 								<p class="text-over">￥<%= supplement.price %></p>
 								<p class="text-over"><%= supplement.maker.truncate(10) %></p>
 								<p class="text-over"><%= supplement.genre.genre_name.truncate(10) %></p>

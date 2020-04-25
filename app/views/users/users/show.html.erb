@@ -1,8 +1,8 @@
-<% if @user.gender == true %>
-	<div class ="container men-container">
-		<div class = "row">
-			<div class="col-xs-12 title-text">
-				<% if @user == current_user %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 title-text">
+			<% if @user == current_user %>
+			  	<% if @user.gender == true %>
 					<p class="men-subtitle">
 					  Step up your Body with Heart
 					  <span class="men-menu">
@@ -11,21 +11,6 @@
 					  &mdash; no  Muscle no Change &mdash;
 					</p>
 				<% else %>
-					<p class="men-subtitle">
-						  Step up your Body with Heart
-						  <span class="men-menu">
-						    <%= @user.name %>::
-						  </span>
-						  &mdash; no  Muscle no Change &mdash;
-					</p>
-				<% end %>
-			</div>
-		</div>
-<% else %>
-	<div class ="container women-container">
-		<div class = "row">
-			<div class="col-xs-12 title-text">
-				<% if @user == current_user %>
 					<p class="women-subtitle">
 					  Beautiful Mind and Body
 					  <span class="women-menu">
@@ -33,22 +18,32 @@
 					  </span>
 					  &mdash; most beautiful in the world &mdash;
 					</p>
+				<% end %>
+			<% else %>
+			  	<% if @user.gender == true %>
+					<p class="men-subtitle">
+					  Step up your Body with Heart
+					  <span class="men-menu">
+					    <%= @user.name %>::
+					  </span>
+					  &mdash; no  Muscle no Change &mdash;
+					</p>
 				<% else %>
 					<p class="women-subtitle">
-						  Beautiful Mind and Body
-						  <span class="women-menu">
-						    <%= @user.name %>::
-						  </span>
-						  &mdash; most beautiful in the world &mdash;
+					  Beautiful Mind and Body
+					  <span class="women-menu">
+					    <%= @user.name %>::
+					  </span>
+					  &mdash; most beautiful in the world &mdash;
 					</p>
 				<% end %>
-			</div>
+			<% end %>
 		</div>
-<% end %>
+	</div>
   <% if @user == current_user %>
      <% if @user.age == 0 %>
 	    <% if @user.gender == true %>
-		  <div class = "row image-point">
+		  <div class="row image-point">
 			<p class="wellcome">
 				ご登録ありがとうございます！！<br>
 				一緒に素敵な身体を作り上げましょう！！<br>
@@ -57,6 +52,7 @@
 				入力するとあなたにピッタリの数値が出ますよ！
 			</p>
 	    <% else %>
+	      <div class="row image-point">
 			<p class="wellcome">
 				ご登録ありがとうございます！！<br>
 				一緒に素敵な身体を作り上げましょうね！！<br>
@@ -68,7 +64,7 @@
 	    <% end %>
      <% end %>
 		<div class = "row image-point">
-			<div class="col-xs-4 col-xs-offset-4">
+			<div class="col-xs-6 col-xs-offset-3">
 				<%= link_to "MY MENU", users_daily_cals_path, class: "f_genre-btn" %>
 			</div>
 		</div>
@@ -133,13 +129,13 @@
 			<% end %>
 		</div>
 	</div>
-		<div class="row btn-footer">
-			<% if @user == current_user %>
-				<% if @user.gender == true %>
-					<%= link_to "EDIT", edit_users_user_path(@user), class: "men-e-btn"%>
-				<% else %>
-					<%= link_to "EDIT", edit_users_user_path(@user), class: "e-btn"%>
-				<% end %>
+	<div class="row btn-footer">
+		<% if @user == current_user %>
+			<% if @user.gender == true %>
+				<%= link_to "EDIT", edit_users_user_path(@user), class: "men-e-btn"%>
+			<% else %>
+				<%= link_to "EDIT", edit_users_user_path(@user), class: "e-btn"%>
 			<% end %>
-		</div>
+		<% end %>
 	</div>
+</div>

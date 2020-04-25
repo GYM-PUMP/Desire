@@ -1,5 +1,5 @@
-<div class = "container item-container">
-	<div class = "row">
+<div class="container">
+	<div class="row">
 		<div class="col-xs-12 title-text">
 			<p class="subtitle">
 				  <span class="sub-menu">
@@ -79,12 +79,15 @@
 		    </table>
 		</div>
 	<% end %>
-	<div class="row select-item">
-		<div class="col-xs-4 col-xs-offset-4">
-			<%= link_to '記録を保存', new_users_daily_cal_path, data: {"turbolinks" => false}, :class => 'new-btn' %>
+	<% if @my_menus.empty? %>
+	<% else %>
+		<div class="row select-item">
+			<div class="col-xs-4 col-xs-offset-4">
+				<%= link_to '記録を保存', new_users_daily_cal_path, data: {"turbolinks" => false}, :class => 'new-btn' %>
+			</div>
+			<div class="col-xs-2 col-xs-offset-2">
+				<%= link_to "リストを空に",destroy_all_users_my_menus_path, method: :delete, class: "destroy-btn" %>
+			</div>
 		</div>
-		<div class="col-xs-2 col-xs-offset-2">
-			<%= link_to "リストを空に",destroy_all_users_my_menus_path, method: :delete, class: "destroy-btn" %>
-		</div>
-	</div>
+	<% end %>
 </div>
