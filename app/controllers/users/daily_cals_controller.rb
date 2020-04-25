@@ -9,6 +9,14 @@ before_action :authenticate_user!
 	def create
 		daily_cal = DailyCal.new(daily_cal_params)
 		if 	daily_cal.save
+			current_user.my_menus.each do | item |
+					select_daily_cal = SelectDailyCal.new(daily_cal_id: daily_cal.id)
+					select_daily_cal.food_id = item.food_id
+					select_daily_cal.training_id = item.training_id
+					select_daily_cal.training_quantity = item.training_quantity
+					select_daily_cal.food_quantity = item.food_quantity
+					select_daily_cal.save
+				end
 			current_user.my_menus.destroy_all
 			redirect_to users_daily_cal_path(daily_cal.id)
 		else

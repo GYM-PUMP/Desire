@@ -1,31 +1,51 @@
-<div class="container">
-	<h3>履歴一覧</h3>
-	<table class="table table-bordered">
-		<tr class="active">
-			<th>履歴日時</th>
-			<th>体重</th>
-			<th>適正摂取カロリー</th>
-			<th>総摂取カロリー</th>
-			<th>総消費カロリー</th>
-			<th></th>
-		</tr>
-		<% @daily_cals.each do |dailycal| %>
-			<tr>
-				<td><%= dailycal.created_at.strftime("%Y/%m/%d") %></td>
-				<td>
-					<%= dailycal.weight %>
-				</td>
-				<td>
-					<%= dailycal.limit_ingestion_cal %>
-				</td>
-				<td>
-					<%= dailycal.total_ingestion_cal %>
-				</td>
-				<td>
-					<%= dailycal.total_consumption_cal %>
-				</td>
-				<td><%= link_to "表示する", users_daily_cal_path(dailycal.id), class:"btn btn-primary" %></td>
-			</tr>
-		<% end %>
-	</table>
+<div class = "container item-container">
+	<div class = "row">
+		<div class="col-xs-12 title-text">
+			<p class="subtitle">
+				  <span class="sub-menu">
+				  	DAILY HISTORY:
+				  </span>
+			  	&mdash; Eat well and Move well. &mdash;
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<%= link_to "今日の実績を作成", users_my_menus_path, class: "f_genre-btn" %>
+		</div>
+	</div>
+	<% if @daily_cals.empty? %>
+	    <h2 class="no-variable">※履歴がありません</h2>
+	<% else %>
+		<div class="row select-item">
+			<table class="table table-bordered">
+				<tr class="food-tr">
+					<th class="food_active">履歴日時</th>
+					<th class="food_active">体重</th>
+					<th class="food_active">適正摂取カロリー</th>
+					<th class="food_active">総摂取カロリー</th>
+					<th class="food_active">総消費カロリー</th>
+					<th class="food_active">詳細</th>
+				</tr>
+				<% @daily_cals.each do |dailycal| %>
+					<tr>
+						<td><%= dailycal.created_at.strftime("%Y/%m/%d") %></td>
+						<td>
+							<%= dailycal.weight %> kg
+						</td>
+						<td>
+							<%= dailycal.limit_ingestion_cal %> kcal
+						</td>
+						<td>
+							<%= dailycal.total_ingestion_cal %> kcal
+						</td>
+						<td>
+							<%= dailycal.total_consumption_cal %> kcal
+						</td>
+						<td><%= link_to "詳細", users_daily_cal_path(dailycal.id), class:"btn btn-primary" %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	<% end %>
 </div>

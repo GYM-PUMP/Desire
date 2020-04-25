@@ -1,8 +1,18 @@
-<div class="container">
-	<h3>情報確認</h3>
-	<div class="row">
+<div class = "container item-container">
+	<div class = "row">
+		<div class="col-xs-12 title-text">
+			<p class="subtitle">
+				  <span class="sub-menu">
+				  	DAILY HISTORY:
+				  </span>
+			  	&mdash; Eat well and Move well. &mdash;
+			</p>
+		</div>
+	</div>
+	<div class="row select-item">
+	  <h4 class="f-title">食べ物</h4>
 	    <table class="table table-bordered">
-		    <tr class="active">
+		    <tr class="food-tr">
 				<th class="food_active">食品名</th>
 				<th class="food_active">カロリー</th>
 				<th class="food_active">タンパク質</th>
@@ -32,9 +42,10 @@
 			<% end %>
 	    </table>
 	</div>
-	<div class="row">
+	<div class="row select-item">
+	  <h4 class="t-title">トレーニング</h4>
 	    <table class="table table-bordered">
-		    <tr class="active">
+		    <tr class="tre-tr">
 				<th class="food_active">トレーニング</th>
 				<th class="food_active">運動量</th>
 				<th class="food_active">消費カロリー</th>
@@ -54,120 +65,99 @@
 	 	    <% end %>
 	    </table>
 	</div>
-	<div class="row">
-		<h3>あなたの1日の目安</h3>
+	<% a = @user.total_ingestion_cal %>
+	<div class="history">
+		<div class="d-history">
+			<h4 class="h-title">あなたの1日の目安</h4>
+			<div class="achievement">
+				<h4 class="pfc">総摂取 /
+					<%= a["basal_metabolism"].round(0) %>Kcal
+				</h4>
+			</div>
+			<h4 class="pfc">
+				タンパク質量<br>
+				<%= a["protein"].round(0) %>g /
+				<%= (a["protein"] * 4).round(0) %>Kcal
+			</h4>
+			<h4 class="pfc">
+				脂質量<br>
+				<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
+				<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
+			</h4>
+			<h4 class="pfc">
+				炭水化物量<br>
+				<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
+				<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
+			</h4>
+		</div>
+		<div class="d-history">
+		  <h4 class="h-title">今日の実績</h4>
+			<div class="achievement">
+				<h4 class="pfc">総摂取 /
+					<%= @total_ingestion_cal %>Kcal
+				</h4>
+				<h4 class="pfc">総消費 /
+					<%= @total_consumption_cal %>Kcal
+				</h4>
+		    </div>
+			<h4 class="pfc">
+				タンパク質量<br>
+				<%= @total_protein %>g /
+				<%= @total_protein * 4 %>kcal
+			</h4>
+			<h4 class="pfc">
+				脂質量<br>
+				<%= @total_fat %>g /
+				<%= @total_fat * 9 %>kcal
+			</h4>
+			<h4 class="pfc">
+				炭水化物量<br>
+				<%= @total_carb %>g /
+				<%= @total_carb * 4 %>kcal
+			</h4>
+			<h4 class="pfc">
+				体重<br>
+				<%= @user.weight %>kg
+			</h4>
+		</div>
+		<div class="d-history">
+		  <h4 class="h-title">差異</h4>
+			<h4 class="pfc">総摂取 /
+				<% if ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) < 0 %>
+					<%= ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) - (((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal))) * 2 %>kcal 過剰
+					<h4>おかし食べたでしょ？</h4>
+				<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) > 0 %>
+					<%= ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) %>kcal 不足
+					<h4>ちゃんと食べよう！筋肉が減っちゃうよ。。。ぴえん</h4>
+	            <% end %>
+			</h4>
+			<h4 class="pfc">
+				タンパク質量<br>
+				<% if a["protein"].round(0) - @total_protein < 0 %>
+					<%= (a["protein"].round(0) - @total_protein) - (((a["protein"].round(0) - @total_protein)) * 2) %>g　過剰
+				<% else %>
+					<%= a["protein"].round(0) - @total_protein %>g  不足
+				 <% end %>
+			</h4>
+			<h4 class="pfc">
+				脂質量<br>
+				<% if (a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat < 0 %>
+				<%= ((a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat) - (((a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat) *2 ) %>g　過剰
+				<% else %>
+				<%= (a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat %>g　不足
+				<% end %>
+			</h4>
+			<h4 class="pfc">
+				炭水化物量<br>
+				<% if (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb < 0 %>
+				<%= ((((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb) - (((((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb)) * 2 %>g　過剰
+				<% else %>
+				<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb %>g  不足
+				 <% end %>
+			</h4>
+		</div>
 	</div>
 	<div class="row">
-	　　<% a = @user.total_ingestion_cal %>
-		<h4 class="col-xs-3 col-cal">総摂取<br>
-			<%= a["basal_metabolism"].round(0) %>Kcal
-		</h4>
-	</div>
-
-	<div class="row">
-		<h4 class="col-xs-2 pfc">
-			タンパク質量<br>
-			<%= a["protein"].round(0) %>g /
-			<%= (a["protein"] * 4).round(0) %>Kcal
-		</h4>
-		<h4 class="col-xs-2 pfc">
-			脂質量<br>
-			<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
-			<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
-		</h4>
-		<h4 class="col-xs-2 pfc">
-			炭水化物量<br>
-			<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
-			<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
-		</h4>
-	</div>
-	<div class="row">
-		<h3>今日の実績</h3>
-	</div>
-	<div class="row">
-		<h4 class="col-xs-3 col-cal">総摂取<br>
-			<%= @total_ingestion_cal %>Kcal
-		</h4>
-		<h4 class="col-xs-3 col-cal">総消費<br>
-			<%= @total_consumption_cal %>Kcal
-		</h4>
-	</div>
-
-	<div class="row">
-		<h4 class="col-xs-2 pfc">
-			タンパク質量<br>
-			<%= @total_protein %>g /
-			<%= @total_protein * 4 %>kcal
-		</h4>
-		<h4 class="col-xs-2 pfc">
-			脂質量<br>
-			<%= @total_fat %>g /
-			<%= @total_fat * 9 %>kcal
-		</h4>
-		<h4 class="col-xs-2 pfc">
-			炭水化物量<br>
-			<%= @total_carb %>g /
-			<%= @total_carb * 4 %>kcal
-		</h4>
-	</div>
-
-	<div class="row">
-		<h3>差異</h3>
-	</div>
-	<div class="row">
-		<h4 class="col-xs-3 col-cal">総摂取<br>
-			<% if ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) <= -1000 %>
-			<%= ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) %>kcal
-			<h4>いい感じですね！その調子</h4>
-
-			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) <= -500 %>
-			<%= ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) %>kcal
-			<h4>少し摂生し過ぎているかも知れません。もう少し食べよう！</h4>
-
-			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) <= -100 %>
-			<%= ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) %>kcal
-			<h4>もう少し栄養を取りましょう！筋肉が減ってしまします・・・ぴえん</h4>
-
-			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) >= 150 %>
-			<%= ((@total_ingestion_cal - @total_consumption_cal) - (a["basal_metabolism"].round(0))) %>kcal
-			<h4>あとちょっとだけ抑えて</h4>
-
-			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) >= 300 %>
-			<%= ((@total_ingestion_cal - @total_consumption_cal) - (a["basal_metabolism"].round(0))) %>kcal
-			<h4>少し食べ過ぎちゃったかな。もう少し身体を動かせばなんとかなる。</h4>
-
-			<% elsif ((a["basal_metabolism"].round(0)) - (@total_ingestion_cal - @total_consumption_cal)) >= 1000 %>
-			<%= ((@total_ingestion_cal - @total_consumption_cal) - (a["basal_metabolism"].round(0))) %>kcal
-			<h4>時を戻そう・・・ぴえん</h4>
-            <% end %>
-		</h4>
-	</div>
-	<div class="row">
-		<h4 class="col-xs-2 pfc">
-			タンパク質量<br>
-			<% if a["protein"].round(0) - @total_protein < 0 %>
-			<%= a["protein"].round(0) - @total_protein %>g　不足
-			<% else %>
-			＋<%= a["protein"].round(0) - @total_protein %>g
-			 <% end %>
-		</h4>
-		<h4 class="col-xs-2 pfc">
-			脂質量<br>
-			<% if (a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat < 0 %>
-			<%= (a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat %>g　不足
-			<% else %>
-			<%= (a["basal_metabolism"] * 0.2 / 9).round(0) - @total_fat %>g
-			<% end %>
-		</h4>
-		<h4 class="col-xs-2 pfc">
-			炭水化物量<br>
-			<% if (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb < 0 %>
-			<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb %>g　不足
-			<% else %>
-			＋<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) - @total_carb %>g
-			 <% end %>
-		</h4>
-	</div>
 		<%= form_for(@daily_cal, url:users_daily_cals_path) do |f| %>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
 			<%= f.hidden_field :total_ingestion_cal, :value => @total_ingestion_cal %>
@@ -176,13 +166,12 @@
 			<%= f.hidden_field :total_carb, :value => @total_carb %>
 			<%= f.hidden_field :total_consumption_cal, :value => @total_consumption_cal %>
 			<%= f.hidden_field :weight, :value => @user.weight %>
-			<%#= f.hidden_field :result_cal, :value => @order.address %>
 			<%= f.hidden_field :limit_ingestion_cal, :value => a["basal_metabolism"].round(0) %>
 			<%= f.hidden_field :limit_protein, :value => a["protein"].round(0) %>
 			<%= f.hidden_field :limit_fat, :value => (a["basal_metabolism"] * 0.2 / 9).round(0) %>
 			<%= f.hidden_field :limit_carb, :value => (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>
-			<%= link_to "入力画面に戻る", users_my_menus_path(current_user), class: "btn-sm btn-primary" %>
-			<%= f.submit "確定する", class: "btn-sm btn-primary" %>
+			<%= f.submit "確定する", class: "ok-btn" %>
+			<%= link_to "入力画面に戻る", users_my_menus_path(current_user), class: "destroy-btn" %>
 		<% end %>
 	</div>
 </div>
