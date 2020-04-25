@@ -603,16 +603,6 @@ a:active {
 //-----------------------------------------
 // USER PAGE ------------------------------
 
-.men-container{
-  width: 100%;
-  background-color: #3cf;
-  }
-
-.women-container{
-  width: 100%;
-  background-color: #FF69B4;
-  }
-
 .unfollow-btn {
   display: inline-block;
   text-decoration: none;
@@ -756,7 +746,7 @@ a:active {
   }
 
 .image-point{
-  margin-top: 150px;
+  margin: 6% auto 0%;
   }
 
 .image-pos{
@@ -888,7 +878,7 @@ a:active {
 
 .e-btn{
   display: block;
-  margin: 15%;
+  margin: 5% 20%;
   padding: 0.8em;
   text-align: center;
   color: #EC407A;
@@ -897,6 +887,7 @@ a:active {
   transition: .4s;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
+  background-color: #f14c4c;
   }
 
 .e-btn:hover {
@@ -906,15 +897,15 @@ a:active {
 
 .men-e-btn{
   display: block;
-  margin: 15%;
+  margin: 5% 20%;
   padding: 0.8em;
   text-align: center;
-  color: #03c;
-  border: 2px solid #03c;
+  border: 2px solid #009dcc;
   border-radius: 25px;
   transition: .4s;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
+  background-color: #4c9df1;
   }
 
 .men-e-btn:hover {
@@ -1181,7 +1172,7 @@ a:active {
 //---------------------------------------
 // GYM ページ ----------------------------
 
-.gym-container, .supple-container, .item-container{
+.gym-container, .supple-container, .item-container, .men-container, .women-container{
   width: 100%;
   }
 

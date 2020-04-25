@@ -47,15 +47,6 @@
 				<%= f.label :name %>
 				<%= f.text_field :name, class: "name" %>
 			</div>
-
-			<div class="field">
-				<%= f.label :postal_code %>
-				<%= f.text_field :postal_code, class: "postal_code" %>
-			</div>
-			<div class="field">
-				<%= f.label :address %>
-				<%= f.text_field :address, class: "address" %>
-			</div>
 			<div class="field">
 				<%= f.label :age %>
 				<%= f.text_field :age, class: "age" %>
@@ -75,10 +66,12 @@
 				</span>
 			</div>
 			<div class="row">
-				<div class="col-xs-3 col-xs-offset-3">
+				<div class="col-xs-4 col-xs-offset-4">
 					<%= f.submit "UPDATE", class: "update-btn" %>
 				</div>
-				<div class="col-xs-3">
+			</div>
+			<div class="row image-point">
+				<div class="col-xs-2 col-xs-offset-5">
 					<%= link_to "退会", withdraw_users_user_path(@user), class: "destroy-btn" %>
 				</div>
 			</div>

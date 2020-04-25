@@ -1,25 +1,27 @@
 <div class ="container">
-		<div class = "row">
-			<div class="col-xs-8 col-xs-offset-2">
-				<h2 class="elementor-heading-title">WITHDRAW:</h2>
-				<h2 class="really">Really？</h2>
-				<p class="think">
-					あなたの身体は登録以前より変化がありましたか？<br>
-					変化が無いままやめようとしているのであればそれはお勧めしない。<br>
-					今一度考え直して欲しい。あなたは何のために身体づくりをしているのか、、、<br>
-					身体を変えるという事はあなたの心をも変えてくれるだろう。そしてあなたの今後の人生が大きく変わる。<br>
-					幸せならこのまま退会しても大丈夫でしょう。<br>
-					しかしそうでないなら今からでも遅くは無い。身体を一緒に動かそう！！！！！<br>
-					さあ、おかえりなさい。
-				</p>
-			</div>
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">WITHDRAW:</h2>
+			<h2 class="really">Really？</h2>
+			<p class="think">
+				あなたの身体は登録以前より変化がありましたか？<br>
+				変化が無いままやめようとしているのであればそれはお勧めしない。<br>
+				今一度考え直して欲しい。あなたは何のために身体づくりをしているのか、、、<br>
+				身体を変えるという事はあなたの心をも変えてくれるだろう。そしてあなたの今後の人生が大きく変わる。<br>
+				幸せならこのまま退会しても大丈夫でしょう。<br>
+				しかしそうでないなら今からでも遅くは無い。身体を一緒に動かそう！！！！！<br>
+				さあ、おかえりなさい。
+			</p>
 		</div>
-		<div class="row withdraw">
-			<div class="col-xs-4 col-xs-offset-2">
-				<%= link_to "COME BACK MUST MUSCLE", users_user_path(@user), class: "update-btn" %>
-			</div>
-			<div class="col-xs-4">
-				<%= button_to "Good-bye", status_change_users_user_path(@user), {method: :patch, params: {user_status: "false"}, class: "destroy-btn"} %>
-			</div>
+	</div>
+	<div class="row withdraw">
+		<div class="col-xs-4 col-xs-offset-4">
+			<%= link_to "COME BACK MUST MUSCLE", users_user_path(@user), class: "update-btn" %>
 		</div>
+	</div>
+	<div class="row image-point">
+		<div class="col-xs-2 col-xs-offset-5">
+			<%= button_to "Good-bye", status_change_users_user_path(@user), {method: :patch, params: {user_status: "false"}, class: "destroy-btn"} %>
+		</div>
+	</div>
 </div>

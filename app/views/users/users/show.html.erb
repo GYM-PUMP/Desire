@@ -14,7 +14,7 @@
 					<p class="men-subtitle">
 						  Step up your Body with Heart
 						  <span class="men-menu">
-						    USER SHOW::
+						    <%= @user.name %>::
 						  </span>
 						  &mdash; no  Muscle no Change &mdash;
 					</p>
@@ -37,7 +37,7 @@
 					<p class="women-subtitle">
 						  Beautiful Mind and Body
 						  <span class="women-menu">
-						    USER SHOW::
+						    <%= @user.name %>::
 						  </span>
 						  &mdash; most beautiful in the world &mdash;
 					</p>
@@ -45,117 +45,101 @@
 			</div>
 		</div>
 <% end %>
-	<div class = "row image-point">
-		<% if @user == current_user %>
-			<% if @user.age == 0 %>
-				<% if @user.gender == true %>
-					<p class="wellcome">
-						ご登録ありがとうございます！！<br>
-						一緒に素敵な身体を作り上げましょうね！！<br>
-						まずは体重や身長、あとは年齢を<br><span class="user-edit">↓コチラから↓</span>
-						<%= link_to "EDIT", edit_users_user_path(@user), class: "men-e-btn"%><br>
-						入力するとあなたにピッタリの数値が出ますよ！
-					</p>
-				<% else %>
-					<p class="wellcome">
-						ご登録ありがとうございます！！<br>
-						一緒に素敵な身体を作り上げましょうね！！<br>
-						まずは体重や身長、あとは年齢を<br><span class="user-edit">↓コチラから↓</span>
-						<%= link_to "EDIT", edit_users_user_path(@user), class: "e-btn"%><br>
-						入力するとあなたにピッタリの数値が出ますよ！
-					</p>
-				<% end %>
-			<% end %>
-			<div class = "row">
-				<div class="col-xs-4 col-xs-offset-4">
-					<%= link_to "MY MENU", users_daily_cals_path, class: "f_genre-btn" %>
-				</div>
-			</div>
-			<div class = "row">
-				<div class="col-xs-6 col-xs-offset-3">
-					<h4 class="menu-word">食べた物・トレーニングした内容を保存しましょう！</h4>
-				</div>
-			</div>
-		<% end %>
-	</div>
+  <% if @user == current_user %>
+     <% if @user.age == 0 %>
+	    <% if @user.gender == true %>
+		  <div class = "row image-point">
+			<p class="wellcome">
+				ご登録ありがとうございます！！<br>
+				一緒に素敵な身体を作り上げましょう！！<br>
+				まずは体重や身長、あとは年齢を<br><span class="user-edit">↓まずコチラから↓</span>
+				<%= link_to "EDIT", edit_users_user_path(@user), class: "men-e-btn"%><br>
+				入力するとあなたにピッタリの数値が出ますよ！
+			</p>
+	    <% else %>
+			<p class="wellcome">
+				ご登録ありがとうございます！！<br>
+				一緒に素敵な身体を作り上げましょうね！！<br>
+				まずは体重や身長、あとは年齢を<br><span class="user-edit">↓まずコチラから↓</span>
+				<%= link_to "EDIT", edit_users_user_path(@user), class: "e-btn"%><br>
+				入力するとあなたにピッタリの数値が出ますよ！
+			</p>
+		  </div>
+	    <% end %>
+     <% end %>
 		<div class = "row image-point">
-			<div class="col-xs-6 image-pos">
-				<% if @user.gender == true %>
-					 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "man-no-image.png" %>
-				<% else %>
-					 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "woman-no-image.png" %>
+			<div class="col-xs-4 col-xs-offset-4">
+				<%= link_to "MY MENU", users_daily_cals_path, class: "f_genre-btn" %>
+			</div>
+		</div>
+		<div class = "row">
+			<div class="col-xs-6 col-xs-offset-3">
+				<h4 class="menu-word">食べた物・トレーニングした内容を保存しましょう！</h4>
+			</div>
+		</div>
+  <% end %>
+	<div class = "row image-point">
+	  <div class="col-xs-6 image-pos">
+		<% if @user.gender == true %>
+			 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "man-no-image.png" %>
+		<% else %>
+			 <%= attachment_image_tag @user, :image, class: "profile-img", fallback: "woman-no-image.png" %>
+		<% end %>
+	  </div>
+		<div class="col-xs-6 user-body">
+			<div class="row user-show-body">
+				<h4 class="col-xs-6 col-name">NAME: <strong><%= @user.name %></strong></h4>
+				<% if current_user.id != @user.id %>
+					<% if current_user.following?(@user) %>
+						<%= link_to 'UN FOLLOW', users_user_relationships_path(@user.id), method: :DELETE, class: "follow-btn" %>
+					<% else %>
+					 	<%= link_to 'FOLLOW', users_user_relationships_path(@user.id), method: :POST, class: "unfollow-btn" %>
+					<% end %>
 				<% end %>
 			</div>
-				<div class="col-xs-6 user-body">
-					<div class="row user-show-body">
-						<h4 class="col-xs-6 col-name">NAME: <strong><%= @user.name %></strong></h4>
-						<% if current_user.id != @user.id %>
-							<% if current_user.following?(@user) %>
-								<%= link_to 'UN FOLLOW', users_user_relationships_path(@user.id), method: :DELETE, class: "follow-btn" %>
-							<% else %>
-							 	<%= link_to 'FOLLOW', users_user_relationships_path(@user.id), method: :POST, class: "unfollow-btn" %>
-							<% end %>
-						<% end %>
-					</div>
-					<div class="row user-show-body">
-						<h4 class="col-xs-6 col-col">AGE: <%= @user.age %>  /  <%= @user.height %>cm  /  <%= @user.weight %>kg</h4>
-					</div>
-
-					<div class="row user-show-body">
-						<h4 class="col-xs-3 col-cal">基礎代謝<br>
-							<%= @user.basal_metabolism.round(0) %>Kcal
-						</h4>
-							<% a = @user.total_ingestion_cal %>
-						<h4 class="col-xs-3 col-cal">総摂取<br>
-							<%= a["basal_metabolism"].round(0) %>Kcal
-						</h4>
-					</div>
-
-					<div class="row user-show-body">
-						<h4 class="col-xs-2 pfc">
-							たんぱく質量<br>
-							<%= a["protein"].round(0) %>g /
-							<%= (a["protein"] * 4).round(0) %>Kcal
-						</h4>
-						<h4 class="col-xs-2 pfc">
-							脂質量<br>
-							<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
-							<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
-						</h4>
-						<h4 class="col-xs-2 pfc">
-							炭水化物量<br>
-							<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
-							<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
-						</h4>
-					</div>
-					<div class="row hosoku">
-						<p>1日あたりの目安です。<br>運動量によって数値が変動するのでスタイルに合わせて設定してね。</p>
-					</div>
-				</div>
+			<div class="row user-show-body">
+				<h4 class="col-xs-6 col-col">AGE: <%= @user.age %>  /  <%= @user.height %>cm  /  <%= @user.weight %>kg</h4>
 			</div>
-			<div class="row show-footer">
-				<div class="col-xs-4 col-xs-offset-4">
-					<% if @user == current_user %>
-						<% if @user.gender == true %>
-							<%= link_to "EDIT", edit_users_user_path(@user), class: "men-e-btn"%>
-						<% else %>
-							<%= link_to "EDIT", edit_users_user_path(@user), class: "e-btn"%>
-						<% end %>
-					<% end %>
-				</div>
+			<div class="row user-show-body">
+				<h4 class="col-xs-3 col-cal">基礎代謝<br>
+					<%= @user.basal_metabolism.round(0) %>Kcal
+				</h4>
+					<% a = @user.total_ingestion_cal %>
+				<h4 class="col-xs-3 col-cal">総摂取<br>
+					<%= a["basal_metabolism"].round(0) %>Kcal
+				</h4>
+			</div>
+			<div class="row user-show-body">
+				<h4 class="col-xs-2 pfc">
+					たんぱく質量<br>
+					<%= a["protein"].round(0) %>g /
+					<%= (a["protein"] * 4).round(0) %>Kcal
+				</h4>
+				<h4 class="col-xs-2 pfc">
+					脂質量<br>
+					<%= (a["basal_metabolism"] * 0.2 / 9).round(0) %>g /
+					<%= (a["basal_metabolism"] * 0.2).round(0) %>Kcal
+				</h4>
+				<h4 class="col-xs-2 pfc">
+					炭水化物量<br>
+					<%= (((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)) / 4).round(0) %>g /
+					<%= ((a["basal_metabolism"]) - (a["protein"] * 4) - (a["basal_metabolism"] * 0.2)).round(0) %>Kcal
+				</h4>
 			</div>
 			<% if @user == current_user %>
-				<h2>map</h2>
-				<div id="map" style="width: 400px; height: 400px;"></div>
+				<div class="row hosoku">
+					<p>1日あたりの目安です。<br>運動量によって数値が変動するのでスタイルに合わせて設定してね。</p>
+				</div>
 			<% end %>
+		</div>
 	</div>
-
-	<script>
-	  handler = Gmaps.build("Google");
-	  handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-	    markers = handler.addMarkers(<%= raw @hash.to_json %>);
-	    handler.bounds.extendWith(markers);
-	    handler.fitMapToBounds();
-	    handler.getMap().setZoom(19);
-	  });
-	</script>
+		<div class="row btn-footer">
+			<% if @user == current_user %>
+				<% if @user.gender == true %>
+					<%= link_to "EDIT", edit_users_user_path(@user), class: "men-e-btn"%>
+				<% else %>
+					<%= link_to "EDIT", edit_users_user_path(@user), class: "e-btn"%>
+				<% end %>
+			<% end %>
+		</div>
+	</div>
