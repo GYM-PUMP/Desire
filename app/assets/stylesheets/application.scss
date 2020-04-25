@@ -30,7 +30,7 @@
  $gothic: 'arial narrow';
 
 
-// 全体 --------------------------------
+// 全体 -----------------------------------------
 
 body{
   background: linear-gradient(#000000, #000000);
@@ -60,7 +60,7 @@ td{
   text-align: center;
   }
 
-input[type="text"] {
+input[type="text"], input[type="email"], input[type="password"] {
   width: 300px;
   height: 40px;
   left: 100px;
@@ -68,16 +68,8 @@ input[type="text"] {
   font-family:'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
   }
 
-  input[type="email"] {
-  width: 300px;
-  height: 40px;
-  left: 100px;
-  color: #000000;
-  font-family:'Sylfaen','Hiragino Kaku Gothic Std',sans-serif;
-  }
-
-input[type="password"] {
-  width: 300px;
+  input[type="number"] {
+  width: 100px;
   height: 40px;
   left: 100px;
   color: #000000;
@@ -290,13 +282,31 @@ ul {
   margin: auto;
   padding: 0.8em;
   text-align: center;
-  border: 2px solid #03c;
-  background-color: #d1d1d1;
+  border: 2px solid #fbf284;
+  background-color: #1e294c;
   border-radius: 30px;
   transition: .4s;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
   width: 100%;
+  }
+
+  .ok-btn{
+  display: block;
+  padding: 0.8em;
+  text-align: center;
+  color: #EC407A;
+  border: 2px solid #EC407A;
+  border-radius: 25px;
+  transition: .4s;
+  font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
+  font-size: 20px;
+  width: 100%;
+  }
+
+.ok-btn:hover {
+  background: #EC407A;
+  color: #fff;
   }
 
 .edit-btn:hover {
@@ -305,7 +315,7 @@ ul {
   }
 
 .destroy-btn:hover {
-  background: #bd4a2d;
+  background: #cc0041;
   color: #fff;
   }
 
@@ -378,7 +388,7 @@ a:active {
   color: #ff8000;
   }
 
-//---------------------------------------
+//------------------------------------------
 // TOPページ --------------------------------
 
 .top-word{
@@ -572,10 +582,6 @@ a:active {
       height:5em;
       }
    }
-
-//-----------------------------------------
-
-
 
 //-----------------------------------------
 // genre ページ ----------------------------
@@ -787,14 +793,7 @@ a:active {
   border-radius: 1% 1% 50% 10%/90%;
   }
 
-.pfc{
-  font-size: 23px;
-  width: 200px;
-  padding: 0;
-  vertical-align: middle !important;
-  background: linear-gradient(transparent 94%, #05b5c5 30%);
-  border-radius: 1% 1% 50% 10%/90%;
-  }
+
 
 .user-show-body{
   margin: 30px auto;
@@ -888,14 +887,12 @@ a:active {
 
 .e-btn{
   display: block;
-  width: 30%;
-  margin: auto;
+  margin: 15%;
   padding: 0.8em;
   text-align: center;
-  text-decoration: none;
   color: #EC407A;
   border: 2px solid #EC407A;
-  border-radius: 3px;
+  border-radius: 25px;
   transition: .4s;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
@@ -908,14 +905,12 @@ a:active {
 
 .men-e-btn{
   display: block;
-  width: 30%;
-  margin: auto;
+  margin: 15%;
   padding: 0.8em;
   text-align: center;
-  text-decoration: none;
   color: #03c;
   border: 2px solid #03c;
-  border-radius: 3px;
+  border-radius: 25px;
   transition: .4s;
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   font-size: 20px;
@@ -940,7 +935,103 @@ a:active {
   padding: 0;
   }
 
-//-------------------------------------------
+.menu-word{
+  color: #ffffff;
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Osaka','Hannotate SC',sans-serif;
+  }
+
+//------------------------------------------
+//mymenu(daily_cal含む) ページ -----------------------------
+
+  .select-item{
+    margin: 4% auto;
+    color: #ffffff;
+    width: 80%;
+    font-size: 20px;
+    font-family: 'Hannotate SC',sans-serif;
+    }
+
+  .food-tr{
+    color:#000;
+    background-color: #f03939;
+    }
+
+  .tre-tr{
+    color:#000;
+    background-color: #ff5e00;
+    }
+
+  .table-bordered{
+    border: solid 2px #f08000;
+    }
+
+  .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td{
+    border: 2px solid #f08000;
+    }
+
+  .f-title, .t-title{
+    display: block;
+    margin: 1% 0;
+    padding: 0.8em;
+    text-align: center;
+    border: 2px solid #fbf284;
+    background-color: #f0393a;
+    border-radius: 10px;
+    transition: .4s;
+    font-size: 20px;
+    width: 15%;
+    font-family: 'Hannotate SC',sans-serif;
+    }
+
+  .h-title{
+    display: block;
+    margin: auto;
+    padding: 0.8em;
+    text-align: center;
+    border: 2px solid #fbf284;
+    background-color: #f0393a;
+    border-radius: 10px;
+    transition: .4s;
+    font-size: 20px;
+    font-family: 'Hannotate SC',sans-serif;
+    }
+
+  .d-history{
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    margin: 3%;
+    font-family: 'Hannotate SC',sans-serif;
+    }
+
+  .pfc {
+    font-size: 23px;
+    width: 200px;
+    padding: 0;
+    vertical-align: middle !important;
+    background: linear-gradient(transparent 94%, #05b5c5 30%);
+    border-radius: 1% 1% 50% 10%/90%;
+    text-align: center;
+    margin: 5% auto;
+    }
+
+  .no-variable{
+    font-family: 'Hannotate SC',sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 60px;
+    margin: 10%;
+    }
+
+  .strong-choose{
+    font-size: 60px;
+    font-family: 'Hannotate SC',sans-serif;
+    color: red;
+    }
+
+//------------------------------------------
 //articleページ -----------------------------
 
 .strong-text{
@@ -1053,11 +1144,6 @@ a:active {
 //---------------------------------------
 // Food ページ ------------------------
 
-.food_index{
-  color: #FFFFFF;
-  font-size: 20px;
-  }
-
 .food_active{
   text-align: center;
   margin: 5% auto;
@@ -1075,7 +1161,7 @@ a:active {
   width: 40%;
   }
 
-.food, .food_body{
+.food, .food_body, .history, .achievement{
   display: flex;
   }
 
@@ -1094,7 +1180,7 @@ a:active {
 //---------------------------------------
 // GYM ページ ----------------------------
 
-.gym-container{
+.gym-container, .supple-container, .item-container{
   width: 100%;
   }
 
@@ -1255,10 +1341,6 @@ a:active {
   font-family:'Impact','Hiragino Kaku Gothic Std',sans-serif;
   }
 
-.supple-container{
-  width: 100%;
-  }
-
 .genre-table{
   margin: 0 auto;
   }
@@ -1341,8 +1423,7 @@ a:active {
   right: 0;
   }
 
-.signup-btn:hover:before,
-.signup-btn:hover:after {
+.signup-btn:hover:before, .signup-btn:hover:after {
   width: 0;
   background-color: #FFF;
   }
