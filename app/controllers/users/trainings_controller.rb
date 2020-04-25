@@ -3,6 +3,7 @@ class Users::TrainingsController < ApplicationController
 	before_action :current_user, except: [:index,:show]
 
 	def index
+		@my_menu = MyMenu.new
 		@trainings = Training.page(params[:page]).reverse_order.per(10)
 		@training_genres = TrainingGenre.all
 		if params[:category].present?

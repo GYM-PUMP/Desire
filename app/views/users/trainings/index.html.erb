@@ -1,10 +1,15 @@
-<div class ="container">
+<div class = "container item-container">
 	<div class = "row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h2 class="elementor-heading-title">TRAINING:</h2>
+		<div class="col-xs-12 title-text">
+			<p class="subtitle">
+				  <span class="sub-menu">
+				  	TRAINING:
+				  </span>
+			  	&mdash; Train and get a healthy body. &mdash;
+			</p>
 		</div>
 	</div>
-	<div class = "row supple-quantity">
+	<div class="row select-item">
 		<% if params[:category].present? %>
 			<h2>
 				<%= @training_genre.training_genre_name %>
@@ -13,18 +18,16 @@
 		<% else %>
 			<h2>ALL TRAINING<span>(全<%= @trainings_quantity %>件)</span></h2>
 		<% end %>
-	</div>
-		<div class="row">
 			<div class="col-xs-2 genre-sarch">
 			  <h3 class="sarch">SARCH:</h3>
 				<table class="genre-table">
 					 <tr>
-					 	 <td class="genre-names"><%= link_to "ALL TRAINING", admins_trainings_path %></td>
+					 	 <td class="genre-names"><%= link_to "ALL TRAINING", users_trainings_path %></td>
 					 </tr>
 		 		  <% @training_genres.each do |t_genre| %>
 	 				 <tr>
 						 <td class="genre-names">
-							<%= link_to admins_trainings_path(category: t_genre.training_genre_name) do %>
+							<%= link_to users_trainings_path(category: t_genre.training_genre_name) do %>
 								<%= t_genre.training_genre_name %>
 							<% end %>
 						 </td>
@@ -32,24 +35,33 @@
 		 		   <% end %>
 		 		</table>
 		    </div>
-		</div>
-	<div class="row">
-		<table class="table food_active">
-			<tr class="active food_active">
-				<th class="food_active">画像</th>
-				<th class="food_active">トレーニング</th>
-				<th class="food_active">消費カロリー</th>
-				<th class="food_active">ジャンル</th>
-			</tr>
-		   <% @trainings.each do |training| %>
-				<tr class="food_index">
-					<td><%= attachment_image_tag training, :training_image, size: "40x40", fallback: "no_image.jpg" %></td>
-					<td><%= link_to training.training_name, users_training_path(training) %></td>
-					<td><%= training.consumption_cal %>kcal</td>
-					<td><%= training.training_genre.training_genre_name %></td>
+		<div class="col-xs-10">
+			<table class="table food_active">
+				<tr class="tre-tr">
+					<th class="food_active">画像</th>
+					<th class="food_active">トレーニング</th>
+					<th class="food_active">消費カロリー</th>
+					<th class="food_active">ジャンル</th>
+					<th class="food_active" colspan="2">セット数</th>
 				</tr>
-		    <% end %>
-		</table>
+			    <% @trainings.each do |training| %>
+					<tr>
+						<td><%= attachment_image_tag training, :training_image, size: "40x40", fallback: "no_image.jpg" %></td>
+						<td><%= link_to training.training_name, users_training_path(training) %></td>
+						<td><%= training.consumption_cal %>kcal</td>
+						<td><%= training.training_genre.training_genre_name %></td>
+					  <%= form_for(@my_menu, url:training_users_my_menu_path(current_user), method: :post) do |f| %>
+						<td><%= f.number_field :training_quantity, placeholder: "セット数" %></td>
+						<%= f.hidden_field :training_id, :value => training.id %>
+					  <% if user_signed_in? %>
+							<%= f.hidden_field :user_id, :value => current_user.id %>
+					  <% end %>
+						<td><%= f.submit "リストに追加", class: "btn-sm btn-primary" %></td>
+					  <% end %>
+					</tr>
+			    <% end %>
+			</table>
+		</div>
 	</div>
 </div>
 

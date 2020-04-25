@@ -68,7 +68,12 @@
 			<% end %>
 			<div class = "row">
 				<div class="col-xs-4 col-xs-offset-4">
-					<%= link_to "MY LIST", users_my_menus_path, class: "f_genre-btn" %>
+					<%= link_to "MY MENU", users_daily_cals_path, class: "f_genre-btn" %>
+				</div>
+			</div>
+			<div class = "row">
+				<div class="col-xs-6 col-xs-offset-3">
+					<h4 class="menu-word">食べた物・トレーニングした内容を保存しましょう！</h4>
 				</div>
 			</div>
 		<% end %>
@@ -108,7 +113,7 @@
 
 					<div class="row user-show-body">
 						<h4 class="col-xs-2 pfc">
-							タンパク質量<br>
+							たんぱく質量<br>
 							<%= a["protein"].round(0) %>g /
 							<%= (a["protein"] * 4).round(0) %>Kcal
 						</h4>
@@ -129,13 +134,15 @@
 				</div>
 			</div>
 			<div class="row show-footer">
-				<% if @user == current_user %>
-					<% if @user.gender == true %>
-						<%= link_to "EDIT", edit_users_user_path(@user), class: "men-e-btn"%>
-					<% else %>
-						<%= link_to "EDIT", edit_users_user_path(@user), class: "e-btn"%>
+				<div class="col-xs-4 col-xs-offset-4">
+					<% if @user == current_user %>
+						<% if @user.gender == true %>
+							<%= link_to "EDIT", edit_users_user_path(@user), class: "men-e-btn"%>
+						<% else %>
+							<%= link_to "EDIT", edit_users_user_path(@user), class: "e-btn"%>
+						<% end %>
 					<% end %>
-				<% end %>
+				</div>
 			</div>
 			<% if @user == current_user %>
 				<h2>map</h2>
