@@ -12,10 +12,6 @@
 					<h3>GYM:</h3>
 					<h4 class="col-xs-12"><%= gym.gym_name %></h4>
 				</div>
-
-				<h2>map</h2>
-				<div id="map" style="width: 400px; height: 400px;"></div>
-
 				<div class="row admin-item">
 					<h4 class="col-xs-12"><%= gym.description %></h4>
 				</div>
@@ -25,6 +21,8 @@
 						<h4 class="col-xs-12"><a href="<%= gym.gym_url %>" target="_blank">リンク</a></h4>
 					<% end %>
 				</div>
+				<h2>map</h2>
+				<div id="map" style="width: 400px; height: 400px;"></div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
@@ -36,7 +34,7 @@
 <script>
   handler = Gmaps.build("Google");
   handler.buildMap({ provider: {}, internal: {id: "map"}}, function(){
-    markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    markers = handler.addMarkers(<%= raw hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
     handler.getMap().setZoom(19);

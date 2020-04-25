@@ -18,7 +18,7 @@
 							</div>
 						</button>
 					</div>
-					<%= render 'show', {gym: gym} %>
+					<%= render 'show', {gym: gym, hash: @hash} %>
 		       		<%= link_to "EDIT", edit_admins_gym_path(gym.id), class: "edit-btn" %>
 		        	<%= link_to "DELETE",admins_gym_path(gym.id), method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %>
 	  			</div>
