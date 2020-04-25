@@ -1,22 +1,28 @@
-<div class ="container">
+<div class = "container item-container">
 	<div class = "row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h2 class="elementor-heading-title">FOODS:</h2>
+		<div class="col-xs-12 title-text">
+			<p class="subtitle">
+				  <span class="sub-menu">
+				  	FOOD:
+				  </span>
+			  	&mdash; Eating is making the body. &mdash;
+			</p>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row select-item">
 		<table class="table food_active">
-			<tr class="active food_active">
-				<th class="food_active">画像</th>
+			<tr class="food-tr">
+				<th class="food_active"></th>
 				<th class="food_active">商品名</th>
 				<th class="food_active">カロリー</th>
 				<th class="food_active">タンパク質</th>
 				<th class="food_active">脂質</th>
 				<th class="food_active">炭水化物</th>
 				<th class="food_active">ジャンル</th>
+				<th class="food_active" colspan="2">数量</th>
 			</tr>
 		   <% @foods.each do |food| %>
-				<tr class="food_index">
+				<tr>
 					<td><%= attachment_image_tag food, :food_image, size: "40x40", fallback: "no_image.jpg" %></td>
 					<td><%= link_to food.food_name, users_food_path(food) %></td>
 					<td><%= food.ingestion_cal %>kcal</td>
@@ -24,6 +30,14 @@
 					<td><%= food.fat %>g</td>
 					<td><%= food.carb %>g</td>
 					<td><%= food.food_genre.food_genre_name %></td>
+				　<%= form_for(@my_menu, url:users_my_menus_path) do |f| %>
+					<td><%= f.number_field :food_quantity, placeholder: "個数選択" %></td>
+					<%= f.hidden_field :food_id, :value => food.id %>
+				　<% if user_signed_in? %>
+					<%= f.hidden_field :user_id, :value => current_user.id %>
+				　<% end %>
+					<td><%= f.submit "リストに追加", class: "btn-sm btn-primary" %></td>
+			<% end %>
 				</tr>
 		    <% end %>
 		</table>

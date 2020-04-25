@@ -3,6 +3,7 @@ class Users::FoodsController < ApplicationController
 	before_action :current_user, except: [:index,:show]
 
 	def index
+		@my_menu = MyMenu.new
 		@foods = Food.page(params[:page]).reverse_order.per(10)
 		@food_genres = FoodGenre.all
 		if params[:category].present?
