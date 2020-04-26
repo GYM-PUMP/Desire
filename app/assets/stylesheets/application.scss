@@ -58,6 +58,7 @@ body{
 td{
   vertical-align: middle !important;
   text-align: center;
+  white-space: nowrap;
   }
 
 input[type="text"], input[type="email"], input[type="password"] {
@@ -94,7 +95,7 @@ label{
   }
 
 select{
-  width: 100%;
+  width: 50%;
   }
 
 //-----------------------------------------
@@ -933,7 +934,6 @@ a:active {
   .select-item{
     margin: 4% auto;
     color: #ffffff;
-    width: 80%;
     font-size: 20px;
     font-family: 'Hannotate SC',sans-serif;
     }
