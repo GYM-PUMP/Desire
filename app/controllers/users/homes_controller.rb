@@ -4,6 +4,7 @@ class Users::HomesController < ApplicationController
 
   def top
     @popular_articles = Article.order('impressions_count DESC').take(8)
+    @training = Training.where(params[:id])
   end
 
   def about

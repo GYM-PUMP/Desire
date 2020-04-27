@@ -8,7 +8,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :contacts, dependent: :destroy
-
   has_many :my_menus, dependent: :destroy
   has_many :daily_cals, dependent: :destroy
 
