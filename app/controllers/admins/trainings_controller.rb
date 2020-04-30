@@ -58,6 +58,6 @@ class Admins::TrainingsController < ApplicationController
 
     private
 	def training_params
-		params.require(:training).permit(:training_genre_id, :training_name, :training_content, :training_image, :movie_url, :consumption_cal)
+		params.require(:training).permit(:user_id, :training_genre_id, :training_name, :training_content, :training_image, :movie_url, :consumption_cal)
 	end
 end

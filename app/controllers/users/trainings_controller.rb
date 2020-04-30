@@ -4,7 +4,7 @@ class Users::TrainingsController < ApplicationController
 
 	def index
 		@my_menu = MyMenu.new
-		@trainings = Training.page(params[:page]).reverse_order.per(10)
+		@trainings = Training.where(user: current_user).or(Training.where(create_admin: true)).order(id: :desc).page(params[:page]).per(10)
 		@training_genres = TrainingGenre.all
 		if params[:category].present?
 			# もしcategoryにデータが入っている場合

@@ -3,6 +3,7 @@ class Users::MyMenusController < ApplicationController
 
 	def index
 		@my_menus = MyMenu.where(user_id: current_user.id)
+		@my_menu = MyMenu.all
 		@daily_cal = DailyCal.new
 	end
 
@@ -26,13 +27,33 @@ class Users::MyMenusController < ApplicationController
 	 	end
 	end
 
+	def new
+		@training = Training.new
+	end
+
+	def selftraining
+		@training = Training.new(training_params)
+		@training.create_admin = false
+		@training.user_id = current_user.id
+		@training.training_genre_id = 2
+		if  @training.save
+			@my_menu = MyMenu.new
+			@my_menu.user_id = current_user.id
+			@my_menu.training_id = @training.id
+			@my_menu.save
+			redirect_to users_my_menus_path
+		else
+			render 'new'
+		end
+	end
+
 	def training
 		@training_genres = TrainingGenre.all
 		@my_menu = MyMenu.new(my_menu_params)
 		@my_menu.user_id = current_user.id
 		@training = Training.find(@my_menu.training_id)
 		my_menus = MyMenu.where(user_id: current_user.id)
-	 	if my_menus.find_by(training_id: @my_menu.training_id).present?
+	 	if  my_menus.find_by(training_id: @my_menu.training_id).present?
 			my_menu = my_menus.find_by(training_id: @my_menu.training_id)
 			my_menu.training_quantity += @my_menu.training_quantity
 			my_menu.save(my_menu_params)
@@ -74,5 +95,9 @@ class Users::MyMenusController < ApplicationController
 	private
 	def my_menu_params
 		params.require(:my_menu).permit(:food_id, :training_id, :user_id, :food_quantity, :training_quantity)
+	end
+
+	def training_params
+		params.require(:training).permit(:user_id, :training_genre_id, :training_name, :training_content, :training_image, :movie_url, :consumption_cal)
 	end
 end

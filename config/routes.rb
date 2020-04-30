@@ -44,9 +44,10 @@ Rails.application.routes.draw do
     resources :daily_cals, only: [:index, :create, :new, :show]
     resources :foods, only: [:index, :show]
     resources :trainings, only: [:index, :show]
-    resources :my_menus, only: [:index, :create, :update, :destroy] do
+    resources :my_menus, only: [:index, :create, :new, :update, :destroy] do
       member do
         post "training" => "my_menus#training"
+        post "selftraining" => "my_menus#selftraining"
       end
       collection do
         delete :destroy_all
