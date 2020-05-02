@@ -18,9 +18,33 @@ class Users::TrainingsController < ApplicationController
 		end
 	end
 
+	def edit
+		@training = Training.find(params[:id])
+	end
+
 	def show
 		@training = Training.find(params[:id])
 		@my_menu = MyMenu.new
 		@training_genres = TrainingGenre.all
+	end
+
+	def update
+		@training = Training.find(params[:id])
+		if @training.update(training_params)
+		   redirect_to users_training_path
+		else
+		   render "edit"
+		end
+	end
+
+	def destroy
+		training = Training.find(params[:id])
+		training.destroy
+	    redirect_to users_trainings_path
+	end
+
+    private
+	def training_params
+		params.require(:training).permit(:user_id, :training_genre_id, :training_name, :training_content, :training_image, :movie_url, :consumption_cal)
 	end
 end

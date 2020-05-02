@@ -1,12 +1,17 @@
 <%= javascript_include_tag "admins/genre.js" %>
 
-<div class = "container">
-	<div class = "row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h3 class="elementor-heading-title">TRAINIG CREATE:</h3>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 title-text">
+			<p class="subtitle">
+				  <span class="sub-menu">
+				  	TRAINING CREATE:
+				  </span>
+			  	&mdash; Train and get a healthy body. &mdash;
+			</p>
 		</div>
 	</div>
-	  	  <%= form_for(@training, url:selftraining_users_my_menu_path(current_user),method: :post) do |f| %>
+	<%= form_for(@training, url:selftraining_users_my_menu_path(current_user),method: :post) do |f| %>
 		<div class = "food">
 			<div class = "food_colums">
 				<div class="field">
@@ -29,17 +34,14 @@
 			</div>
 			<div class = "food_colums">
 				<div class="field">
-					<%= f.label :training_genre_id, "ジャンル"%><br />
-					<%= f.collection_select :training_genre_id, TrainingGenre.all, :id, :training_genre_name %>
-				</div>
-				<div class="field">
 					<%= f.label :consumption_cal, "カロリー" %><br />
-					<%= f.number_field :consumption_cal %>kcal
+					<%= f.number_field :consumption_cal, placeholder: '半角数字' %><span class="unit">kcal</span>
 				</div>
 				<div class="field">
 					<%= f.label :movie_url, "動画URL" %><br />
-					<%= f.text_field :movie_url %>g
+					<%= f.text_field :movie_url %>
 				</div>
+				<%= f.hidden_field :training_genre_id, :value => @training.training_genre_id %>
 			</div>
 		</div>
 		<div class="row admin-item-show-btn">

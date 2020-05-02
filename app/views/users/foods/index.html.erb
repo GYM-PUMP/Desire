@@ -9,38 +9,69 @@
 			</p>
 		</div>
 	</div>
+	<div class = "row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<%= link_to "MY FOOD",  newfood_users_my_menus_path, class: "f_genre-btn" %>
+		</div>
+	</div>
 	<div class="row select-item">
-		<table class="table food_active">
-			<tr class="food-tr">
-				<th class="food_active" colspan="2">商品名</th>
-				<th class="food_active">カロリー</th>
-				<th class="food_active">タンパク質</th>
-				<th class="food_active">脂質</th>
-				<th class="food_active">炭水化物</th>
-				<th class="food_active">ジャンル</th>
-				<th class="food_active" colspan="2">数量</th>
-			</tr>
-		   <% @foods.each do |food| %>
-				<tr>
-					<td><%= attachment_image_tag food, :food_image, size: "40x40", fallback: "no_image.jpg" %></td>
-					<td><%= link_to food.food_name, users_food_path(food) %></td>
-					<td><%= food.ingestion_cal %>kcal</td>
-					<td><%= food.protein %>g</td>
-					<td><%= food.fat %>g</td>
-					<td><%= food.carb %>g</td>
-					<td><%= food.food_genre.food_genre_name %></td>
-				　<%= form_for(@my_menu, url:users_my_menus_path) do |f| %>
-					<td><%= f.number_field :food_quantity, placeholder: "個数選択" %></td>
-					<%= f.hidden_field :food_id, :value => food.id %>
-				　<% if user_signed_in? %>
-					<%= f.hidden_field :user_id, :value => current_user.id %>
-				　<% end %>
-					<td><%= f.submit "リストに追加", class: "btn-sm btn-primary" %></td>
-			<% end %>
+		<% if params[:category].present? %>
+			<h2>
+				<%= @food_genre.food_genre_name %>
+				<span>(全<%= @foods_quantity %>件)</span>
+			</h2>
+		<% else %>
+			<h2>ALL TRAINING<span>(全<%= @foods_quantity %>件)</span></h2>
+		<% end %>
+			<div class="col-xs-2 genre-sarch">
+			  <h3 class="sarch">SARCH:</h3>
+				<table class="genre-table">
+					 <tr>
+					 	 <td class="genre-names"><%= link_to "ALL TRAINING", users_foods_path %></td>
+					 </tr>
+		 		  <% @food_genres.each do |f_genre| %>
+	 				 <tr>
+						 <td class="genre-names">
+							<%= link_to users_foods_path(category: f_genre.food_genre_name) do %>
+								<%= f_genre.food_genre_name %>
+							<% end %>
+						 </td>
+					 </tr>
+		 		   <% end %>
+		 		</table>
+		    </div>
+		<div class="col-xs-9">
+			<table class="table food_active">
+				<tr class="food-tr">
+					<th class="food_active" colspan="2">商品名</th>
+					<th class="food_active">カロリー</th>
+					<th class="food_active">タンパク質</th>
+					<th class="food_active">脂質</th>
+					<th class="food_active">炭水化物</th>
+					<th class="food_active">ジャンル</th>
+					<th class="food_active" colspan="2">数量</th>
 				</tr>
-		    <% end %>
-		</table>
-		<%= paginate @foods %>
+			   <% @foods.each do |food| %>
+					<tr>
+						<td><%= attachment_image_tag food, :food_image, size: "40x40", fallback: "no_image.jpg" %></td>
+						<td><%= link_to food.food_name.truncate(8), users_food_path(food) %></td>
+						<td><%= food.ingestion_cal %>kcal</td>
+						<td><%= food.protein %>g</td>
+						<td><%= food.fat %>g</td>
+						<td><%= food.carb %>g</td>
+						<td><%= food.food_genre.food_genre_name %></td>
+					　<%= form_for(@my_menu, url:users_my_menus_path) do |f| %>
+						<td><%= f.number_field :food_quantity, placeholder: "個数選択" %></td>
+						<%= f.hidden_field :food_id, :value => food.id %>
+					　<% if user_signed_in? %>
+						<%= f.hidden_field :user_id, :value => current_user.id %>
+					　<% end %>
+						<td><%= f.submit "リストに追加", class: "btn-sm btn-primary" %></td>
+				<% end %>
+					</tr>
+			    <% end %>
+			</table>
+		</div>
 	</div>
 </div>
 

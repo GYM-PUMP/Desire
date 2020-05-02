@@ -72,4 +72,10 @@
 			<% end %>
 		</div>
 	</div>
+	<% if @training.create_admin != true %>
+		<div class="row btn-footer">
+			<%= link_to "編集する", edit_users_training_path, class: "edit-btn"%>
+			<%= link_to "DELETE",users_training_path, method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %>
+		</div>
+	<% end %>
 </div>

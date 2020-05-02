@@ -203,6 +203,7 @@ tbody td{
   tbody td{
     display: table-cell;
     border-bottom: none;
+    white-space: nowrap;
   }
   th {
     width: auto;
@@ -1276,6 +1277,13 @@ a:active {
   width: 100%;
   object-fit: cover;
   margin: auto;
+  }
+
+.unit{
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+  margin: 2%;
   }
 
 //---------------------------------------

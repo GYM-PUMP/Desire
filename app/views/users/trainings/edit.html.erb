@@ -1,0 +1,45 @@
+<%= javascript_include_tag "admins/genre.js" %>
+
+<div class ="container">
+	<div class = "row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2 class="elementor-heading-title">FOOD EDIT:</h2>
+		</div>
+	</div>
+	<%= form_for(@training, url:users_training_path(@training),method: :patch) do |f| %>
+		<div class = "food">
+			<div class = "food_colums">
+				<div class="field">
+					<%= attachment_image_tag @training, :training_image, id:"img_prev", size: "200x200", alt:"Image preview", class: "item_prev", fallback: "no_image.jpg" %>
+				</div>
+			 	<div class="field">
+					<%= f.label :training_image,"image change" ,class: "btn btn-warning btn-lg" ,for:"post_img"%>
+					<%= f.attachment_field :training_image, id:"post_img", class: "image", style:"display:none;" %>
+				</div>
+		    </div>
+		    <div class = "food_colums">
+			 	<div class="field">
+					<%= f.label :training_name, "トレ名" %><br />
+					<%= f.text_field :training_name %>
+				</div>
+				<div class="field">
+					<%= f.label :training_content, "説明" %><br />
+					<%= f.text_area :training_content %>
+				</div>
+			</div>
+			<div class = "food_colums">
+				<div class="field">
+					<%= f.label :consumption_cal, "カロリー" %><br />
+					<%= f.number_field :consumption_cal %><span class="unit">kcal</span>
+				</div>
+				<div class="field">
+					<%= f.label :movie_url, "動画URL" %><br />
+					<%= f.text_field :movie_url %>
+				</div>
+			</div>
+		</div>
+		<div class="row btn-footer">
+			<%= f.submit "変更を保存", class: "update-btn" %>
+		</div>
+	<% end %>
+</div>

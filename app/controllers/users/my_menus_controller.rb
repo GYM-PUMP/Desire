@@ -27,26 +27,6 @@ class Users::MyMenusController < ApplicationController
 	 	end
 	end
 
-	def new
-		@training = Training.new
-	end
-
-	def selftraining
-		@training = Training.new(training_params)
-		@training.create_admin = false
-		@training.user_id = current_user.id
-		@training.training_genre_id = 2
-		if  @training.save
-			@my_menu = MyMenu.new
-			@my_menu.user_id = current_user.id
-			@my_menu.training_id = @training.id
-			@my_menu.save
-			redirect_to users_my_menus_path
-		else
-			render 'new'
-		end
-	end
-
 	def training
 		@training_genres = TrainingGenre.all
 		@my_menu = MyMenu.new(my_menu_params)
@@ -65,6 +45,47 @@ class Users::MyMenusController < ApplicationController
 		     	redirect_back(fallback_location: users_training_path(@my_menu.training_id))
 	 		end
 	 	end
+	end
+
+	def new
+		@training = Training.new
+	end
+
+	def selftraining
+		@training = Training.new(training_params)
+		@training.create_admin = false
+		@training.user_id = current_user.id
+		@training.training_genre_id = TrainingGenre::USER_CREATE_GENRE
+		if  @training.save
+			@my_menu = MyMenu.new
+			@my_menu.user_id = current_user.id
+			@my_menu.training_id = @training.id
+			@my_menu.save
+			redirect_to users_my_menus_path
+		else
+			render 'new'
+		end
+	end
+
+
+	def newfood
+		@food = Food.new
+	end
+
+	def selffood
+		@food = Food.new(food_params)
+		@food.create_admin = false
+		@food.user_id = current_user.id
+		@food.food_genre_id = FoodGenre::USER_CREATE_GENRE
+		if  @food.save
+			@my_menu = MyMenu.new
+			@my_menu.user_id = current_user.id
+			@my_menu.food_id = @food.id
+			@my_menu.save
+			redirect_to users_my_menus_path
+		else
+			render 'new'
+		end
 	end
 
 	def update
@@ -99,5 +120,9 @@ class Users::MyMenusController < ApplicationController
 
 	def training_params
 		params.require(:training).permit(:user_id, :training_genre_id, :training_name, :training_content, :training_image, :movie_url, :consumption_cal)
+	end
+
+	def food_params
+		params.require(:food).permit(:user_id, :food_genre_id, :food_name, :food_content, :food_image, :ingestion_cal, :protein, :fat, :carb)
 	end
 end

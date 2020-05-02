@@ -67,5 +67,11 @@
 				</div>
 			</div>
 		</div>
+		<% if @food.create_admin != true %>
+			<div class="row btn-footer">
+				<%= link_to "編集する", edit_users_food_path, class: "edit-btn"%>
+				<%= link_to "DELETE",users_food_path, method: :delete, class: "destroy-btn", data: { confirm: '本当に消しますか？' } %>
+			</div>
+		<% end %>
 	</div>
 </div>

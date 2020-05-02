@@ -9,6 +9,11 @@
 			</p>
 		</div>
 	</div>
+	<div class = "row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<%= link_to "MY TRAINING",  new_users_my_menu_path, class: "f_genre-btn" %>
+		</div>
+	</div>
 	<div class="row select-item">
 		<% if params[:category].present? %>
 			<h2>
@@ -46,7 +51,7 @@
 				<% @trainings.each do |training| %>
 					<tr>
 						<td><%= attachment_image_tag training, :training_image, size: "40x40", fallback: "no_image.jpg" %></td>
-						<td><%= link_to training.training_name, users_training_path(training) %></td>
+						<td><%= link_to training.training_name.truncate(8), users_training_path(training) %></td>
 						<td><%= training.consumption_cal %>kcal</td>
 						<td><%= training.training_genre.training_genre_name %></td>
 					  <%= form_for(@my_menu, url:training_users_my_menu_path(current_user), method: :post) do |f| %>
