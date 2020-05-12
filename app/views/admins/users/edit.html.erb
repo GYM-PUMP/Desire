@@ -2,7 +2,7 @@
 	<div class = "row">
 		<div class="col-xs-8 col-xs-offset-2">
 			<h2 class="elementor-heading-title">USER:</h2>
-			<%= form_with(model: [:users, @user], data: {remote: false}) do |f| %><!-- デフォルトで非同期で通信しようとするため 非同期しない場合は　data: {remote: false}と記述要-->
+			<%= form_with(model: [:users, @user], data: {remote: false}, url:admins_user_path(@user)) do |f| %><!-- デフォルトで非同期で通信しようとするため 非同期しない場合は　data: {remote: false}と記述要-->
 				<div class = "row edit-body">
 					<% if @user.gender == true %>
 						<%= attachment_image_tag @user, :image,  id:"img_prev", class: "profile-img", fallback: "man-no-image.png" %>
@@ -15,10 +15,10 @@
 					</div>
 
 					<div class="field">
-						<%= f.radio_button :user_status, :true %>
-					    <%= f.label :user_status, "会員" %>
-					    <%= f.radio_button :user_status, :false %>
-					    <%= f.label :user_status, "退会処分" %>
+						<%= f.radio_button :user_status, :true, id:"user-availability" %>
+					    <%= f.label :user_status, "会員", for:"user-availability" %>
+					    <%= f.radio_button :user_status, :false, id:"user-invalid" %>
+					    <%= f.label :user_status, "退会処分", for:"user-invalid" %>
 					</div>
 
 					<div>
