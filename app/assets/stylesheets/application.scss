@@ -34,7 +34,6 @@
 
 body{
   background: linear-gradient(#000000, #000000);
-  white-space: nowrap;
   }
 
 #page_back {
@@ -59,6 +58,7 @@ body{
 td{
   vertical-align: middle !important;
   text-align: center;
+  white-space: nowrap;
   }
 
 tbody tr{
