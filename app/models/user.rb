@@ -23,6 +23,10 @@ class User < ApplicationRecord
 
   attachment :image, destroy: false
 
+  def active_for_authentication?
+    super && user_status?
+  end
+
 
 # validatesion -----------------------------
 
