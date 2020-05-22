@@ -24,6 +24,7 @@ class Users::HomesController < ApplicationController
     @contact = Contact.new(contact_params)
     if @contact.save #ユーザーのインスタンスが新しく生成されて保存されたら
       ContactMailer.send_user(@contact).deliver #確認メールを送信
+      ContactMailer.send_mail(@contact).deliver #確認メールを送信
       flash[:success] = 'ご意見賜りましてありがとうございます。'
       redirect_to root_path
     else

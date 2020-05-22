@@ -43,7 +43,7 @@ Rails.application.routes.draw do
 
     resources :daily_cals, only: [:index, :create, :new, :show]
     resources :foods, only: [:index, :show, :edit, :show, :update, :destroy]
-    resources :trainings, only: [:index, :show, :edit, :show, :update, :destroy]
+    resources :trainings, only: [:index, :create, :edit, :show, :update, :destroy]
     resources :my_menus, only: [:index, :create, :new, :update, :destroy] do
       member do
         post "training" => "my_menus#training"
